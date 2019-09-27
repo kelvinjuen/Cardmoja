@@ -587,11 +587,8 @@ h1, h2, h3, h4, h5,
     bottom: -250px;
     width: 100%; }
   .site-blocks-cover, .site-blocks-cover > .container > .row {
-    min-height: 600px;
-    height: calc(100vh); }
-    .site-blocks-cover, .site-blocks-cover > .container > .card {
-        min-height: 600px;
-        height: calc(100vh); }
+    min-height: 500px;
+    height: calc(60vh); }
   .site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover > .container > .row {
     min-height: 500px;
     height: calc(30vh); }

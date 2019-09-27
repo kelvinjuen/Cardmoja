@@ -30,8 +30,7 @@ class RegisterController extends Controller
      * @var string
      */
 
-     protected $redirectTo = '/velify';
-    /*public function redirectTo(){
+    public function redirectTo(){
         if(auth()->user()->type == 'personal'){
             return '/card/create';
         }else if(auth()->user()->type =='coperate'){
