@@ -1,0 +1,80 @@
+body {
+    line-height: 1.7;
+    color: #4d4d4d;
+    font-weight: 400;
+    font-size: 3vw;
+    height: 100%;
+}
+
+::-moz-selection {
+    background: #000;
+    color: #fff;
+}
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+    font-size: 4vw;
+}
+
+#chart-window {
+height: 400px;
+}
+
+@media (max-width: 576px) {
+    .card{
+        height: 70vh;
+    }
+    .card-img{
+        height: 70vh;
+    }
+}
+
+
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    body{
+        font-size: 2vw;
+    }
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 3vw;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    body{
+        font-size: 1.7vw;
+    }
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 2.5vw;
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+    #row-25{
+        height: 10vh;
+    }
+    #row-40{
+        height: 20vh;
+    }
+
+
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    body{
+        font-size: 1.2vw;
+    }
+    #row-25{
+        height: 20vh;
+    }
+    #row-40{
+        height: 30vh;
+    }
+ }
