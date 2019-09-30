@@ -194,7 +194,7 @@
                         '<div class="col-9 col-md-6"><h5>'+staff[index].email+'</h5><h6>'+staff[index].position+'</h6></div><div class="col-md-3">(3 Reviews) </div></div>');
                     }
                 }else{
-                    $('#staff').html('<div class="row"><h4 class="col-md-12">you have no contacts at the moment</h4></div>');
+                    $('#staff').html('<div class="row"><h4 class="col-md-12">Add new Staff</h4></div>');
                 }
             }
         });

@@ -11,10 +11,10 @@
 |
 */
 
-Auth::routes(['verify'=> true]);
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/','PageController@index');
+Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
 
 Route::get('/design','CardController@design');
@@ -24,6 +24,9 @@ Route::get('getConnectinfo','ConnectController@showConnect');
 
 Route::get('getdetailid','CoperateController@getDetailId');
 Route::post('savestaff','CoperateController@saveStaff');
+Route::get('coperateuser/create','CoperateController@createCoperateUser');
+Route::post('updatecoperateuser','CoperateController@updateCoperateUser');
+
 
 Route::resource('card','CardController');
 Route::resource('connect','ConnectController');

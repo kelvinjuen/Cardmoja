@@ -24,6 +24,9 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
+    protected $regsterView = 'pages.index';
+
     /**
      * Where to redirect users after registration.
      *

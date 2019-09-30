@@ -7,17 +7,17 @@
         <div class="row p-1">
                 <div class=" col-md-4 col-lg-4 col-xl-3 d-none d-md-block text-center pt-2">
                     <div class="border p-1">
-                        <a href="/card/{{auth()->user()->user_id}}">
+                        <a href="/card?id={{auth()->user()->user_id}}">
                             <img src="" width="50%" class="img-fluid rounded-circle user_photo">
                         </a>
                         <h4><span class="user_name"></span></h4>
                         <h5><span class="user_position"></span>,<span class="user_company"></span></h5>
                     </div>
                     <div class=" pt-1 request-wrap">
-                        <h5 class="muted">connect request</h5>
+                        <h5 class="muted">connection request</h5>
                         <div class=" request"></div>
                     </div>
-                    <div class=" pt-2 mt-5">
+                    <div class=" pt-2 mt-5 suggestion-wrap mb-4">
                         <h5 class="muted">connection you may know</h5>
                         <div class="mt-1 suggestion"></div>
                     </div>
@@ -142,7 +142,7 @@
                     $('.request-wrap').empty();
                 }
 
-                if(suggestion != null){
+                if(suggestion.length){
                     for (let index = 0; index < suggestion.length; index++) {
                         $('.suggestion').append('<div class="row mt-1 border align-items-center"><div class="col-md-4"><img src="/storage/card_images/'+suggestion[index].photo+'" width="70%" class="img-fluid rounded-circle"></div>'+
                         '<div class="col-md-6"><h6><a href="#">'+suggestion[index].full_name+'</a></h6><div class="">'+suggestion[index].position+'</div>'+
@@ -150,7 +150,7 @@
                         '<input type="hidden" name="user_2" value="'+suggestion[index].user_id+'">{{csrf_field() }}<button type="submit" class="btn btn-outline-secondary btn-sm">+</button></form></div></div>');
                     }
                 }else{
-                    $('#suggestion').html('<h6>you have no suggestion at the moment</h6>');
+                    $('.suggestion-wrap').empty();
                 }
 
 

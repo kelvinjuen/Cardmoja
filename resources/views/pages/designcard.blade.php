@@ -61,9 +61,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3" for="exampleFormControlFile1">Background Image</label>
-                        <div class="col-sm-7">
-                            <input type="file" class="form-control-file" name="upload" id="upload">
+                        <div class="col-md-4 offset-md-4 text-center">
+                            <label class="label btn btn-success" data-toggle="tooltip" title="Choose your profile photo">
+                                    <h6>Upload Custom BackGround</h6>
+                                    <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
+                            </label>
                         </div>
                     </div>
                     <div class="form-check">
@@ -93,7 +95,7 @@
             <div class="col-md-5 py-3" id="card-wrapper">
                 <div class="card text-light" id="card_1" style="height: 14rem;">
                     <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 14rem;" alt="Card image">
-                    <div class="card-img-overlay">
+                    <div class="card-img-overlay" id="cardwrapper">
                         <div class="row">
                             <div class="col-md-4">
                                 <img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/person_2.jpg" alt="photo">
@@ -127,98 +129,38 @@
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="card text-light" id="card_2" style="height: 14rem;">
-                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 14rem;" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div class="row mb-2">
-                            <div class="col-md-6">
-                                <h3 class="card-title ">Company name</h3>
-                                <h6 class="card-subtitle colour_2">slogan</h6>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <img class="img-fluid  ml-auto d-block img-thumbnail"  width="70vh"  src="/images/person_2.jpg" alt="photo"/>
 
-                                <h5 class="card-title">Full name</h5>
-                                <h6 class="card-subtitle Colour_2">title</h6>
-
-
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <h6 class="col-md-4 py-1 text-right">Services:</h6>
-                            <div class="col-md-8">
-                                    <ul class="float-right ">
-                                            <li class="mx-1" style="display: inline-block;"><small>service 1</small></li>
-                                            <li class="mx-1" style="display: inline-block;"><span class="border-left"></span><small>service 2</small></li>
-                                            <li class="mx-1" style="display: inline-block;"><span class="border-left"></span><small>service 3</small></li>
-                                        </ul>
-                            </div>
-                        </div>
-                        <div class="row my-1">
-                                <ul class="float-right">
-                                    <li class="mx-1" style="display: inline-block;"></span><small>&#9742; 0725123654</small></li>
-                                    <li class="mx-1" style="display: inline-block;"></span><small>test@gmail.com</small></li>
-                                    <li class="mx-1" style="display: inline-block;"></span><small>room 101, rehema house</small></li>
-                                </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="card text-light" id="card_3" style="max-height: 14rem;" >
-                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 14rem;" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h3 class="card-title">Full name</h3>
-                                <h6 class="card-subtitle colour_2">title</h6>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <h3 class="card-title ">Company name</h3>
-                                <h6 class="card-subtitle colour_2">slogan</h6>
-                            </div>
-                        </div>
-                        <div class="row border-top">
-                            <div class="col-md-9">
-                                <div class="row">
-                                <ul class="list-unstyled float-left ml-3">
-                                    <li ><small>&#9742; 071234322</small></li>
-                                    <li ><small>test@gmail.com</small></li>
-                                    <li ><small>physical location</small></li>
-                                </ul>
-                                </div>
-                                <div class="row">
-                                        <div class="col-md-4"><h6 class="py-1">Services:</h6></div>
-                                        <div class="col-md-8">
-                                            <ul class="float-right">
-                                                <li  style="display: inline-block;"><small>service 1</small></li>
-                                                <li  style="display: inline-block;"><small>service 2</small></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                            </div>
-                            <div class="col-md-3 py-4">
-                                <img class="img-fluid  ml-auto   d-block img-thumbnail"  width="120vh"  src="/images/person_2.jpg" alt="photo"/>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
             </div>
-
-
         </div>
     </div>
-
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Crop the image</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="img-container">
+                <img id="image" src="" max-height="200px" max-width="200px">
+            </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="crop">Crop</button>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>
 
 <script>
+    var formData;
     $(document).ready(function(){
-        $('#card_2').hide();
-        $('#card_3').hide();
-
         $.ajax({
             url:"{{route('card.show',auth()->user()->user_id)}}",
             method:'GET',
@@ -232,11 +174,6 @@
         });
 
     });
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
     $(document).on('submit', '#design_form', function(event){
             event.preventDefault();
@@ -245,7 +182,7 @@
                 url:"/savedesign",
                 method:'POST',
                 async: false,
-                data:new FormData(this),
+                data:formData,
                 contentType:false,
                 processData:false,
                 success:function(data)
@@ -264,31 +201,15 @@
 
 
     });
-    function hide_all(){
-        $('#card_1').hide();
-        $('#card_2').hide();
-        $('#card_3').hide();
-    }
-    function readURL(input){
-        if(input.files && input.files[0]){
-            var reader = new FileReader();
-
-            reader.onload = function(e){
-                $('.card-img').attr("src", e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
 
     $(document).on('change','#type-select', function(){
         var selectedType = $(this).children("option:selected").val();
-        hide_all();
         if(selectedType  == 1){
-            $('#card_1').show();
+            $('#cardwrapper').html('@include("pages.design.1"));
         }else if(selectedType  == 2){
-            $('#card_2').show();
+            $('#cardwrapper').html('@include("pages.design.2"));
         }else{
-            $('#card_3').show();
+            $('#cardwrapper').html('@include("pages.design.3"));
         }
 
     });
@@ -311,8 +232,80 @@
         var classChange = "card-subtitle "+selectedfg;
         $('.card-subtitle').removeClass(presentClassName).addClass(classChange);
     });
-    $(document).on('change','#upload', function(){
-        readURL(this);
+
+    window.addEventListener('DOMContentLoaded', function () {
+        var avatar = document.getElementById('card-bg');
+        var image = document.getElementById('image');
+        var input = document.getElementById('input');
+        var $modal = $('#modal');
+        var cropper;
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        input.addEventListener('change', function (e) {
+            var files = e.target.files;
+            var done = function (url) {
+            input.value = '';
+            image.src = url;
+            $modal.modal('show');
+            };
+
+            var reader;
+            var file;
+            var url;
+
+            if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function (e) {
+                done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+            }
+        });
+
+        $modal.on('shown.bs.modal', function () {
+            cropper = new Cropper(image, {
+                dragMode: 'move',
+                aspectRatio: 19 / 9,
+                autoCropArea: 0.9,
+                restore: false,
+                guides: true,
+                center: false,
+                highlight: false,
+                cropBoxMovable: false,
+                cropBoxResizable: false,
+                toggleDragModeOnDblclick: false,
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper.destroy();
+            cropper = null;
+        });
+
+        document.getElementById('crop').addEventListener('click', function () {
+            var initialAvatarURL;
+            var canvas;
+
+            $modal.modal('hide');
+
+            if (cropper) {
+            canvas = cropper.getCroppedCanvas({
+                width: 844,
+                height: 400,
+            });
+            initialAvatarURL = avatar.src;
+            avatar.src = canvas.toDataURL();
+            canvas.toBlob(function (blob) {
+                    formData = new FormData(document.forms[0]);
+                    formData.append('upload', blob, 'avatar.jpg');
+            });
+            }
+        });
     });
 </script>
 @endsection

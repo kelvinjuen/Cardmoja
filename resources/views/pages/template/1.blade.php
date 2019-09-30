@@ -1,6 +1,6 @@
 <div class="row  h-30">'+
     '<div class="col-12 col-sm-6 col-md-6 col-lg-6 text-center">'+
-        '<img class="img-fluid rounded-circle" width="60%  src="" alt="photo">'+
+        '<img class="img-fluid float-left d-block img-thumbnail" width="50%  src="" alt="photo">'+
     '</div>'+
     '<div class="col-sm-6 col-md-6 col-lg-6 d-none d-sm-block pl-auto">'+
         '<div class="d-none d-lg-block">'+

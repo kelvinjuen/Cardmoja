@@ -25,7 +25,15 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    public function redirectTo(){
+        if(auth()->user()->type == 'personal'){
+            return '/card/create';
+        }else if(auth()->user()->type =='coperate'){
+            return '/coperate/create';
+        }else{
+            return '/coperateuser/create';
+        }
+    }
 
     /**
      * Create a new controller instance.

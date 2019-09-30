@@ -14,7 +14,7 @@ class CardController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth']);
     }
 
     /**
@@ -112,6 +112,7 @@ class CardController extends Controller
         DB::transaction(function () use(&$lastid,&$fileNameToStore,&$contacts,&$emails,&$services) {
             $post_address = request()->get('postal_code').",".request()->get('postal_address').",".request()->get('city');
             $full_name = request()->get('firstName')." ".request()->get('secondName')." ".request()->get('thirdName');
+            $id = auth()->user()->user_id;
 
             $lastid = DB::table('card_details')->insertGetId([
                 'phone_no' => $contacts,'email' => $emails,'company' => request()->get('company'),'physical_address' => request()->get('physical_address'),
@@ -124,6 +125,8 @@ class CardController extends Controller
                 'photo' => $fileNameToStore,'details_id'=>$lastid,'user_id'=>auth()->user()->user_id,'updated_at' => \Carbon\Carbon::now()
                 ,'created_at' => \Carbon\Carbon::now(),
             ]);
+            DB::table('users')->where('user_id',$id)->update([
+                'active'=> 1,'updated_at' => \Carbon\Carbon::now()]);
 
 
         });

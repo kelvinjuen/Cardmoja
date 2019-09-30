@@ -5,8 +5,8 @@
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-center">
-            <div class="card" id="card_1"  >
-                <img class="card-img" src="/storage/background_images/bg_1.jpg" id="card-bg"  alt="Card image">
+            <div class="card" id="card"  >
+                <img class="card-img" src="" id="card-bg"  alt="Card image">
                 <div class="card-img-overlay" id="cardwrapper">
                 </div>
             </div>
@@ -45,6 +45,8 @@
                     $('.company').html(obj.company);
                     $('.name').html(obj.designation+' '+obj.full_name);
                     $('.position').html(obj.position);
+                    $('#card').attr('class','card '+obj.colour_1);
+                    $('.card_subtitle').attr('class','card_subtitle '+obj.colour_2);
                     if(obj.phone_no != null){
                         $('.info').append(' <li >&#9742;'+obj.phone_no+'</li>');
                         $('.info-inline').append(' <li class="mx-1" style="display: inline-block;"><strong>&#9742;'+obj.phone_no+'</strong></li>');

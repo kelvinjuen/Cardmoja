@@ -27,11 +27,25 @@ class LoginController extends Controller
      */
     public function redirectTo(){
         if(auth()->user()->type == 'personal'){
-            return '/homee';
+            if(auth()->user()->active == 0){
+                return '/card/create';
+            }else{
+                return '/home';
+            }
+
         }else if(auth()->user()->type =='coperate'){
-            return '/coperate';
-        }else{
-            return '/login';
+            if(auth()->user()->active == 0){
+                return '/coperate/create';
+            }else{
+                return '/coperate';
+            }
+            return '/coperate/create';
+        }else if( auth()->user()->type == 'coperate_user'){
+            if(auth()->user()->active == 0){
+                return '/coperateuser/create';
+            }else{
+                return '/home';
+            }
         }
     }
 

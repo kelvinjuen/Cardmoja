@@ -95,18 +95,25 @@ class CoperateController extends Controller
             //upload image
             $path = $request->file('card_photo')->storeAs('public/card_images', $fileNameToStore);
         }else{
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'male-avator.png';
         }
 
         $lastid=null;
 
-        $post_address = request()->get('postal_code').",".request()->get('postal_address').",".request()->get('city');
+        DB::transaction(function () use(&$contacts,&$emails,&$services) {
+            $post_address = request()->get('postal_code').",".request()->get('postal_address').",".request()->get('city');
+            $id = auth()->user()->user_id;
 
-        $lastid = DB::table('card_details')->insertGetId([
-            'phone_no' => $contacts,'email' => $emails,'company' => request()->get('company'),'physical_address' => request()->get('physical_address'),
-            'post_address' => $post_address,'social_media' => request()->get('facebook_link'),'website' => request()->get('website'),'user_id'=>auth()->user()->user_id,
-            'nature' => request()->get('biz_type'),'services' => $services,'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now(),
-            ]);
+            $lastid = DB::table('card_details')->insertGetId([
+                'phone_no' => $contacts,'email' => $emails,'company' => request()->get('company'),'physical_address' => request()->get('physical_address'),
+                'post_address' => $post_address,'social_media' => request()->get('facebook_link'),'website' => request()->get('website'),'user_id'=>auth()->user()->user_id,
+                'nature' => request()->get('biz_type'),'services' => $services,'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now(),
+                ]);
+
+            DB::table('users')->where('user_id',$id)->update([
+                'active'=> 1,'updated_at' => \Carbon\Carbon::now()]);
+        });
+
         return response()->json(['lastid'=>$lastid]);
     }
 
@@ -180,6 +187,49 @@ class CoperateController extends Controller
             });
         }
 
+    }
+
+    public function createCoperateUser(){
+        return view('pages.coperateactivate');
+    }
+
+    public function updateCoperateUser(Request $request){
+        $validator = \Validator::make($request->all(),[
+            'card_photo' => 'image|nullable|max:1999',
+            'password' => ['required', 'min:8','confirmed'],
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['errors'=>$validator->errors()]);
+        }
+
+        //handle file upload
+        if($request ->hasFile('card_photo')){
+            //get filename with the ext
+            $fileNameWithExt = $request ->file('card_photo')->getClientOriginalName();
+            //get just extension
+            $extension = $request->file('card_photo')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore =  request()->get('firstName').'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('card_photo')->storeAs('public/card_images', $fileNameToStore);
+        }
+
+        DB::transaction(function () use(&$fileNameToStore) {
+            $full_name = request()->get('firstName')." ".request()->get('secondName')." ".request()->get('thirdName');
+            $id = auth()->user()->user_id;
+
+            DB::table('users')->where('user_id',$id)->update([
+                'active'=> 1,'password' => Hash::make(request()->get('password')),'updated_at' => \Carbon\Carbon::now()]);
+
+
+            DB::table('card_profile')->where('user_id',$id)->update([
+                'designation' => request()->get('designation'),'full_name' => $full_name,'updated_at' => \Carbon\Carbon::now()]);
+
+            if(request() ->hasFile('card_photo')){
+                DB::table('card_profile')->where('user_id',$id)->update(['photo' => $fileNameToStore]);
+            }
+        });
     }
 
     public function showConnect($id){

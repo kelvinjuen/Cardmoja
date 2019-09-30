@@ -587,8 +587,7 @@ h1, h2, h3, h4, h5,
     bottom: -250px;
     width: 100%; }
   .site-blocks-cover, .site-blocks-cover > .container > .row {
-    min-height: 500px;
-    height: calc(60vh); }
+    min-height: calc(85vh); }
   .site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover > .container > .row {
     min-height: 500px;
     height: calc(30vh); }
@@ -689,7 +688,10 @@ h1, h2, h3, h4, h5,
         width: 100% !important;
         display: block; } }
 
-
+.img-container img {
+    max-width: 100%;
+    max-height: 300px;
+}
 
 @media (max-width: 576px) {
     h1, h2, h3, h4, h5,

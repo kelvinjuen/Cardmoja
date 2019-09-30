@@ -2,51 +2,63 @@
 
 @section('content')
 <div class="site-section">
-
         <div class="container">
             <div class="card-wrap ">
                 <h3 class="text-secondary mb-4 text-center">Card Details</h3>
                 <form id="editcard_form" method="POST" enctype="multipart/form-data">
 
                     <h6 class="text-secondary mb-4 border-bottom mb-4">Personal Profile</h6>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <div class="input-group rounded">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Desigination:</span>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="input-group rounded">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Desigination:</span>
+                                        </div>
+                                        <select class="select-group" id="designation" name="designation">
+                                            <option value="Mr">Mr</option>
+                                            <option value="Mrs">Mrs</option>
+                                            <option value="Miss">Miss</option>
+                                            <option value="Dr">Dr</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <select class="select-group" id="designation" name="designation">
-                                    <option value="Mr">Mr</option>
-                                    <option value="Mrs">Mrs</option>
-                                    <option value="Miss">Miss</option>
-                                    <option value="Dr">Dr</option>
-                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="input-group rounded">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Names:</span>
+                                        </div>
+                                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="FirstName" required>
+                                        <input type="text" class="form-control" name="secondName" id="secondName" placeholder="SecondName" required>
+                                        <input type="text" class="form-control" name ="thirdName" id="thirdName" placeholder="ThirdName" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Position:</span>
+                                        </div>
+                                        <input type="text" class="form-control" id="position" name="position" placeholder="web designer / CEO" required>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <div class="input-group rounded">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Names:</span>
-                                </div>
-                                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="FirstName" required>
-                                <input type="text" class="form-control" name="secondName" id="secondName" placeholder="SecondName" required>
-                                <input type="text" class="form-control" name ="thirdName" id="thirdName" placeholder="ThirdName" required>
-                            </div>
+
+                        <div class="col-md-4 text-center">
+                            <label class="label" data-toggle="tooltip" title="Choose your profile photo">
+                                    <img class="rounded"  src="" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
+                                    <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
+                            </label>
                         </div>
+
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Position:</span>
-                                </div>
-                                <input type="text" class="form-control" id="position" name="position" placeholder="web designer / CEO" required>
-                            </div>
-                        </div>
-                    </div>
 
                     <h6 class="text-secondary mb-4 border-bottom mb-4">Company/Business Profile</h6>
 
@@ -177,43 +189,47 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <div class="col-md-2">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Logo/Profile photo</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <input type="file" class="form-control-file" id="card_photo" name="card_photo">
-                        </div>
-                        <div class="col">
-                            <span class="photo"></span>
-                        </div>
-                    </div>
+
                     <input type="hidden" name="_method" id="_method" value="PUT">
                     <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Save Changes</button>
                     {{csrf_field() }}
                 </form>
             </div>
         </div>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Crop the image</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <div class="img-container">
+                    <img id="image" src="" max-height="200px" max-width="200px">
+                </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
 <script type="text/javascript" language="javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    var formData;
 
     $(document).on('submit', '#editcard_form', function(event){
             event.preventDefault();
-            var success = false;
+
             $.ajax({
                 url:"{{route('card.update',Auth::user()->user_id)}}",
                 method:'POST',
                 async: false,
-                data:new FormData(this),
+                data:formData,
                 contentType:false,
                 processData:false,
                 success:function(data)
@@ -221,13 +237,11 @@
                     var obj = data.errors;
                     $('.photo').html('');
                     if(obj != null){
-                        $('.photo').html(obj['card_photo']);
+
                     }else{
                         alert ("successfully editted");
                         window.location.href = "/card?id={{auth()->user()->user_id}}";
                     }
-
-
                 }
             });
     });
@@ -256,6 +270,7 @@
                     $('#position').attr('value',obj.position);
                     $('#company').attr('value',obj.company);
                     $('#website').attr('value',obj.website);
+                    $('#profile_photo').attr('src','/storage/card_images/'+obj.photo);
 
                     var phone = obj['phone_no'].split(",");
                     for (let index = 0; index < phone.length; index++) {
@@ -377,6 +392,81 @@
     function remove_field(id){
         document.getElementById(id).innerHTML="<p></p>";
     }
+
+    window.addEventListener('DOMContentLoaded', function () {
+        var avatar = document.getElementById('profile_photo');
+        var image = document.getElementById('image');
+        var input = document.getElementById('input');
+        var $modal = $('#modal');
+        var cropper;
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        input.addEventListener('change', function (e) {
+            var files = e.target.files;
+            var done = function (url) {
+            input.value = '';
+            image.src = url;
+            $modal.modal('show');
+            };
+
+            var reader;
+            var file;
+            var url;
+
+            if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function (e) {
+                done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+            }
+        });
+
+        $modal.on('shown.bs.modal', function () {
+            cropper = new Cropper(image, {
+                dragMode: 'move',
+                aspectRatio: 1/1,
+                autoCropArea: 0.95,
+                restore: false,
+                guides: false,
+                center: false,
+                highlight: false,
+                cropBoxMovable: false,
+                cropBoxResizable: false,
+                toggleDragModeOnDblclick: false,
+            });
+        }).on('hidden.bs.modal', function () {
+            cropper.destroy();
+            cropper = null;
+        });
+
+        document.getElementById('crop').addEventListener('click', function () {
+            var initialAvatarURL;
+            var canvas;
+
+            $modal.modal('hide');
+
+            if (cropper) {
+            canvas = cropper.getCroppedCanvas({
+                width: 665,
+                height: 665,
+            });
+            initialAvatarURL = avatar.src;
+            avatar.src = canvas.toDataURL();
+            canvas.toBlob(function (blob) {
+                    formData = new FormData(document.forms[0]);
+                    formData.append('card_photo', blob, 'avatar.jpg');
+            });
+            }
+        });
+    });
 </script>
 
 @endsection

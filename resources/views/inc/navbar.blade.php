@@ -11,9 +11,8 @@
 
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="/home"><i class="flaticon-main"></i><span>HOME</span></a></li>
-                <li><a href="listings.html"><span>FEATURES</span></a></li>
-                <li><a href="blog.html"><span>PRICING</span></a></li>
-                <li><a href="contact.html"><span>USERS</span></a></li>
+                <li><a href="#"><span>FEATURES</span></a></li>
+                <li><a href="#"><span>PRICING</span></a></li>
 
                  <!-- Authentication Links -->
                 @guest
