@@ -13,12 +13,12 @@
 '<div class="row">'+
     '<div class="col-md-5">'+
         '<h3 class="card-title">Full name</h3>'+
-        '<h6 class="card-subtitle colour_2">title</h6>'+
+        '<h6 class="card-subtitle" >title</h6>'+
     '</div>'+
 
     '<div class="col-md-7 text-right">'+
         '<h3 class="card-title ">Company name</h3>'+
-        '<h6 class="card-subtitle colour_2">slogan</h6>'+
+        '<h6 class="card-subtitle">slogan</h6>'+
     '</div>'+
 '</div>'+
 '<div class="row border-top my-2">'+

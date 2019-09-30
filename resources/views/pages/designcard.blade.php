@@ -13,7 +13,7 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label">Types</label>
                         <div class="col-sm-7">
                             <select class="custom-select type-select" id="type-select" name="type-select">
-                                <option value="1" selected>type 1</option>
+                                <option value="1">type 1</option>
                                 <option value="2">type 2</option>
                                 <option value="3">type 3</option>
                             </select>
@@ -23,10 +23,10 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label">Background Colour</label>
                         <div class="col-sm-7">
                             <select class="custom-select background-select" name="background-select" id="background-select">
-                                <option value="/bg_1.jpg" selected>Default</option>
-                                <option value="/bg_2.jpg">sleek</option>
-                                <option value="/bg_3.jpg">normal</option>
-                                <option value="/bg_4.jpg">blue</option>
+                                <option value="bg_1.jpg" selected>Default</option>
+                                <option value="bg_2.jpg">sleek</option>
+                                <option value="bg_3.jpg">normal</option>
+                                <option value="bg_4.jpg">blue</option>
                             </select>
                         </div>
                     </div>
@@ -83,8 +83,8 @@
                     <div class="form-group row">
 
                         <div class="col-sm-10">
-
-                        <button type="submit"  class="btn btn-success col-12">Update</button>
+                            <input type="hidden" name="imagetodelete" id="imagetodelete" value=""/>
+                            <button type="submit"  class="btn btn-success col-12">Update</button>
                         </div>
                         {{csrf_field()}}
                     </div>
@@ -160,7 +160,10 @@
 
 <script>
     var formData;
+    let photo;
     $(document).ready(function(){
+
+        document.getElementById("background-select").selectedIndex = -1;
         $.ajax({
             url:"{{route('card.show',auth()->user()->user_id)}}",
             method:'GET',
@@ -169,7 +172,31 @@
             processData:false,
             success:function(data)
             {
-                var obj = data.success;
+                var obj = data.card;
+                if(obj.bg_image !== null){
+                    var bg = obj['bg_image'].split("_");
+                    if(obj.type  == 1){
+                        $('#cardwrapper').html('@include("pages.design.1"));
+                    }else if(obj.type  == 2){
+                        $('#cardwrapper').html('@include("pages.design.2"));
+                    }else{
+                        $('#cardwrapper').html('@include("pages.design.3"));
+                    }
+                    $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
+                    $('#type-select').val(obj.type);
+                    if(bg[0] === 'bg'){
+                        $('#background-select').val(obj.bg_image);
+                    }else{
+                        $('#imagetodelete').attr("value" , obj.bg_image);
+                    }
+                    $('.card').attr("class", "card "+obj.colour_1);
+                    $('#colour-1').val(obj.colour_1);
+                    $('.card-subtitle').attr("class", "card-subtitle "+obj.colour_2);
+                    $('#colour-2').val(obj.colour_2);
+
+
+                }
+
             }
         });
 
@@ -177,7 +204,12 @@
 
     $(document).on('submit', '#design_form', function(event){
             event.preventDefault();
-            var success = false;
+
+            formData = new FormData(this);
+            if(photo != null){
+                formData.append('upload', photo, 'avatar.jpg');
+            }
+
             $.ajax({
                 url:"/savedesign",
                 method:'POST',
@@ -191,6 +223,7 @@
                     let type = '{{auth()->user()->type}}' ;
 
                     if(type == 'personal'){
+                        alert('success');
                         window.location.href = "/card?id={{auth()->user()->user_id}}";
                     }else{
                         window.location.href = "/coperate";
@@ -292,6 +325,7 @@
             var canvas;
 
             $modal.modal('hide');
+            document.getElementById("background-select").selectedIndex = -1;
 
             if (cropper) {
             canvas = cropper.getCroppedCanvas({
@@ -301,8 +335,7 @@
             initialAvatarURL = avatar.src;
             avatar.src = canvas.toDataURL();
             canvas.toBlob(function (blob) {
-                    formData = new FormData(document.forms[0]);
-                    formData.append('upload', blob, 'avatar.jpg');
+                photo = blob;
             });
             }
         });

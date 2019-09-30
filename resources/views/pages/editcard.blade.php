@@ -220,11 +220,14 @@
         </div>
     </div>
 <script type="text/javascript" language="javascript">
-    var formData;
+    let photo;
 
     $(document).on('submit', '#editcard_form', function(event){
             event.preventDefault();
-
+            formData = new FormData(this);
+            if(photo != null){
+                formData.append('upload', photo, 'avatar.jpg');
+            }
             $.ajax({
                 url:"{{route('card.update',Auth::user()->user_id)}}",
                 method:'POST',
@@ -461,8 +464,7 @@
             initialAvatarURL = avatar.src;
             avatar.src = canvas.toDataURL();
             canvas.toBlob(function (blob) {
-                    formData = new FormData(document.forms[0]);
-                    formData.append('card_photo', blob, 'avatar.jpg');
+                photo = blob;
             });
             }
         });

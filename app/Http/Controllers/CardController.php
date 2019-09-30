@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use DB;
 
 class CardController extends Controller
@@ -276,9 +277,13 @@ class CardController extends Controller
                 $fileNameToStore = 'custom_'.time().'.'.$extension;
                 //upload image
                 $path = $request->file('upload')->storeAs('public/background_images', $fileNameToStore);
+                Storage::delete(['public/background_images/'.request()->get('imagetodelete')]);
             }
-        }else{
+        }else if ($request->has('background-select')){
             $fileNameToStore = request()->get('background-select');
+            Storage::delete(['public/background_images/'.request()->get('imagetodelete')]);
+        }else{
+            $fileNameToStore = request()->get('imagetodelete');
         }
 
         DB::table('card_details')->where('user_id', $id)->

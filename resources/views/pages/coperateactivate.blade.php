@@ -97,10 +97,15 @@
     </div>
 </div>
 <script type="text/javascript" language="javascript">
-    var formData;
+    let photo;
 
     $(document).on('submit', '#card_form', function(event){
         event.preventDefault();
+
+        formData = new FormData(this);
+        if(photo != null){
+            formData.append('upload', photo, 'avatar.jpg');
+        }
 
         $.ajax({
             url:"/updatecoperateuser",
@@ -194,8 +199,7 @@
             initialAvatarURL = avatar.src;
             avatar.src = canvas.toDataURL();
             canvas.toBlob(function (blob) {
-                    formData = new FormData(document.forms[0]);
-                    formData.append('card_photo', blob, 'avatar.jpg');
+                photo = blob;
             });
             }
         });
