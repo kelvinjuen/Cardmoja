@@ -219,6 +219,11 @@
     </div>
 <script type="text/javascript" language="javascript">
     let photo;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
     $(document).on('submit', '#card_form', function(event){
         event.preventDefault();
 
