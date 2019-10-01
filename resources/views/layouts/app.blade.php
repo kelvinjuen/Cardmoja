@@ -35,6 +35,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
     <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
@@ -47,6 +48,13 @@
 
 </head>
 <body>
+    <script>
+        $(window).load(function() {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut("slow");;
+        });
+    </script>
+    <div class="se-pre-con"></div>
     <div id="app">
         <div class="site-wrap">
             @yield('content')
