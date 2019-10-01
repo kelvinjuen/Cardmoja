@@ -229,7 +229,7 @@
 
         formData = new FormData(this);
         if(photo != null){
-            formData.append('upload', photo, 'avatar.jpg');
+            formData.append('card_photo', photo, 'avatar.jpg');
         }
 
         $.ajax({
