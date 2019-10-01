@@ -35,7 +35,13 @@ class CardController extends Controller
      */
     public function create()
     {
-        return view('pages.createcard');
+        if(auth()->user()->active == 0){
+            return view('pages.createcard');
+        }else{
+            return redirect('/home');
+        }
+
+
     }
 
     /**

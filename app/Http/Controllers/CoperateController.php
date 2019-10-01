@@ -35,7 +35,11 @@ class CoperateController extends Controller
      */
     public function create()
     {
-        return view('pages.createcoperate');
+        if(auth()->user()->active == 0){
+            return view('pages.createcoperate');
+        }else{
+            return redirect('/home');
+        }
     }
 
     /**
@@ -200,7 +204,12 @@ class CoperateController extends Controller
     }
 
     public function createCoperateUser(){
-        return view('pages.coperateactivate');
+
+        if(auth()->user()->active == 0){
+            return view('pages.coperateactivate');
+        }else{
+            return redirect('/home');
+        }
     }
 
     public function updateCoperateUser(Request $request){
