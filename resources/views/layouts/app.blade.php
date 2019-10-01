@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Favicon icon -->
-    <link rel="icon" href="{{ asset('images/uploads/thumbnail/cardmoja_thumb-100x100.png')}}'">
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
