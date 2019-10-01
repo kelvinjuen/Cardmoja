@@ -189,7 +189,7 @@
                         </div>
                     </div>
 
-
+                    <input type="hidden" name="imagetodelete" id="imagetodelete">
                     <input type="hidden" name="_method" id="_method" value="PUT">
                     <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Save Changes</button>
                     {{csrf_field() }}
@@ -220,13 +220,12 @@
         </div>
     </div>
 <script type="text/javascript" language="javascript">
-    let photo;
-
+    let file;
     $(document).on('submit', '#editcard_form', function(event){
             event.preventDefault();
             formData = new FormData(this);
-            if(photo != null){
-                formData.append('card_photo', photo, 'avatar.jpg');
+            if(file != null){
+                formData.append('card_photo', file, 'avatar.jpg');
             }
             $.ajax({
                 url:"{{route('card.update',Auth::user()->user_id)}}",
@@ -274,6 +273,7 @@
                     $('#company').attr('value',obj.company);
                     $('#website').attr('value',obj.website);
                     $('#profile_photo').attr('src','/storage/card_images/'+obj.photo);
+                    $('#imagetodelete').attr("value" , obj.photo);
 
                     var phone = obj['phone_no'].split(",");
                     for (let index = 0; index < phone.length; index++) {
@@ -457,15 +457,19 @@
             $modal.modal('hide');
 
             if (cropper) {
-            canvas = cropper.getCroppedCanvas({
-                width: 665,
-                height: 665,
-            });
-            initialAvatarURL = avatar.src;
-            avatar.src = canvas.toDataURL();
-            canvas.toBlob(function (blob) {
-                photo = blob;
-            });
+                canvas = cropper.getCroppedCanvas({
+                    width: 665,
+                    height: 665,
+                });
+                initialAvatarURL = avatar.src;
+                avatar.src = canvas.toDataURL();
+
+                canvas.toBlob((blob) => {
+                        file = new File([blob],'profile.jpg', {
+                            type: 'image/jpeg',
+                            lastModified: Date.now()
+                        });
+                }, 'image/jpeg', 0.6);
             }
         });
     });

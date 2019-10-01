@@ -225,6 +225,7 @@ class CardController extends Controller
             $fileNameToStore =  request()->get('firstName').'_'.time().'.'.$extension;
             //upload image
             $path = $request->file('card_photo')->storeAs('public/card_images', $fileNameToStore);
+            Storage::delete(['public/card_images/'.request()->get('imagetodelete')]);
         }
 
 

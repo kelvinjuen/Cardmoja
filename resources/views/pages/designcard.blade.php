@@ -160,7 +160,7 @@
 
 <script>
     var formData;
-    let photo;
+    let file;
     $(document).ready(function(){
 
         document.getElementById("background-select").selectedIndex = -1;
@@ -206,8 +206,8 @@
             event.preventDefault();
 
             formData = new FormData(this);
-            if(photo != null){
-                formData.append('upload', photo, 'avatar.jpg');
+            if(file != null){
+                formData.append('upload', file, 'background.jpg');
             }
 
             $.ajax({
@@ -334,9 +334,12 @@
             });
             initialAvatarURL = avatar.src;
             avatar.src = canvas.toDataURL();
-            canvas.toBlob(function (blob) {
-                photo = blob;
-            });
+            canvas.toBlob((blob) => {
+                        file = new File([blob],'background.jpg', {
+                            type: 'image/jpeg',
+                            lastModified: Date.now()
+                        });
+                }, 'image/jpeg', 0.6);
             }
         });
     });
