@@ -139,32 +139,20 @@
                     </div>
 
                     <h6 class="text-secondary mb-4 border-bottom my-4">Social Media Links</h6>
-
                     <div class="form-group row">
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Facebook</span>
-                                </div>
-                                <input type="text" class="form-control" id="facebook_link" name="facebook_link" placeholder="Facebook">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Twitter</span>
-                                </div>
-                                <input type="text" class="form-control" id="twitter_link" name="twitter_link" placeholder="Twitter">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Linkedin</span>
-                                </div>
-                                <input type="text" class="form-control" id="linkedin_link" name="linkedin_link" placeholder="Linkedin">
-                            </div>
-                        </div>
+                        <a href="#" class="col-1"><span class="icon-facebook"></span></a>
+                        <a href="#" class="col-1"><span class="icon-twitter"></span></a>
+                        <a href="#" class="col-1"><span class="icon-instagram"></span></a>
+                        <a href="#" class="col-1"><span class="icon-linkedin"></span></a>
+                        <a href="#" class="col-1"><span class="icon-snapchat"></span></a>
+                        <a href="#" class="col-1"><span class="icon-linkedin"></span></a>
+                        <a href="/github" class="col-1"><span class="icon-github"></span></a>
+                        <a href="#" class="col-1"><span class="icon-skype"></span></a>
+                        <a href="#" class="col-1"><span class="icon-youtube"></span></a>
+                    </div>
+
+                    <div class="form-group row" id="text_div_links">
+
                     </div>
 
                     <h6 class="text-secondary mb-4 border-bottom my-4">Company Services/Products<h6>
@@ -221,6 +209,7 @@
     </div>
 <script type="text/javascript" language="javascript">
     let file;
+
     $(document).on('submit', '#editcard_form', function(event){
             event.preventDefault();
             formData = new FormData(this);
@@ -246,6 +235,16 @@
                     }
                 }
             });
+    });
+
+    $(document).on('change', '#weblinks', function(event){
+            event.preventDefault();
+            let selectedlink = $(this).children("option:selected").val();
+
+            $('#text_div_links').append('<div class="input-group input_text_links col-6  mt-1" ><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">'+selectedlink+'</span>'+
+                '</div><input type="text" class="form-control contact" placeholder="'+selectedlink+'" id="'+selectedlink+'" name="'+selectedlink+'" aria-label="contact" aria-describedby="button-addon4" required>'+
+                '<input type="button" class="btn btn-danger contact-remove" value="remove" ></div>'
+            );
     });
 
     $(document).ready(function(){

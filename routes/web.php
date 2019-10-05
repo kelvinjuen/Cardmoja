@@ -13,6 +13,9 @@
 
 Auth::routes(['verify' => true]);
 
+Route::get('github', 'CardController@redirectToProvider');
+Route::get('github/callback', 'CardController@handleProviderCallback');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
