@@ -93,7 +93,7 @@
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-center">
-            <div class="card" id="card"  >
+            <div class="card" id="card">
                 <img class="card-img" src="" id="card-bg"  alt="Card image">
                 <div class="card-img-overlay" id="cardwrapper">
                 </div>
@@ -110,6 +110,7 @@
     });
 
     $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
         $.ajax({
             url:"{{route('card.show',$_GET['id'])}}",
             method:'GET',
@@ -150,6 +151,20 @@
                     if(obj.post_address != null){
                         $('.info').append(' <li >&#9742;'+obj.post_address+'</li>');
                         $('.info-inline').append(' <li class="mx-1" style="display: inline-block;"><strong>&#9742;'+obj.post_address+'</strong></li>');
+                    }
+                    let social = obj['social_media'].split(",");
+                    for (let index = 0; index < social.length; index++) {
+
+                        let social_link = social[index].split("->")
+                        if(social_link[0] === 'facebook'){
+                            $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook"></span></a>');
+                        }
+                        if(social_link[0] === 'twitter'){
+                            $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter"></span></a>');
+                        }
+                        if(social_link[0] === 'github'){
+                            $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github"></span></a>');
+                        }
                     }
 
                     var services = obj['services'].split(",");

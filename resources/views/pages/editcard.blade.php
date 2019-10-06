@@ -138,23 +138,6 @@
                         </div>
                     </div>
 
-                    <h6 class="text-secondary mb-4 border-bottom my-4">Social Media Links</h6>
-                    <div class="form-group row">
-                        <a href="#" class="col-1"><span class="icon-facebook"></span></a>
-                        <a href="#" class="col-1"><span class="icon-twitter"></span></a>
-                        <a href="#" class="col-1"><span class="icon-instagram"></span></a>
-                        <a href="#" class="col-1"><span class="icon-linkedin"></span></a>
-                        <a href="#" class="col-1"><span class="icon-snapchat"></span></a>
-                        <a href="#" class="col-1"><span class="icon-linkedin"></span></a>
-                        <a href="/github" class="col-1"><span class="icon-github"></span></a>
-                        <a href="#" class="col-1"><span class="icon-skype"></span></a>
-                        <a href="#" class="col-1"><span class="icon-youtube"></span></a>
-                    </div>
-
-                    <div class="form-group row" id="text_div_links">
-
-                    </div>
-
                     <h6 class="text-secondary mb-4 border-bottom my-4">Company Services/Products<h6>
 
                     <div class="form-group row">

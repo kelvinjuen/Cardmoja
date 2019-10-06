@@ -13,12 +13,15 @@
 
 Auth::routes(['verify' => true]);
 
-Route::get('github', 'CardController@redirectToProvider');
-Route::get('github/callback', 'CardController@handleProviderCallback');
+Route::get('auth/{provider}', 'CardController@redirectToProvider');
+Route::get('auth/{provider}/callback', 'CardController@handleProviderCallback');
+Route::get('twitter/callback', 'CardController@TwitterCallback');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
+
+Route::get('/links','CardController@socialMedia');
 
 Route::get('/design','CardController@design');
 Route::post('savedesign','CardController@saveDesign');
@@ -34,4 +37,8 @@ Route::post('updatecoperateuser','CoperateController@updateCoperateUser');
 Route::resource('card','CardController');
 Route::resource('connect','ConnectController');
 Route::resource('coperate','CoperateController');
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/user', 'GraphController@retrieveUserProfile');
+});
 

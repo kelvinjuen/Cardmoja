@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DB;
 use Socialite;
+use Illuminate\Support\Facades\Session;
 
 class CardController extends Controller
 {
@@ -14,6 +15,7 @@ class CardController extends Controller
      *
      * @return void
      */
+    protected $redirectTo = '/';
     public function __construct()
     {
         $this->middleware(['auth','verified']);
@@ -266,6 +268,9 @@ class CardController extends Controller
     {
         //
     }
+    public function socialMedia(){
+        return view('pages.socialmedia');
+    }
     public function design(){
         return view('pages.designcard');
     }
@@ -307,9 +312,10 @@ class CardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('github')->redirect();
+
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
@@ -317,10 +323,93 @@ class CardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::driver($provider)->user();
 
-        // $user->token;
+        //dd($user);
+
+        $links = DB::table('card_details')->where('user_id',auth()->user()->user_id)->select('social_media')->first();
+
+        $link = $links->social_media;
+        $link_list = array();
+
+        if(!empty($link)){
+            $str_arr = explode (",", $link);
+            for ($i=0; $i < count($str_arr) ; $i++) {
+                $arr = explode ("->", $str_arr[$i]);
+                for ($k=0; $k < count($arr); $k++) {
+                    $link_list[$arr[0]] = $arr[1];
+                }
+            }
+        }
+
+
+        if($provider == 'facebook'){
+            $link_list[$provider]  = $user->profileUrl;
+        }
+
+        if($provider == 'github'){
+            $link_list[$provider]  = 'https://github.com/'.$user->nickname;
+        }
+
+
+        $link_final = null;
+        if(!empty($link)){
+            foreach ($link_list as $key => $value) {
+                $link_final .= ','.$key.'->'.$value;
+            }
+        }else{
+            foreach ($link_list as $key => $value) {
+                $link_final .= $key.'->'.$value;
+            }
+        }
+
+        DB::table('card_details')->where('user_id',auth()->user()->user_id)->update([
+            'social_media' => $link_final,'updated_at' => \Carbon\Carbon::now()]);
+
+        //return response()->json(['user' => $user]);
+        return redirect('/links');
+    }
+    public function TwitterCallback()
+    {
+        $twitter =   Socialite::driver('twitter')->user();
+        //dd($twitter);
+
+
+        $links = DB::table('card_details')->where('user_id',auth()->user()->user_id)->select('social_media')->first();
+
+        $link = $links->social_media;
+        $link_list = array();
+
+        if(!empty($link)){
+            $str_arr = explode (",", $link);
+            for ($i=0; $i < count($str_arr) ; $i++) {
+                $arr = explode ("->", $str_arr[$i]);
+                for ($k=0; $k < count($arr); $k++) {
+                    $link_list[$arr[0]] = $arr[1];
+                }
+            }
+        }
+
+        $link_list['twitter']  = 'https://twitter.com/'.$twitter->nickname;
+
+
+        $link_final = null;
+        if(!empty($link)){
+            foreach ($link_list as $key => $value) {
+                $link_final .= ','.$key.'->'.$value;
+            }
+        }else{
+            foreach ($link_list as $key => $value) {
+                $link_final .= $key.'->'.$value;
+            }
+        }
+
+        DB::table('card_details')->where('user_id',auth()->user()->user_id)->update([
+            'social_media' => $link_final,'updated_at' => \Carbon\Carbon::now()]);
+        //return response()->json(['user' => $user]);
+        return redirect('/links');
+
     }
 }
