@@ -15,7 +15,7 @@
                                         <span class="input-group-text icon-facebook"></span>
                                     </div>
                                     <input type="text" class="form-control" id="facebook"  placeholder="https://web.facebook.com/yourprofile">
-                                    <a href="/auth/facebook" class="btn btn-outline-primary col-2" ><span class=" icon-facebook"></span></a>
+                                    <a href="/auth/facebook" data-toggle="tooltip" data-placement="top" title="get your facebook profile link" class="btn btn-outline-primary col-2" ><span class=" icon-facebook"></span></a>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input-lg" type="checkbox" id="facebook" name="facebook" checked>
@@ -25,12 +25,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-5">
+                                <div class="input-group input-group mb-3 col-8">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-twitter"></span>
                                     </div>
                                     <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/kelvin_njue">
-                                    <a href="/auth/twitter" class="btn btn-outline-primary col-2" ><span class=" icon-twitter"></span></a>
+                                    <a href="/auth/twitter" data-toggle="tooltip" data-placement="top" title="get your facebook handle link" class="btn btn-outline-primary col-2" ><span class=" icon-twitter"></span></a>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input-lg" type="checkbox" id="twitter" name="twitter" checked>
@@ -40,12 +40,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-5">
+                                <div class="input-group input-group mb-3 col-8">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-instagram"></span>
                                     </div>
                                     <input type="text" class="form-control" placeholder="instagram">
-                                    <a href="#" class="btn btn-outline-primary col-2" ><span class=" icon-instagram"></span></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="get your instagram profile link" class="btn btn-outline-primary col-2" ><span class=" icon-instagram"></span></a>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input-lg" type="checkbox" id="instagram" name="instagram" checked>
@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-5">
+                                <div class="input-group input-group mb-3 col-8">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-linkedin"></span>
                                     </div>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-5">
+                                <div class="input-group input-group mb-3 col-8">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-youtube"></span>
                                     </div>
@@ -85,7 +85,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-5">
+                                <div class="input-group input-group mb-3 col-8">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-skype"></span>
                                     </div>
@@ -100,12 +100,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-5">
+                                <div class="input-group input-group mb-3 col-8">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-github"></span>
                                     </div>
                                     <input type="text" class="form-control" id="github" placeholder="https://github.com/github-username">
-                                    <a href="/auth/github" class="btn btn-outline-primary col-2" ><span class="icon-github"></span></a>
+                                    <a href="/auth/github" id="btn-github" class="btn btn-outline-primary col-2" ><span class="icon-github"></span></a>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input-lg" type="checkbox" id="github" name="github" checked>
@@ -131,31 +131,10 @@
         </div>
     </div>
 <script type="text/javascript" language="javascript">
+    let links
     $(document).on('submit', '#social_form', function(event){
             event.preventDefault();
-            formData = new FormData(this);
-            if(file != null){
-                formData.append('card_photo', file, 'avatar.jpg');
-            }
-            $.ajax({
-                url:"{{route('card.update',Auth::user()->user_id)}}",
-                method:'POST',
-                async: false,
-                data:formData,
-                contentType:false,
-                processData:false,
-                success:function(data)
-                {
-                    var obj = data.errors;
-                    $('.photo').html('');
-                    if(obj != null){
-
-                    }else{
-                        alert ("successfully editted");
-                        window.location.href = "/card?id={{auth()->user()->user_id}}";
-                    }
-                }
-            });
+            window.location.href = "/design";
     });
 
     $(document).ready(function(){
@@ -170,23 +149,30 @@
                 let obj = data.card;
 
                 if(obj != null){
-                    var links = obj['social_media'].split(",");
+                    let links = obj['social_media'].split(",");
                     for (let index = 0; index < links.length; index++) {
                         let link = links[index].split('->');
                         if(link[0] === 'github'){
                             $('#github').attr('value',link[1]);
+                            $('#github').attr('class',"form-control bg-success");
                         }else if(link[0] === 'facebook'){
                             $('#facebook').attr('value',link[1]);
+                            $('#facebook').attr('class',"form-control bg-success");
                         }else if(link[0] === 'twitter'){
                             $('#twitter').attr('value',link[1]);
+                            $('#twitter').attr('class',"form-control bg-success");
                         }else if(link[0] === 'youtube'){
                             $('#youtube').attr('value',link[1]);
+                            $('#youtube').attr('class',"form-control bg-success");
                         }else if(link[0] === 'linkedin'){
                             $('#linkedin').attr('value',link[1]);
+                            $('#linkedin').attr('class',"form-control bg-success");
                         }else if(link[0] === 'instagram'){
                             $('#instagram').attr('value',link[1]);
+                            $('#instagram').attr('class',"form-control bg-success");
                         }else if(link[0] === 'skype'){
                             $('#skype').attr('value',link[1]);
+                            $('#skype').attr('class',"form-control bg-success");
                         }
                     }
                 }

@@ -253,7 +253,7 @@
                 }else{
                     var lastid = data.lastid;
                     alert('success');
-                    window.location.href = "/design";
+                    window.location.href = "/links";
                 }
             }
         });

@@ -4,7 +4,7 @@
         '<h6 class="card-subtitle colour_2">slogan</h6>'+
     '</div>'+
     '<div class="col-md-6 text-right">'+
-        '<img class="img-fluid  ml-auto d-block img-thumbnail"  width="70vh"  src="/images/person_2.jpg" alt="photo"/>'+
+        '<img class="img-fluid  ml-auto d-block img-thumbnail"  width="70vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo"/>'+
         '<h5 class="card-title">Full name</h5>'+
         '<h6 class="card-subtitle Colour_2">title</h6>'+
     '</div>'+

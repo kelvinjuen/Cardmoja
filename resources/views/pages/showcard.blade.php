@@ -175,8 +175,7 @@
                     }
 
                     if( {{auth()->user()->user_id}} == obj.user_id ){
-                        $('.extra').html('<div class="col-6 col-sm-6 col-md-6"><a href="/card/{{auth()->user()->user_id}}/edit" class="btn btn-success w-100 ">Edit details</a></div>'+
-                        '<div class="col-6 col-sm-6 col-md-6"><a href="/design" class="btn btn-success w-100">Edit Design</a></div>');
+                        $('.extra').html('<div class="col-6 col-sm-6 col-md-6"><a href="/card/{{auth()->user()->user_id}}/edit" class="btn btn-primary w-100 ">Edit Card</a></div>'+
                     }else{
                         $('.extra').html('');
                     }

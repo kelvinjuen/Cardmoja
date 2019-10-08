@@ -214,7 +214,7 @@
 
                     }else{
                         alert ("successfully editted");
-                        window.location.href = "/card?id={{auth()->user()->user_id}}";
+                        window.location.href = "/links";
                     }
                 }
             });

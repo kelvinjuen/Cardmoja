@@ -62,7 +62,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-4 offset-md-4 text-center">
-                            <label class="label btn btn-success" data-toggle="tooltip" title="Choose your profile photo">
+                            <label class="label btn btn-primary" data-toggle="tooltip" title="Choose your profile photo">
                                     <h6>Upload Custom BackGround</h6>
                                     <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
                             </label>
@@ -84,7 +84,7 @@
 
                         <div class="col-sm-10">
                             <input type="hidden" name="imagetodelete" id="imagetodelete" value=""/>
-                            <button type="submit"  class="btn btn-success col-12">Update</button>
+                            <button type="submit"  class="btn btn-primary col-12">Save Card</button>
                         </div>
                         {{csrf_field()}}
                     </div>
@@ -98,7 +98,7 @@
                     <div class="card-img-overlay" id="cardwrapper">
                         <div class="row">
                             <div class="col-md-4">
-                                <img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/person_2.jpg" alt="photo">
+                                <img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">
                             </div>
                             <div class="col-md-8 pl-auto">
                                 <ul class="list-unstyled float-right">

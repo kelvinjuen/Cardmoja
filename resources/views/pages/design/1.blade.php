@@ -1,6 +1,6 @@
 <div class="row">'+
     '<div class="col-md-4">'+
-        '<img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/person_2.jpg" alt="photo">'+
+        '<img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">'+
     '</div>'+
     '<div class="col-md-8 pl-auto">'+
         '<ul class="list-unstyled float-right">'+

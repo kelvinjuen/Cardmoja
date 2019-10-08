@@ -22,7 +22,6 @@ Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
 
 Route::get('/links','CardController@socialMedia');
-
 Route::get('/design','CardController@design');
 Route::post('savedesign','CardController@saveDesign');
 

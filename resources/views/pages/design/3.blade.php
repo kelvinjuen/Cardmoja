@@ -28,6 +28,6 @@
         '</div>'+
     '</div>'+
     '<div class="col-md-3 py-4">'+
-        '<img class="img-fluid  ml-auto   d-block img-thumbnail"  width="120vh"  src="/images/person_2.jpg" alt="photo"/>'+
+        '<img class="img-fluid  ml-auto   d-block img-thumbnail"  width="120vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo"/>'+
     '</div>'+
 '</div>'
