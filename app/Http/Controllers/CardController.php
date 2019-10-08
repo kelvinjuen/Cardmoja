@@ -126,7 +126,7 @@ class CardController extends Controller
 
             $lastid = DB::table('card_details')->insertGetId([
                 'phone_no' => $contacts,'email' => $emails,'company' => request()->get('company'),'physical_address' => request()->get('physical_address'),
-                'post_address' => $post_address,'social_media' => request()->get('facebook_link'),'website' => request()->get('website'),'user_id'=>auth()->user()->user_id,
+                'post_address' => $post_address,'website' => request()->get('website'),'user_id'=>auth()->user()->user_id,
                 'nature' => request()->get('biz_type'),'services' => $services,'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now(),
              ]);
 
@@ -244,7 +244,7 @@ class CardController extends Controller
 
             DB::table('card_details')->where('user_id',$id)->update([
                 'phone_no' => $contacts,'email' => $emails,'company' => request()->get('company'),'physical_address' => request()->get('physical_address'),
-                'post_address' => $post_address,'social_media' => request()->get('facebook_link'),'website' => request()->get('website'),
+                'post_address' => $post_address,'website' => request()->get('website'),
                 'nature' => request()->get('biz_type'),'services' => $services,'updated_at' => \Carbon\Carbon::now()]);
 
 
