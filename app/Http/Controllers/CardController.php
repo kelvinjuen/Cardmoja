@@ -361,9 +361,9 @@ class CardController extends Controller
         foreach ($link_list as $key => $value) {
             if($count == 0){
                 $link_final .= $key.'->'.$value;
-            }else{
-                $link_final .= ','.$key.'->'.$value;
             }
+            $link_final .= ','.$key.'->'.$value;
+            $count++;
         }
 
         DB::table('card_details')->where('user_id',auth()->user()->user_id)->update([
@@ -382,11 +382,9 @@ class CardController extends Controller
 
         $link = $links->social_media;
         $link_list = array();
-        $count = 0;
 
         if(!empty($link)){
             $str_arr = explode (",", $link);
-            $count = count($str_arr);
             for ($i=0; $i < count($str_arr) ; $i++) {
                 $arr = explode ("->", $str_arr[$i]);
                 for ($k=0; $k < count($arr); $k++) {
@@ -401,12 +399,13 @@ class CardController extends Controller
         $link_final = null;
 
 
+        $count = 0;
         foreach ($link_list as $key => $value) {
             if($count == 0){
                 $link_final .= $key.'->'.$value;
-            }else{
-                $link_final .= ','.$key.'->'.$value;
             }
+            $link_final .= ','.$key.'->'.$value;
+            $count++;
         }
 
         DB::table('card_details')->where('user_id',auth()->user()->user_id)->update([
