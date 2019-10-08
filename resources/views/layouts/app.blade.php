@@ -46,10 +46,6 @@
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}"></script>
     <script src="{{ asset('js/rangeslider.min.js') }}"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"><</script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places"><</script>
-    <script src="{{ asset('js/map.js') }}"><</script>
-
 </head>
 <body>
     <script>
