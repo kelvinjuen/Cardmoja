@@ -98,7 +98,7 @@
                 <div class="card-img-overlay" id="cardwrapper">
                 </div>
             </div>
-            <div class="row col-10  mx-auto   extra"></div>
+            <div class="row col-9  mx-auto   extra"></div>
         </div>
     </div>
 </div>
@@ -175,7 +175,7 @@
                     }
 
                     if( {{auth()->user()->user_id}} == obj.user_id ){
-                        $('.extra').html('<div class="col-6 col-sm-6 col-md-6"><a href="/card/{{auth()->user()->user_id}}/edit" class="btn btn-primary w-100 ">Edit Card</a></div>');
+                        $('.extra').html('<div class="col-12 col-sm-12 col-md-12"><a href="/card/{{auth()->user()->user_id}}/edit" class="btn btn-primary w-100 ">Edit Card</a></div>');
                     }else{
                         $('.extra').html('');
                     }

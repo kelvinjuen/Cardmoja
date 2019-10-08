@@ -213,7 +213,6 @@
                     if(obj != null){
 
                     }else{
-                        alert ("successfully editted");
                         window.location.href = "/links";
                     }
                 }

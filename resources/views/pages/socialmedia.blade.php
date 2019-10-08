@@ -116,12 +116,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div id="map" class="">
-                                <input id="pac-input" class="form-control controls" placeholder="insert the location" ame="location" type="text">
-                                <div id="map-canvas"> </div>
-                                <input name="lat" class="lat" type="hidden">
-                                <input name="lon" class="lon" type="hidden">
-                           </div>
+
                         </div>
                     </div>
                     <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
