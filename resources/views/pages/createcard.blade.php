@@ -190,7 +190,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Create Card</button>
+                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
                     {{csrf_field() }}
                 </form>
             </div>

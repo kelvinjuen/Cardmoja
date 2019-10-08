@@ -162,7 +162,7 @@
 
                     <input type="hidden" name="imagetodelete" id="imagetodelete">
                     <input type="hidden" name="_method" id="_method" value="PUT">
-                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Save Changes</button>
+                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
                     {{csrf_field() }}
                 </form>
             </div>
