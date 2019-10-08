@@ -361,8 +361,10 @@ class CardController extends Controller
         foreach ($link_list as $key => $value) {
             if($count == 0){
                 $link_final .= $key.'->'.$value;
+            }else{
+                $link_final .= ','.$key.'->'.$value;
             }
-            $link_final .= ','.$key.'->'.$value;
+
             $count++;
         }
 
@@ -403,8 +405,9 @@ class CardController extends Controller
         foreach ($link_list as $key => $value) {
             if($count == 0){
                 $link_final .= $key.'->'.$value;
+            }else{
+                $link_final .= ','.$key.'->'.$value;
             }
-            $link_final .= ','.$key.'->'.$value;
             $count++;
         }
 
