@@ -114,7 +114,6 @@
         $.ajax({
             url:"{{route('card.show',$_GET['id'])}}",
             method:'GET',
-            async: false,
             contentType:false,
             processData:false,
             success:function(data)
@@ -192,7 +191,6 @@
             $.ajax({
                 url:"",
                 method:'POST',
-                async: false,
                 data:new FormData(this),
                 contentType:false,
                 processData:false,

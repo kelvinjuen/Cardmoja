@@ -10,7 +10,7 @@
           <nav class="site-navigation position-relative text-right" role="navigation">
 
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="/home"><i class="flaticon-main"></i><span>HOME</span></a></li>
+                <li class="active"><a href="/home"><i class="icon-home"></i><span>HOME</span></a></li>
                 <li><a href="#"><span>FEATURES</span></a></li>
                 <li><a href="#"><span>PRICING</span></a></li>
 

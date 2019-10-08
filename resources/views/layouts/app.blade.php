@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rangeslider.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link href="{{ asset('css/map.css') }}" rel="stylesheet">
 
 
     <!-- Scripts -->
