@@ -214,6 +214,7 @@
 
                     }else{
                         window.location.href = "/links";
+
                     }
                 }
             });
