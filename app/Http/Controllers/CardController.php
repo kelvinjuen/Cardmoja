@@ -355,13 +355,13 @@ class CardController extends Controller
 
 
         $link_final = null;
-        if(!empty($link)){
-            foreach ($link_list as $key => $value) {
-                $link_final .= ','.$key.'->'.$value;
-            }
-        }else{
-            foreach ($link_list as $key => $value) {
+        $count = 0;
+
+        foreach ($link_list as $key => $value) {
+            if($count == 0){
                 $link_final .= $key.'->'.$value;
+            }else{
+                $link_final .= ','.$key.'->'.$value;
             }
         }
 
@@ -396,13 +396,13 @@ class CardController extends Controller
 
 
         $link_final = null;
-        if(!empty($link)){
-            foreach ($link_list as $key => $value) {
-                $link_final .= ','.$key.'->'.$value;
-            }
-        }else{
-            foreach ($link_list as $key => $value) {
+        $count = 0;
+
+        foreach ($link_list as $key => $value) {
+            if($count == 0){
                 $link_final .= $key.'->'.$value;
+            }else{
+                $link_final .= ','.$key.'->'.$value;
             }
         }
 
