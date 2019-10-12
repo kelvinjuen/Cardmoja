@@ -53,7 +53,7 @@
 
                         <div class="col-md-4 text-center">
                             <label class="label" data-toggle="tooltip" title="Choose your profile photo">
-                                    <img class="rounded"  src="/storage/card_images/male-avator.png" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
+                                    <img class="rounded"  src="/images/uploads/stock_people_big-128x128.png" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
                                     <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
                             </label>
                         </div>
@@ -135,35 +135,6 @@
                                 <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="postal code">
                                 <input type="text"  class="form-control" id="postal_address" name="postal_address" placeholder="postal address">
                                 <input type="text"  class="form-control" id="city" name="city" placeholder="City/Town">
-                            </div>
-                        </div>
-                    </div>
-
-                    <h6 class="text-secondary mb-4 border-bottom my-4">Social Media Links</h6>
-
-                    <div class="form-group row">
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Facebook</span>
-                                </div>
-                                <input type="text" class="form-control" id="facebook_link" name="facebook_link" placeholder="Facebook">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Twitter</span>
-                                </div>
-                                <input type="text" class="form-control" id="twitter_link" name="twitter_link" placeholder="Twitter">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Linkedin</span>
-                                </div>
-                                <input type="text" class="form-control" id="linkedin_link" name="linkedin_link" placeholder="Linkedin">
                             </div>
                         </div>
                     </div>

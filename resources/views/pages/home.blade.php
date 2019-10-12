@@ -19,7 +19,7 @@
                     </div>
                     <div class=" pt-2 mt-5 suggestion-wrap mb-4">
                         <h5 class="muted">connection you may know</h5>
-                        <div class="mt-1 suggestion"></div>
+                        <div class="mt-1 suggestion p-3"></div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6 text-center">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="col-xl-3  d-none d-xl-block text-center pt-2">
-                    <h5 class="muted">Messages</h5>
+                    <h5 class="muted">My Reviews</h5>
                     <hr>
                 </div>
         </div>
@@ -53,7 +53,7 @@
         $.ajax({
             url:"{{route('card.show',Auth::user()->user_id)}}",
             method:'GET',
-            async: false,
+            async: true,
             contentType:false,
             processData:false,
             success:function(data)
@@ -86,7 +86,6 @@
             $.ajax({
                 url:"{{route('connect.store')}}",
                 method:'POST',
-                async: false,
                 data:new FormData(this),
                 contentType:false,
                 processData:false,
@@ -107,7 +106,7 @@
             $.ajax({
                 url:"{{route('connect.update',auth()->user()->user_id)}}",
                 method:'POST',
-                async: false,
+                async: true,
                 data:new FormData(this),
                 contentType:false,
                 processData:false,
@@ -122,7 +121,6 @@
         $.ajax({
             url:"getConnectinfo",
             method:'GET',
-            async: false,
             contentType:false,
             processData:false,
             success:function(data)
@@ -133,9 +131,9 @@
 
                 if(request.length){
                     for (let index = 0; index < request.length; index++) {
-                        $('.request').append('<div class="row mt-1 border align-items-center"><div class="col-md-3"><img src="/storage/card_images/'+request[index].photo+'" width="80%" class="img-fluid rounded-circle"></div>'+
-                        '<div class="col-md-6"><h6><a href="#">'+request[index].full_name+'</a><h6><h6>'+request[index].position+'</h6>'+
-                        '</div><div class="col-md-3"><form id="accept-form"><input type="hidden" name="connect_id" value="'+request[index].connect_id+'">'+
+                        $('.request').append('<div class="row mt-1 border align-items-center bg-white"><div class="col-md-3"><img src="/storage/card_images/'+request[index].photo+'" width="80%" class="img-fluid rounded-circle"></div>'+
+                        '<div class="col-md-7"><div class="text-suggestion">'+request[index].full_name+'</div><div class="">'+request[index].position+'</div>'+
+                        '</div><div class="col-md-2"><form id="accept-form"><input type="hidden" name="connect_id" value="'+request[index].connect_id+'">'+
                         '<input type="hidden" name="_method" id="_method" value="PUT">{{csrf_field() }}<button type="submit" class="btn btn-primary btn-sm">accept</button></form></div></div>');
                     }
                 }else{
@@ -144,8 +142,8 @@
 
                 if(suggestion.length){
                     for (let index = 0; index < suggestion.length; index++) {
-                        $('.suggestion').append('<div class="row mt-1 border align-items-center"><div class="col-md-4"><img src="/storage/card_images/'+suggestion[index].photo+'" width="70%" class="img-fluid rounded-circle"></div>'+
-                        '<div class="col-md-6"><h6><a href="#">'+suggestion[index].full_name+'</a></h6><div class="">'+suggestion[index].position+'</div>'+
+                        $('.suggestion').append('<div class="row mt-1 border align-items-center bg-white contact-click" data-href="/card?id='+suggestion[index].user_id+'"><div class="col-md-3"><img src="/storage/card_images/'+suggestion[index].photo+'" width="70%" class="img-fluid rounded-circle"></div>'+
+                        '<div class="col-md-7"><div class="text-suggestion">'+suggestion[index].full_name+'</div><div class="">'+suggestion[index].position+'</div>'+
                         '</div><div class="col-md-2"><form id="add-contact"><input type="hidden" name="user_1" value="{{auth()->user()->user_id}}"> '+
                         '<input type="hidden" name="user_2" value="'+suggestion[index].user_id+'">{{csrf_field() }}<button type="submit" class="btn btn-outline-secondary btn-sm">+</button></form></div></div>');
                     }
@@ -158,8 +156,8 @@
                 if(contacts.length){
                     for (let index = 0; index < contacts.length; index++) {
                         $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="/card?id='+contacts[index].user_id+'">'+
-                        '<div class="col-3 col-md-4 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle align-self-start"></div>'+
-                        '<div class="col-9 col-md-5"><h5>'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div><div class="col-md-3">(3 Reviews) </div></div>');
+                        '<div class="col-3 col-md-3 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
+                        '<div class="col-9 col-md-4"><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div><div class="col-md-4"><span class="icon-star"></span><span class="icon-star"></span><h6 class="text-muted">average based on 5 reviews</h6></div></div>');
                     }
                 }else{
                     $('#contacts').html('<div class="row"><h4 class="col-md-12">you have no contacts at the moment</h4></div>');

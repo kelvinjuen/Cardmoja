@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Background Colour</label>
+                        <label for="inputEmail3" class="col-sm-3 col-form-label">Card Background</label>
                         <div class="col-sm-7">
                             <select class="custom-select background-select" name="background-select" id="background-select">
                                 <option value="bg_1.jpg" selected>Default</option>
@@ -33,32 +33,17 @@
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label">Primary Colour</label>
                         <div class="col-sm-7">
-                            <select class="custom-select foreground-select1" name="colour-1" id="colour-1">
-
-                                <option value="text-light" selected>White</option>
-                                <option value="text-dark">dark</option>
-                                <option value="text-success">Green</option>
-                                <option value="text-danger">red</option>
-                                <option value="text-primary">blue</option>
-                                <option value="text-warning">yellow</option>
-
-                            </select>
+                            <input type="color" name="colour_1" class="form-control" value="#ffffff"  id="colour_1"/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputEmail3" class="col-sm-3 col-form-label">Secondary Colour </label>
                         <div class="col-sm-7">
-                            <select class="custom-select foreground-select2" name="colour-2" id="colour-2">
-
-                                <option value="text-light" selected>White</option>
-                                <option value="text-dark">dark</option>
-                                <option value="text-success">Green</option>
-                                <option value="text-danger">red</option>
-                                <option value="text-primary">blue</option>
-                                <option value="text-warning">yellow</option>
-
-                            </select>
+                            <input type="color" name="colour_2" class="form-control" value="#ff0000"  id="colour_2"/>
                         </div>
+                    </div>
+                    <div class="form-group row">
+
                     </div>
                     <div class="form-group row">
                         <div class="col-md-4 offset-md-4 text-center">
@@ -93,8 +78,8 @@
             </div>
 
             <div class="col-md-5 py-3" id="card-wrapper">
-                <div class="card text-light" id="card_1" style="height: 14rem;">
-                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 14rem;" alt="Card image">
+                <div class="card" id="card_1" style="height: 14rem;">
+                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 16rem;" alt="Card image">
                     <div class="card-img-overlay" id="cardwrapper">
                         <div class="row">
                             <div class="col-md-4">
@@ -162,7 +147,6 @@
     var formData;
     let file;
     $(document).ready(function(){
-
         document.getElementById("background-select").selectedIndex = -1;
         $.ajax({
             url:"{{route('card.show',auth()->user()->user_id)}}",
@@ -189,12 +173,6 @@
                     }else{
                         $('#imagetodelete').attr("value" , obj.bg_image);
                     }
-                    $('.card').attr("class", "card "+obj.colour_1);
-                    $('#colour-1').val(obj.colour_1);
-                    $('.card-subtitle').attr("class", "card-subtitle "+obj.colour_2);
-                    $('#colour-2').val(obj.colour_2);
-
-
                 }
 
             }
@@ -253,17 +231,15 @@
         $("#upload").val('');
 
     });
-    $(document).on('change','.foreground-select1', function(){
-        var selectedfg = $(this).children("option:selected").val();
-        var presentClassName = $('.card').attr('class');
-        var classChange = "card "+selectedfg;
-        $('.card').removeClass(presentClassName).addClass(classChange);
+    $(document).on('change','#colour_1', function(){
+        document.getElementsByClassName("card")[0].style.color =$(this).val();
     });
-    $(document).on('change','.foreground-select2', function(){
-        var selectedfg = $(this).children("option:selected").val();
-        var presentClassName = $('.card-subtitle').attr('class');
-        var classChange = "card-subtitle "+selectedfg;
-        $('.card-subtitle').removeClass(presentClassName).addClass(classChange);
+    $(document).on('input','#colour_2', function(){
+        let elements = document.getElementsByClassName("card-subtitle");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.color =$(this).val();
+        }
+
     });
 
     window.addEventListener('DOMContentLoaded', function () {

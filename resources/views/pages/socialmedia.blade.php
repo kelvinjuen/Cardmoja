@@ -14,7 +14,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-facebook"></span>
                                     </div>
-                                    <input type="text" class="form-control" id="facebook"  placeholder="https://web.facebook.com/yourprofile">
+                                    <input type="text" class="form-control" id="facebook"  placeholder="https://facebook.com/yourprofile">
                                     <a href="/auth/facebook" data-toggle="tooltip" data-placement="top" title="get your facebook profile link" class="btn btn-outline-primary col-2" ><span class=" icon-facebook"></span></a>
                                 </div>
                                 <div class="form-check">
@@ -29,7 +29,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-twitter"></span>
                                     </div>
-                                    <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/kelvin_njue">
+                                    <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/handle">
                                     <a href="/auth/twitter" data-toggle="tooltip" data-placement="top" title="get your facebook handle link" class="btn btn-outline-primary col-2" ><span class=" icon-twitter"></span></a>
                                 </div>
                                 <div class="form-check">
@@ -89,7 +89,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icon-skype"></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="skype">
+                                    <input type="text" class="form-control" placeholder="skype-id">
                                     <a href="#" class="btn btn-outline-primary col-2" ><span class=" icon-skype"></span></a>
                                 </div>
                                 <div class="form-check">

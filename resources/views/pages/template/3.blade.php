@@ -1,16 +1,16 @@
 <div class="row d-md-none">'+
     '<div class="col-12 text-center">'+
-        '<h2 class="card-title"><span class="name">full_name</span></h2>'+
+        '<strong class="card-title"><span class="name">full_name</span></strong>'+
         '<h4 class="card-subtitle mt-1"><span class="position">position</span>, <span class="company">Company</span></h4>'+
     '</div>'+
 '</div>'+
 '<div class="row" id="row-25">'+
     '<div class="col-sm-6 col-md-6 col-lg-6  d-none d-md-block">'+
-        '<h2 class="card-title"><span class="name">full_name</span></h2>'+
+        '<strong class="card-title"><span class="name">full_name</span></strong>'+
         '<h4 class="card-subtitle mb-5 mt-4 "><span class="position">position</span></h4>'+
     '</div>'+
     '<div class="col-sm-6 col-md-6 col-lg-6 d-none d-md-block">'+
-        '<h2 class="card-title text-right"><span class="company">Company</span></h2>'+
+        '<strong class="card-title text-right"><span class="company">Company</span></strong>'+
     '</div>'+
 '</div>'+
 '<div class="row border-top ">'+

@@ -300,7 +300,7 @@ class CardController extends Controller
         }
 
         DB::table('card_details')->where('user_id', $id)->
-        update(['type'=> request()->get('type-select'),'colour_1'=> request()->get('colour-1'),'colour_2'=> request()->get('colour-2')
+        update(['type'=> request()->get('type-select'),'colour_1'=> request()->get('colour_1'),'colour_2'=> request()->get('colour_2')
         ,'bg_image'=> $fileNameToStore]);
 
         return response()->json(['success'=>'success']);

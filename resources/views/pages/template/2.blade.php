@@ -5,7 +5,7 @@
     '</div>'+
     '<div class="col-sm-6 col-md-6 text-right">'+
         '<img class="img-fluid  rounded-circle" width="50%"  src="" alt="photo">'+
-        '<h2 class="card-title mt-1"><span class="name">full_name</span></h2>'+
+        '<strong class="card-title mt-1"><span class="name">full_name</span></strong>'+
         '<h4 class="card-subtitle  mt-1"><span class="position">position</span></h4>'+
     '</div>'+
 '</div>'+
