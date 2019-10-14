@@ -1,8 +1,8 @@
 <div class="row  h-30">'+
-    '<div class="col-12 col-sm-4 col-md-4 col-lg-4 text-center">'+
+    '<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-center">'+
         '<img class="img-fluid img-thumbnail" id="profile-photo"  src="" alt="photo">'+
     '</div>'+
-    '<div class="col-sm-8 col-md-8 col-lg-8 d-none d-sm-block pl-auto">'+
+    '<div class="col-sm-8 col-md-8 col-lg-8 col-xl-9 d-none d-sm-block pl-auto">'+
         '<div class="d-none d-lg-block">'+
             '<h2 class="card-title text-right "><span class="company">Company</span></h2>'+
         '</div>'+
