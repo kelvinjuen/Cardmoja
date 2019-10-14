@@ -23,10 +23,10 @@
                         <label for="inputEmail3" class="col-sm-3 col-form-label">Card Background</label>
                         <div class="col-sm-7">
                             <select class="custom-select background-select" name="background-select" id="background-select">
-                                <option value="bg_1.jpg" selected>Default</option>
-                                <option value="bg_2.jpg">sleek</option>
-                                <option value="bg_3.jpg">normal</option>
-                                <option value="bg_4.jpg">blue</option>
+                                <option value="blue.jpg" selected>Blue</option>
+                                <option value="red.jpg">Red</option>
+                                <option value="green.jpg">Green</option>
+                                <option value="purple.jpg">Purple</option>
                             </select>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
             </div>
 
             <div class="col-md-5 py-3" id="card-wrapper">
-                <div class="card" id="card_1" style="height: 14rem;">
+                <div class="card" id="card" style="height: 14rem;">
                     <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 16rem;" alt="Card image">
                     <div class="card-img-overlay" id="cardwrapper">
                         <div class="row">
@@ -159,6 +159,7 @@
                 var obj = data.card;
                 if(obj.bg_image !== null){
                     var bg = obj['bg_image'].split("_");
+
                     if(obj.type  == 1){
                         $('#cardwrapper').html('@include("pages.design.1"));
                     }else if(obj.type  == 2){
@@ -167,8 +168,15 @@
                         $('#cardwrapper').html('@include("pages.design.3"));
                     }
                     $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
+                    document.getElementById("card").style.color =obj.colour_1;
+                    $('#colour_1').attr('value', obj.colour_1 );
+                    let elements = document.getElementsByClassName("card-subtitle");
+                    for (let i = 0; i < elements.length; i++) {
+                        elements[i].style.color = obj.colour_2;
+                    }
+                    $('#colour_2').attr('value', obj.colour_2 );
                     $('#type-select').val(obj.type);
-                    if(bg[0] === 'bg'){
+                    if(bg[0] != 'custom'){
                         $('#background-select').val(obj.bg_image);
                     }else{
                         $('#imagetodelete').attr("value" , obj.bg_image);

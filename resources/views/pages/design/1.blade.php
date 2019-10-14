@@ -2,6 +2,9 @@
     '<div class="col-md-4">'+
         '<img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">'+
     '</div>'+
+    '<div class="col-12">'+
+        '<img class="img-fluid  d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">'+
+    '</div>'+
     '<div class="col-md-8 pl-auto">'+
         '<div class="float-right">'+
             '<h3 class="card-title text-right"><span class="company">Company</span></h3>'+

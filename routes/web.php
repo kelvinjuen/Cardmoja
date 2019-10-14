@@ -36,6 +36,7 @@ Route::post('updatecoperateuser','CoperateController@updateCoperateUser');
 Route::resource('card','CardController');
 Route::resource('connect','ConnectController');
 Route::resource('coperate','CoperateController');
+Route::resource('review', 'ReviewController');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/user', 'GraphController@retrieveUserProfile');

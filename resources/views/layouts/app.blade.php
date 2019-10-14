@@ -39,7 +39,6 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/jQuery-3.4.1.min.js') }}"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     <script src="{{ asset('js/jquery.star-rating-svg.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
 
@@ -67,7 +66,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <script src="{{ asset('js/jquery-ui.js') }}"></script>
     <script src="{{ asset('js/cropper.js') }}"></script>
 
@@ -79,6 +78,7 @@
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}"></script>
     <script src="{{ asset('js/rangeslider.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

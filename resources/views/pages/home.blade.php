@@ -10,7 +10,7 @@
                         <a href="/card?id={{auth()->user()->user_id}}">
                             <img src="" width="50%" class="img-fluid rounded-circle user_photo">
                         </a>
-                        <h4><span class="user_name"></span></h4>
+                        <h4><span class="user_name text-blue mt-2"></span></h4>
                         <h5><span class="user_position"></span>,<span class="user_company"></span></h5>
                     </div>
                     <div class=" pt-1 request-wrap">
@@ -40,8 +40,11 @@
                     </div>
                 </div>
                 <div class="col-xl-3  d-none d-xl-block text-center pt-2">
-                    <h5 class="muted">My Reviews</h5>
-                    <hr>
+                    <h5 class="muted">Reviews</h5>
+                    <hr >
+                    <div class="mt-2 bg-white px-1" id="reviews">
+
+                    </div>
                 </div>
         </div>
     </div>
@@ -59,6 +62,7 @@
             success:function(data)
             {
                 let obj = data.card;
+                let objReview = data.review;
 
                 if(obj != null){
                     $('.user_photo').attr('src','/storage/card_images/'+obj.photo);
@@ -66,6 +70,18 @@
                     $('.user_position').html(obj.position);
                     $('.user_company').html(obj.company);
                 }
+
+                if(objReview != null){
+                    for (let i = 0; i < objReview.length; i++) {
+                        let name = 'anonymous';
+                        if(objReview[i].anonymous == 0){
+                            name = objReview[i].full_name;
+                        }
+                        $('#reviews').append('<span class="text-blue float-left">'+name+'</span><span class="my-rating float-right" data-rating="'+objReview[i].rating+'"></span><br/><small>'+objReview[i].comment+'</small><hr class="m-1">')
+                    }
+
+                }
+
             }
         });
 
@@ -132,8 +148,8 @@
                 if(request.length){
                     for (let index = 0; index < request.length; index++) {
                         $('.request').append('<div class="row mt-1 border align-items-center bg-white"><div class="col-md-3"><img src="/storage/card_images/'+request[index].photo+'" width="80%" class="img-fluid rounded-circle"></div>'+
-                        '<div class="col-md-7"><div class="text-suggestion">'+request[index].full_name+'</div><div class="">'+request[index].position+'</div>'+
-                        '</div><div class="col-md-2"><form id="accept-form"><input type="hidden" name="connect_id" value="'+request[index].connect_id+'">'+
+                        '<div class="col-md-6"><div class="text-suggestion">'+request[index].full_name+'</div><div class="">'+request[index].position+'</div>'+
+                        '</div><div class="col-md-3"><form id="accept-form"><input type="hidden" name="connect_id" value="'+request[index].connect_id+'">'+
                         '<input type="hidden" name="_method" id="_method" value="PUT">{{csrf_field() }}<button type="submit" class="btn btn-primary btn-sm">accept</button></form></div></div>');
                     }
                 }else{
@@ -151,17 +167,23 @@
                     $('.suggestion-wrap').empty();
                 }
 
-
-
                 if(contacts.length){
                     for (let index = 0; index < contacts.length; index++) {
                         $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="/card?id='+contacts[index].user_id+'">'+
-                        '<div class="col-3 col-md-3 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
-                        '<div class="col-9 col-md-4"><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div><div class="col-md-4"><span class="icon-star"></span><span class="icon-star"></span><h6 class="text-muted">average based on 5 reviews</h6></div></div>');
+                        '<div class="col-3 col-sm-3 col-md-3 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
+                        '<div class="col-9 col-sm-5 col-md-5"><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div><div class="col-sm-4 col-md-4"><span class="my-rating" data-rating="'+contacts[index].rating+'"></span><h6 class="text-muted">based on '+contacts[index].total+' reviews</h6></div></div>');
                     }
                 }else{
                     $('#contacts').html('<div class="row"><h4 class="col-md-12">you have no contacts at the moment</h4></div>');
                 }
+                $(".my-rating").starRating({
+                        strokeColor: '#894A00',
+                        strokeWidth: 10,
+                        starSize: 15,
+                        readOnly: true
+                    });
+
+
             }
         });
     }

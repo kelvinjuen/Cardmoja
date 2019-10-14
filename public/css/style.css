@@ -41,9 +41,17 @@ h1, h2, h3, h4, h5,
 .icon-star{
     color: orange;
 }
-.icon-facebook{
+.icon-facebook-square{
     color: blue;
-    font-size: 25px;
+    font-size: 20px;
+}
+.icon-twitter-square{
+    color: lightblue;
+    font-size: 20px;
+}
+.icon-github-square{
+    color: grey;
+    font-size: 20px;
 }
 
 .animated {
@@ -460,7 +468,8 @@ h1, h2, h3, h4, h5,
     bottom: -250px;
     width: 100%; }
   .site-blocks-cover, .site-blocks-cover > .container > .row {
-    min-height: calc(70vh); }
+    min-height: calc(75vh); }
+
   .site-blocks-cover h1 {
     font-size: 3rem;
     font-weight: 400;
@@ -546,50 +555,163 @@ h1, h2, h3, h4, h5,
 	z-index: 9999;
 	background: url("/images/preloader/spinner.gif") center no-repeat #fff;
 }
-
-@media (max-width: 576px) {
+@media (max-width: 360px) {
     h1, h2, h3, h4, h5,
     .h1, .h2, .h3, .h4, .h5 {
-        font-size: 2.5vh;
+        font-size: 1rem;
     }
     .card{
         height: 80vh;
+        font-size:1rem;
     }
     .card-img{
         height: 80vh;
+        object-fit: cover;
+    }
+    #profile-photo{
+        width: 20vh;
+    }
+}
+@media (min-width: 360px) {
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 1.4rem;
+    }
+    .card{
+        height: 80vh;
+        font-size: 1.2rem;
+    }
+    .card-img{
+        height: 80vh;
+        object-fit: cover;
+    }
+    #profile-photo{
+        width: 25vh;
     }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 1.4rem;
+    }
+    .card{
+        height: 75vh;
+        font-size: 1rem;
+    }
+    .card-img{
+        height: 75vh;
+        object-fit: cover;
+    }
+    #profile-photo{
+        width: 50vh;
+        float: left;
+    }
+    .services-sm{
+        text-align: center;
+    }
 
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
+  h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 1.4rem;
+    }
+    .card{
+        font-size: 1.rem;
+    }
 
+    #profile-photo{
+        width: 35vh;
+        float: left;
+    }
 }
 
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
-
-    #row-25{
-        height: 10vh;
-    }
-    #row-40{
-        height: 20vh;
-    }
-
-
+        .card{
+            max-height: 65vh;
+            font-size: 1.5rem;
+        }
+        .card h1,h2{
+            font-size: 2.8rem;
+        }
+        .card-img{
+            max-height: 65vh;
+        }
+        #profile-photo{
+            width: 30vh;
+            float: left;
+        }
     }
 
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-    #row-25{
-        height: 20vh;
+
+    .card{
+        max-height: 65vh;
+        font-size: 1.3rem;
     }
-    #row-40{
-        height: 30vh;
+    .card h1,h2{
+        font-size: 2.5rem;
     }
+    .card-img{
+        max-height: 65vh;
+        object-fit: fill;
     }
+    #profile-photo{
+        width: 30vh;
+        float: left;
+    }
+}
+
+
+
+@media(height: 600px){
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 2.5rem;
+    }
+    .card{
+        max-height: 70vh;
+        font-size: 1.2rem;
+    }
+    .card-img{
+        max-height: 70vh;
+    }
+
+}
+@media(height: 1366px){
+    .card{
+        max-height: 35vh;
+    }
+    .card-img{
+        max-height: 35vh;
+    }
+
+}
+@media( height: 1024px){
+    .card{
+        max-height: 45vh;
+    }
+    .card-img{
+        max-height: 45vh;
+    }
+
+}
+@media(width: 768px){
+    .card{
+        max-height: 30vh;
+    }
+    .card-img{
+        max-height: 30vh;
+    }
+    #profile-photo{
+        width: 15vh;
+        float: left;
+    }
+}

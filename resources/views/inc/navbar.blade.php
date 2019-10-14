@@ -12,7 +12,7 @@
       <div class="row align-items-center">
 
         <div class="col-11 col-xl-2">
-            <h2 class="mb-0 site-logo"><a class="text-blue" href="/home">Card<span class="text-purple">moja</span></a></h2>
+            <h2 class="mb-0 site-logo"><a class="text-blue" href="/home">Card<span class="text-purple">Moja</span></a></h2>
         </div>
         <div class="col-12 col-md-10 d-none d-xl-block">
           <nav class="site-navigation position-relative text-right" role="navigation">
