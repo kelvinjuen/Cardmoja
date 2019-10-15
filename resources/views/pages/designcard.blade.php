@@ -78,7 +78,7 @@
             </div>
 
             <div class="col-md-5 py-3" id="card-wrapper">
-                <div class="card" id="card" style="height: 14rem;">
+                <div class="card" id="card-design" style="height: 14rem;">
                     <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 16rem;" alt="Card image">
                     <div class="card-img-overlay" id="cardwrapper">
                         <div class="row">
@@ -87,9 +87,9 @@
                             </div>
                             <div class="col-md-8 pl-auto">
                                 <ul class="list-unstyled float-right">
-                                    <li ><small>&#9742; 071234322</small></li>
-                                    <li ><small>test@gmail.com</small></li>
-                                    <li ><small>physical location</small></li>
+                                    <li ><small><span class ="icon-phone"> </span> 071234322</small></li>
+                                    <li ><small><span class ="icon-mail_outline"> </span>test@gmail.com</small></li>
+                                    <li ><small><span class ="icon-location_city"> </span>physical location</small></li>
                                 </ul>
                             </div>
                         </div>
@@ -168,9 +168,9 @@
                         $('#cardwrapper').html('@include("pages.design.3"));
                     }
                     $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
-                    document.getElementById("card").style.color =obj.colour_1;
+                    document.getElementById("card-design").style.color =obj.colour_1;
                     $('#colour_1').attr('value', obj.colour_1 );
-                    let elements = document.getElementsByClassName("card-subtitle");
+                    let elements = document.getElementsByClassName("colour_2");
                     for (let i = 0; i < elements.length; i++) {
                         elements[i].style.color = obj.colour_2;
                     }
@@ -230,6 +230,14 @@
         }else{
             $('#cardwrapper').html('@include("pages.design.3"));
         }
+
+        document.getElementById("card-design").style.color = $('#colour_1').val();
+        let elements = document.getElementsByClassName("colour_2");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.color = $('#colour_2').val();
+        }
+
+
 
     });
 
@@ -327,5 +335,9 @@
             }
         });
     });
+
+    function changecolour(){
+
+    }
 </script>
 @endsection

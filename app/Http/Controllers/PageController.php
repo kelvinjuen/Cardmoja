@@ -14,4 +14,8 @@ class PageController extends Controller
         return view('pages.coperateactivate');
     }
 
+    public function contacts(){
+        return view ('pages.contacts');
+    }
+
 }

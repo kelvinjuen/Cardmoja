@@ -192,7 +192,8 @@ h1, h2, h3, h4, h5,
   .site-navbar .site-navigation.border-bottom {
     border-bottom: 1px solid #f3f3f4 !important; }
 .site-navbar .site-navigation .site-menu {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    color: #514ADF; }
     .site-navbar .site-navigation .site-menu .active > a {
         color: #8818B6;
         border-radius: 20px;
@@ -203,15 +204,15 @@ h1, h2, h3, h4, h5,
         padding: 10px 15px; }
     .site-navbar .site-navigation .site-menu a {
         text-decoration: none !important;
-        display: inline-block; }
+        display: inline-block;}
     .site-navbar .site-navigation .site-menu > li {
-        display: inline-block; }
+        display: inline-block;}
         .site-navbar .site-navigation .site-menu > li > a {
-        color: #000;
+        color: #514ADF;
         text-decoration: none !important;
         padding: 10px 5px;
         display: inline-block;
-        font-size: 17px; }
+        font-size: 15px; }
         .site-navbar .site-navigation .site-menu > li > a:hover {
             color: #8818B6;
             border-radius: 30px;
@@ -556,52 +557,76 @@ h1, h2, h3, h4, h5,
 	background: url("/images/preloader/spinner.gif") center no-repeat #fff;
 }
 @media (max-width: 360px) {
-    h1, h2, h3, h4, h5,
-    .h1, .h2, .h3, .h4, .h5 {
-        font-size: 1rem;
-    }
-    .card{
+    #card{
         height: 80vh;
         font-size:1rem;
     }
-    .card-img{
+    #card h2,h3{
+        font-size: 1.2rem;
+    }
+
+    #card-img{
         height: 80vh;
         object-fit: cover;
     }
     #profile-photo{
         width: 20vh;
     }
+    #profile-photo-round{
+        width: 22vh;
+    }
+
+    #company-2{
+        text-align: center;
+    }
+    #row-25{
+        min-height: 12vh;
+    }
 }
 @media (min-width: 360px) {
-    h1, h2, h3, h4, h5,
-    .h1, .h2, .h3, .h4, .h5 {
-        font-size: 1.4rem;
-    }
-    .card{
+    #card{
         height: 80vh;
         font-size: 1.2rem;
     }
-    .card-img{
+    #card h2,h3{
+        font-size: 1.4rem;
+    }
+
+    #card-img{
         height: 80vh;
         object-fit: cover;
     }
     #profile-photo{
-        width: 25vh;
+        width: 22vh;
     }
+    #profile-photo-round{
+        width: 22vh;
+    }
+
+    #company-2{
+        text-align: center;
+    }
+    #row-25{
+        min-height: 12vh;
+    }
+
+
+
+
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
-    h1, h2, h3, h4, h5,
-    .h1, .h2, .h3, .h4, .h5 {
-        font-size: 1.4rem;
+    #card{
+        height: 76vh;
+        font-size: 0.9rem;
     }
-    .card{
-        height: 75vh;
-        font-size: 1rem;
+    #card h2,h3{
+        font-size: 1.3rem;
     }
-    .card-img{
-        height: 75vh;
+
+    #card-img{
+        height: 76vh;
         object-fit: cover;
     }
     #profile-photo{
@@ -611,18 +636,28 @@ h1, h2, h3, h4, h5,
     .services-sm{
         text-align: center;
     }
+    #company-2{
+        text-align: left;;
+    }
+    #name-2{
+        text-align: right;;
+    }
 
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  h1, h2, h3, h4, h5,
-    .h1, .h2, .h3, .h4, .h5 {
-        font-size: 1.4rem;
+
+    #card{
+        font-size: 1 rem;
     }
-    .card{
-        font-size: 1.rem;
+    #card h2{
+        font-size: 1.5rem;
     }
+    #card h3{
+        font-size: 1.2rem;
+    }
+
 
     #profile-photo{
         width: 35vh;
@@ -633,39 +668,56 @@ h1, h2, h3, h4, h5,
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
-        .card{
+        #card{
             max-height: 65vh;
             font-size: 1.5rem;
         }
-        .card h1,h2{
-            font-size: 2.8rem;
+        #card h2{
+            font-size: 2rem;
         }
-        .card-img{
+        #card h3{
+            font-size: 1.5rem;
+        }
+
+
+        #card-img{
             max-height: 65vh;
         }
         #profile-photo{
             width: 30vh;
             float: left;
         }
+        #row-30{
+            min-height: 10vh;
+        }
     }
 
 /* Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
 
-    .card{
-        max-height: 65vh;
+    #card{
+        max-height: 60vh;
         font-size: 1.3rem;
     }
-    .card h1,h2{
+    #card h1{
         font-size: 2.5rem;
     }
-    .card-img{
-        max-height: 65vh;
-        object-fit: fill;
+    #card h3{
+        font-size: 1.5rem;
+    }
+
+    #card-img{
+        object-fit:  fill;
     }
     #profile-photo{
-        width: 30vh;
+        width: 35vh;
         float: left;
+    }
+    #row-30{
+        min-height: 10vh;
+    }
+    #row-40{
+        min-height: 25vh;
     }
 }
 
@@ -676,42 +728,56 @@ h1, h2, h3, h4, h5,
     .h1, .h2, .h3, .h4, .h5 {
         font-size: 2.5rem;
     }
-    .card{
+    #card{
         max-height: 70vh;
         font-size: 1.2rem;
     }
-    .card-img{
+    #card-img{
         max-height: 70vh;
     }
 
 }
+@media(width: 600px){
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        font-size: 2rem;
+    }
+    #card{
+        max-height: 30vh;
+        font-size: 1.2rem;
+    }
+    #card-img{
+        max-height: 30vh;
+    }
+
+}
 @media(height: 1366px){
-    .card{
+    #card{
         max-height: 35vh;
     }
-    .card-img{
+    #card-img{
         max-height: 35vh;
     }
 
 }
 @media( height: 1024px){
-    .card{
+    #card{
         max-height: 45vh;
     }
-    .card-img{
+    #card-img{
         max-height: 45vh;
     }
-
 }
 @media(width: 768px){
-    .card{
+    #card{
         max-height: 30vh;
     }
-    .card-img{
+    #card-img{
         max-height: 30vh;
     }
     #profile-photo{
         width: 15vh;
         float: left;
     }
+
 }

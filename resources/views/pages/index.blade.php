@@ -9,7 +9,7 @@
                     <div class="col-md-8">
                     <h1 data-aos="fade-up" class="footer-heading mb-4"><img src="{{ asset('images/uploads/medium/cardmoja_medium-100x100.png')}}" width="50px">CardMoja</h1>
                     <p data-aos="fade-up" data-aos-delay="100">Create a Digital Business Card to present who you are and what you do in one link.</p>
-                    <a href="/login" class="btn btn-primary">Sign In <i class="flaticon-login"></i></a>
+                    <a href="/login" class="btn btn-primary">Sign In <i class="icon-sign-in"></i></a>
 
                     </div>
                 </div>

@@ -19,7 +19,8 @@
 
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="/home"><i class="icon-home"></i><span>HOME</span></a></li>
-                <li><a href="/card/{{auth()->user()->user_id}}/edit"><span>EDITCARD</span></a></li>
+                <li class="normal"><a href="/contacts"><i class="icon-list-ul"></i><span>CONTACTS</span></a></li>
+                <li><a href="/card/{{auth()->user()->user_id}}/edit"><i class="icon-edit"></i><span>EDITCARD</span></a></li>
                 <li><a href="#"><span>FEATURES</span></a></li>
                 <li><a href="#"><span>PRICING</span></a></li>
 

@@ -2,73 +2,114 @@
 
 @section('content')
 @include('inc.navbar')
-<div class="site-blocks-cover " data-aos="fade" data-stellar-background-ratio="0.5">
-    <div class="container-fluid">
-        <div class="row p-1">
-                <div class=" col-md-4 col-lg-4 col-xl-3 d-none d-md-block text-center pt-2">
-                    <div class="border p-1">
-                        <a href="/card?id={{auth()->user()->user_id}}">
-                            <img src="" width="50%" class="img-fluid rounded-circle user_photo">
-                        </a>
-                        <h4><span class="user_name text-blue mt-2"></span></h4>
-                        <h5><span class="user_position"></span>,<span class="user_company"></span></h5>
-                    </div>
-                    <div class=" pt-1 request-wrap">
-                        <h5 class="muted">connection request</h5>
-                        <div class=" request"></div>
-                    </div>
-                    <div class=" pt-2 mt-5 suggestion-wrap mb-4">
-                        <h5 class="muted">connection you may know</h5>
-                        <div class="mt-1 suggestion p-3"></div>
+<div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-start">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                <div class="card" id="card">
+                    <img class="card-img img-responsive"  id="card-img"  alt="Card image">
+                    <div class="card-img-overlay" id="cardwrapper">
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-6 text-center">
-                    <div class="row justify-content-end p-1">
-                        <div class="col-12 col-md-6">
-                            <form>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="search Contact" aria-label="search contact" aria-describedby="search">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="search">Search</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="mt-2 " id="contacts">
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-3 text-center">
+                <div id="review-div">
 
-                    </div>
                 </div>
-                <div class="col-xl-3  d-none d-xl-block text-center pt-2">
-                    <h5 class="muted">Reviews</h5>
-                    <hr >
-                    <div class="mt-2 bg-white px-1" id="reviews">
-
-                    </div>
-                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<script type="text/javascript" language="javascript">
-
+<script src="{{ asset('js/jquery.star-rating-svg.js') }}" type="text/javascript"></script>
+<script>
     $(document).ready(function(){
+        setCard();
+    });
+    function setCard(){
+        $('[data-toggle="tooltip"]').tooltip();
         $.ajax({
-            url:"{{route('card.show',Auth::user()->user_id)}}",
+            url:"{{route('card.show',auth()->user()->user_id)}}",
             method:'GET',
-            async: true,
             contentType:false,
             processData:false,
             success:function(data)
             {
                 let obj = data.card;
                 let objReview = data.review;
+                if(obj.type == 1){
+                    $('#cardwrapper').html('@include("pages.template.1"));
+                }else if(obj.type == 2){
+                    $('#cardwrapper').html('@include("pages.template.2"));
+                }else if(obj.type == 3){
+                    $('#cardwrapper').html('@include("pages.template.3"));
+                }
 
                 if(obj != null){
-                    $('.user_photo').attr('src','/storage/card_images/'+obj.photo);
-                    $('.user_name').html(obj.full_name);
-                    $('.user_position').html(obj.position);
-                    $('.user_company').html(obj.company);
+                    document.getElementById("card").style.color =obj.colour_1;
+                    let elements = document.getElementsByClassName("colour_2");
+                    for (let i = 0; i < elements.length; i++) {
+                        elements[i].style.color = obj.colour_2;
+                    }
+                    $('.card-img').attr('src','/storage/background_images/'+obj.bg_image);
+                    $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
+                    $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
+                    $('.company').html(obj.company);
+                    $('.name').html(obj.designation+' '+obj.full_name);
+                    $('.position').html(obj.position);
+
+                    if(obj.phone_no != null){
+                        $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
+                    }
+                    if(obj.email != null){
+                        $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+                    }
+                    if(obj.physical_address != null){
+                        $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
+                    }
+                    if(obj.post_address != null){
+                        $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
+                    }
+                    if(obj['social_media'] != null){
+                        let social = obj['social_media'].split(",");
+                        for (let index = 0; index < social.length; index++) {
+
+                            let social_link = social[index].split("->")
+                            if(social_link[0] === 'facebook'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                            }
+                            if(social_link[0] === 'twitter'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
+                            }
+                            if(social_link[0] === 'github'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
+                            }
+                        }
+                    }
+
+
+                    var services = obj['services'].split(",");
+
+                    for (let index = 0; index < services.length; index++) {
+                        if(index == 0){
+                            $('.services-sm').append('<small>'+services[index]+'</small>');
+                            $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
+                        }else{
+                            $('.services-sm').append(', <small>'+services[index]+'</small>');
+                            $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                        }
+
+                    }
+
+                    if( {{auth()->user()->user_id}} == obj.user_id ){
+                        $('#review-div').html('@include("pages.template.ratingdefault"));
+                        $('.rate').hide();
+                    }else{
+                        $('#review-div').html('@include("pages.template.ratingdefault"));
+                    }
                 }
 
                 if(objReview != null){
@@ -77,118 +118,25 @@
                         if(objReview[i].anonymous == 0){
                             name = objReview[i].full_name;
                         }
-                        $('#reviews').append('<span class="text-blue float-left">'+name+'</span><span class="my-rating float-right" data-rating="'+objReview[i].rating+'"></span><br/><small>'+objReview[i].comment+'</small><hr class="m-1">')
+                        $('.reviews').append('<span>'+name+'</span><span class="my-rating-1 float-right" data-rating="'+objReview[i].rating+'"></span><br/><small class="text-blue bg-white">'+objReview[i].comment+'</small><hr class="m-1">')
+
+                        if(objReview[i].reviewer == {{auth()->user()->user_id}}){
+                            $('.btn-rate').html('you have already Rated');
+                        }
+
                     }
-
-                }
-
-            }
-        });
-
-        getInfo();
-
-    });
-
-    $(document).on('click','.contact-click',function(event){
-        window.location = $(this).data("href");
-    });
-
-    $(document).on('submit', '#add-contact', function(event){
-            event.preventDefault();
-            var success = false;
-            $('.suggestion').empty();
-            $('.request').empty();
-            $('#contacts').empty();
-            $.ajax({
-                url:"{{route('connect.store')}}",
-                method:'POST',
-                data:new FormData(this),
-                contentType:false,
-                processData:false,
-                success:function(data)
-                {
-                    getInfo();
-                }
-            });
-    });
-
-    $(document).on('submit', '#accept-form', function(event){
-            event.preventDefault();
-            var success = false;
-            $('.suggestion').empty();
-            $('.request').empty();
-            $('#contacts').empty();
-
-            $.ajax({
-                url:"{{route('connect.update',auth()->user()->user_id)}}",
-                method:'POST',
-                async: true,
-                data:new FormData(this),
-                contentType:false,
-                processData:false,
-                success:function(data)
-                {
-                    getInfo();
-                }
-            });
-    });
-
-    function getInfo(){
-        $.ajax({
-            url:"getConnectinfo",
-            method:'GET',
-            contentType:false,
-            processData:false,
-            success:function(data)
-            {
-                let contacts = data.contacts;
-                let suggestion = data.suggestion;
-                let request = data.request;
-
-                if(request.length){
-                    for (let index = 0; index < request.length; index++) {
-                        $('.request').append('<div class="row mt-1 border align-items-center bg-white"><div class="col-md-3"><img src="/storage/card_images/'+request[index].photo+'" width="80%" class="img-fluid rounded-circle"></div>'+
-                        '<div class="col-md-6"><div class="text-suggestion">'+request[index].full_name+'</div><div class="">'+request[index].position+'</div>'+
-                        '</div><div class="col-md-3"><form id="accept-form"><input type="hidden" name="connect_id" value="'+request[index].connect_id+'">'+
-                        '<input type="hidden" name="_method" id="_method" value="PUT">{{csrf_field() }}<button type="submit" class="btn btn-primary btn-sm">accept</button></form></div></div>');
-                    }
-                }else{
-                    $('.request-wrap').empty();
-                }
-
-                if(suggestion.length){
-                    for (let index = 0; index < suggestion.length; index++) {
-                        $('.suggestion').append('<div class="row mt-1 border align-items-center bg-white contact-click" data-href="/card?id='+suggestion[index].user_id+'"><div class="col-md-3"><img src="/storage/card_images/'+suggestion[index].photo+'" width="70%" class="img-fluid rounded-circle"></div>'+
-                        '<div class="col-md-7"><div class="text-suggestion">'+suggestion[index].full_name+'</div><div class="">'+suggestion[index].position+'</div>'+
-                        '</div><div class="col-md-2"><form id="add-contact"><input type="hidden" name="user_1" value="{{auth()->user()->user_id}}"> '+
-                        '<input type="hidden" name="user_2" value="'+suggestion[index].user_id+'">{{csrf_field() }}<button type="submit" class="btn btn-outline-secondary btn-sm">+</button></form></div></div>');
-                    }
-                }else{
-                    $('.suggestion-wrap').empty();
-                }
-
-                if(contacts.length){
-                    for (let index = 0; index < contacts.length; index++) {
-                        $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="/card?id='+contacts[index].user_id+'">'+
-                        '<div class="col-3 col-sm-3 col-md-3 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
-                        '<div class="col-9 col-sm-5 col-md-5"><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div><div class="col-sm-4 col-md-4"><span class="my-rating" data-rating="'+contacts[index].rating+'"></span><h6 class="text-muted">based on '+contacts[index].total+' reviews</h6></div></div>');
-                    }
-                }else{
-                    $('#contacts').html('<div class="row"><h4 class="col-md-12">you have no contacts at the moment</h4></div>');
-                }
-                $(".my-rating").starRating({
+                    $(".my-rating-1").starRating({
                         strokeColor: '#894A00',
                         strokeWidth: 10,
                         starSize: 15,
                         readOnly: true
                     });
 
-
+                }
             }
         });
     }
-
-
 </script>
 
 @endsection
+

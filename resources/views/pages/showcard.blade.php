@@ -7,12 +7,12 @@
         <div class="row align-items-center justify-content-start">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
                 <div class="card" id="card">
-                    <img class="card-img img-responsive"  id="card-bg"  alt="Card image">
+                    <img class="card-img img-responsive"  id="card-img"  alt="Card image">
                     <div class="card-img-overlay" id="cardwrapper">
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-3 text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-3 text-center">
                 <div id="review-div">
 
                 </div>
@@ -85,31 +85,32 @@
 
                 if(obj != null){
                     document.getElementById("card").style.color =obj.colour_1;
-                    let elements = document.getElementsByClassName("card-subtitle");
+                    let elements = document.getElementsByClassName("colour_2");
                     for (let i = 0; i < elements.length; i++) {
                         elements[i].style.color = obj.colour_2;
                     }
                     $('.card-img').attr('src','/storage/background_images/'+obj.bg_image);
                     $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
+                    $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
                     $('.company').html(obj.company);
                     $('.name').html(obj.designation+' '+obj.full_name);
                     $('.position').html(obj.position);
 
                     if(obj.phone_no != null){
                         $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
-                        $('.info-inline').append(' <li class="mx-1" style="display: inline-block;"><strong><span class ="icon-phone"> </span>'+obj.phone_no+'</strong></li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
                     }
                     if(obj.email != null){
                         $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
-                        $('.info-inline').append(' <li class="mx-1" style="display: inline-block;"><strong><span class ="icon-mail_outline"> </span>'+obj.email+'</strong></li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
                     }
                     if(obj.physical_address != null){
                         $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
-                        $('.info-inline').append(' <li class="mx-1" style="display: inline-block;"><strong><span class ="icon-location_city"> </span>'+obj.physical_address+'</strong></li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
                     }
                     if(obj.post_address != null){
                         $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
-                        $('.info-inline').append(' <li class="mx-1" style="display: inline-block;"><strong><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</strong></li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
                     }
                     if(obj['social_media'] != null){
                         let social = obj['social_media'].split(",");
@@ -133,15 +134,12 @@
 
                     for (let index = 0; index < services.length; index++) {
                         if(index == 0){
-
                             $('.services-sm').append('<small>'+services[index]+'</small>');
-                            $('.services').append('<li class="mr-1" style="display: inline-block;"><span class="border-left"></span>'+services[index]+'</li>');
+                            $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
                         }else{
                             $('.services-sm').append(', <small>'+services[index]+'</small>');
-                            $('.services').append('<li class="mr-1" style="display: inline-block;">'+services[index]+'</li>');
+                            $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
                         }
-
-
 
                     }
 

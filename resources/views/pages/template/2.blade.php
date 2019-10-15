@@ -1,21 +1,28 @@
 <div class="row">'+
-    '<div class="col-sm-6 col-md-6 ">'+
-        '<h1 class="card-title text-left"><span class="company">Company</span></h1>'+
-        '<ul class="float-left d-none d-sm-block d-lg-none list-unstyled info"></ul>'+
+    '<div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-9 ">'+
+        '<h2 class="card-title col-12" id="company-2"><span class="company">Company</span></h2>'+
+        '<ul class="float-left d-none d-sm-block d-lg-none list-unstyled info colour_2"></ul>'+
     '</div>'+
-    '<div class="col-sm-6 col-md-6 text-right">'+
-        '<img class="img-fluid  rounded-circle" width="50%"  src="" alt="photo">'+
-        '<strong class="card-title mt-1"><span class="name">full_name</span></strong>'+
-        '<h4 class="card-subtitle  mt-1"><span class="position">position</span></h4>'+
+    '<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center">'+
+        '<img class="img-fluid  img-thumbnail" id="profile-photo"  alt="photo"><br>'+
     '</div>'+
 '</div>'+
-'<div class="row mt-1">'+
-    '<div class="col-md-12">'+
-        '<ul class="float-left d-none d-md-block mt-3 services"></ul>'+
-        '<ul class="float-right d-md-none services"></ul>'+
+'<div class="row text-center" >'+
+    '<div class="col-12 offset-sm-5 col-sm-7 offset-lg-5 col-lg-7 offset-xl-5 col-xl-7" id="name-2">'+
+        '<h2 class="card-title m-1"><span class="name">full_name</span></h2>'+
+        '<h3 class="card-subtitle colour_2 mt-1"><span class="position">position</span></h3>'+
     '</div>'+
 '</div>'+
-'<div class="row mt-1">'+
-    '<ul class="mx-auto d-none d-lg-block mt-3 info-inline"></ul>'+
-    '<ul class="float-left d-sm-none list-unstyled info"></ul>'+
+'<div class="row  mt-1 text-center">'+
+    '<h6 class="col-md-4 col-lg-4 col-xl-2 d-none d-md-block  text-left">Services:</h6>'+
+    '<div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-10 ">'+
+        '<ul class=" d-none d-md-block services list-unstyled "></ul>'+
+        '<ul class=" d-md-none services list-unstyled "></ul>'+
+    '</div>'+
+'</div>'+
+'<div class="row border-top text-center d-sm-none d-lg-block ">'+
+    '<div class="col-12 ">'+
+        '<ul class=" mx-auto d-none d-lg-block info-inline colour_2"></ul>'+
+        '<ul class="d-md-none list-unstyled info colour_2"></ul>'+
+    '</div>'+
 '</div>'
