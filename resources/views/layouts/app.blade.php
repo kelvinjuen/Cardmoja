@@ -18,7 +18,7 @@
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
