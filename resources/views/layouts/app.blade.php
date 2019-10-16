@@ -18,7 +18,7 @@
 
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
     <link href="{{ asset('css/jquery-ui.css') }}" rel="stylesheet">
@@ -31,11 +31,8 @@
     <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('css/rangeslider.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-    <link rel="stylesheet" href="css/rangeslider.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="{{ asset('css/star-rating-svg.css') }}"  type="text/css">
-
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-colorpicker.min.css') }}">
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/jQuery-3.4.1.min.js') }}"></script>
@@ -79,6 +76,7 @@
     <script src="{{ asset('js/aos.js') }}"></script>
     <script src="{{ asset('js/rangeslider.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-colorpicker.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

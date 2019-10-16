@@ -1,0 +1,226 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="site-section">
+        <div class="container">
+            <div class="card-wrap ">
+                <h3 class="text-secondary mb-4 text-center">Internet Links</h3>
+                <form id="social_form" method="POST" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <div class=" col-lg-5" id="services_div">
+                            <select class="form-control" id="weblinks">
+                                <option value="" selected>Select link</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="twitter">Twitter</option>
+                                <option value="github">Github</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="div-links">
+
+                    </div>
+
+                    <div class="row ">
+                        <div class="form-group my-0 col-lg-5">
+                            <div class="input-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-facebook-official"></span>
+                                </div>
+                                <input type="text" class="form-control" id="facebook"  placeholder="https://facebook.com/yourprofile">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to facebook, click on your profile and copy the url</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="facebook-check" checked>
+                            <label class="custom-control-label" for="facebook-check">facebook profile link will visible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                            <a href="/auth/facebook" data-toggle="tooltip" data-placement="top" title="get your facebook profile link" class="btn btn-outline-primary d-none" ><span class="icon-facebook d-none"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-12 col-lg-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-twitter"></span>
+                                </div>
+                                <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/handle">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to twitter, click on your profile and copy the url</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="twitter-check" checked>
+                            <label class="custom-control-label" for="twitter-check">twitter profile link will visible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                            <a href="/auth/twitter" data-toggle="tooltip" data-placement="top" title="get your facebook handle link" class="btn btn-outline-primary col-2" ><span class=" icon-twitter d-none"></span></a>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="form-group col-12 col-lg-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-instagram"></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="instagram">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to instagram, click on your profile and copy the url</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="twitter-check" checked>
+                            <label class="custom-control-label" for="twitter-check">instagram profile link will visible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="get your instagram profile link" class="btn btn-outline-primary col-2" ><span class=" icon-instagram d-none"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-12 col-lg-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-linkedin"></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="https://linkedin.com/linkedin-username">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to linkedin, click on your profile and copy the url</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="linkedin-check" checked>
+                            <label class="custom-control-label" for="twitter-check">linkedin profile link will visible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="get your instagram profile link" class="btn btn-outline-primary col-2" ><span class=" icon-linkedin d-none"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-12 col-lg-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-youtube"></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="youtube channel">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to youtube, click on your channel and copy the url</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="youtube-check" checked>
+                            <label class="custom-control-label" for="youtube-check">youtube channel link will be accessible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="get your instagram profile link" class="btn btn-outline-primary col-2" ><span class=" icon-youtube d-none"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-12 col-lg-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-skype"></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="skype id">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to skype, click on your profile to get your id</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="skype-check" checked>
+                            <label class="custom-control-label" for="skype-check">skype profile link will visible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                                <a href="#" data-toggle="tooltip" data-placement="top" title="get your instagram profile link" class="btn btn-outline-primary col-2" ><span class=" icon-linkedin d-none"></span></a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="form-group col-12 col-lg-5">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text icon-github"></span>
+                                </div>
+                                <input type="text" class="form-control" id="github" name="github" placeholder="https://github.com/username">
+                            </div>
+                            <small id="emailHelp" class="form-text text-muted">login to github, click on your profile and copy the url</small>
+                        </div>
+                        <div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2">
+                            <input type="checkbox" class="custom-control-input" id="github-check" checked>
+                            <label class="custom-control-label" for="github-check">github profile link will visible to all</label>
+                        </div>
+                        <div class="col-lg-2 >
+                                <a href="/auth/github" id="btn-github" class="btn btn-outline-primary col-2" ><span class="icon-github d-none"></span></a>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
+                    {{csrf_field() }}
+                </form>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" language="javascript">
+    let links
+    $(document).on('submit', '#social_form', function(event){
+            event.preventDefault();
+            window.location.href = "/design";
+    });
+
+    $(document).ready(function(){
+        $.ajax({
+            url:"{{route('card.show',Auth::user()->user_id)}}",
+            method:'GET',
+            async: false,
+            contentType:false,
+            processData:false,
+            success:function(data)
+            {
+                let obj = data.card;
+
+                if(obj != null){
+                    let links = obj['social_media'].split(",");
+                    for (let index = 0; index < links.length; index++) {
+                        let link = links[index].split('->');
+                        if(link[0] === 'github'){
+                            $('#github').attr('value',link[1]);
+                            $('#github').attr('class',"form-control bg-success");
+                        }else if(link[0] === 'facebook'){
+                            $('#facebook').attr('value',link[1]);
+                            $('#facebook').attr('class',"form-control bg-success");
+                        }else if(link[0] === 'twitter'){
+                            $('#twitter').attr('value',link[1]);
+                            $('#twitter').attr('class',"form-control bg-success");
+                        }else if(link[0] === 'youtube'){
+                            $('#youtube').attr('value',link[1]);
+                            $('#youtube').attr('class',"form-control bg-success");
+                        }else if(link[0] === 'linkedin'){
+                            $('#linkedin').attr('value',link[1]);
+                            $('#linkedin').attr('class',"form-control bg-success");
+                        }else if(link[0] === 'instagram'){
+                            $('#instagram').attr('value',link[1]);
+                            $('#instagram').attr('class',"form-control bg-success");
+                        }else if(link[0] === 'skype'){
+                            $('#skype').attr('value',link[1]);
+                            $('#skype').attr('class',"form-control bg-success");
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    $(document).on('change', '#weblinks', function(event){
+            event.preventDefault();
+            let selectedlink = $(this).children("option:selected").val();
+
+            $('#div-links').append('<div class="row mt-2"><div class="form-group my-0 col-lg-5"><div class="input-group input-group">'+
+                '<div class="input-group-prepend"><span class="input-group-text icon-'+selectedlink+'"></span></div>'+
+                '<input type="text" class="form-control" id="'+selectedlink+'"  name="'+selectedlink+'"  placeholder="https://'+selectedlink+'.com/yourprofile"></div>'+
+                '<small id="'+selectedlink+'" class="form-text text-muted">login to '+selectedlink+', click on your profile and copy the url</small></div>'+
+                '<div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2"><input type="checkbox" class="custom-control-input" id="'+selectedlink+'-check" checked>'+
+                '<label class="custom-control-label" for="'+selectedlink+'-check">'+selectedlink+' link will visible to all</label></div></div>'
+            );
+    });
+
+</script>
+
+@endsection

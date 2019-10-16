@@ -4,132 +4,45 @@
 <div class="site-section">
         <div class="container">
             <div class="card-wrap ">
-                <h3 class="text-secondary mb-4 text-center">Card Details</h3>
+                <h3 class="text-secondary mb-4 text-center">Internet Links</h3>
                 <form id="social_form" method="POST" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col">
-                            <h6 class="text-secondary mb-4 my-4">Social Media Links</h6>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-facebook"></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="facebook"  placeholder="https://facebook.com/yourprofile">
-                                    <a href="/auth/facebook" data-toggle="tooltip" data-placement="top" title="get your facebook profile link" class="btn btn-outline-primary col-2" ><span class=" icon-facebook"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="facebook" name="facebook" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-twitter"></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="twitter" placeholder="https://twitter.com/handle">
-                                    <a href="/auth/twitter" data-toggle="tooltip" data-placement="top" title="get your facebook handle link" class="btn btn-outline-primary col-2" ><span class=" icon-twitter"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="twitter" name="twitter" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-instagram"></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="instagram">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="get your instagram profile link" class="btn btn-outline-primary col-2" ><span class=" icon-instagram"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="instagram" name="instagram" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-linkedin"></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="https://linkedin.com/linkedin-username">
-                                    <a href="#" class="btn btn-outline-primary col-2" ><span class=" icon-linkedin"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="linkedin" name="linkedin" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-youtube"></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="youtube channel">
-                                    <a href="#" class="btn btn-outline-primary col-2" ><span class=" icon-youtube"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="youtube" name="youtube" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-skype"></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="skype-id">
-                                    <a href="#" class="btn btn-outline-primary col-2" ><span class=" icon-skype"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="skype" name="skype" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="input-group input-group mb-3 col-8">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text icon-github"></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="github" placeholder="https://github.com/github-username">
-                                    <a href="/auth/github" id="btn-github" class="btn btn-outline-primary col-2" ><span class="icon-github"></span></a>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input-lg" type="checkbox" id="github" name="github" checked>
-                                    <label class="form-check-label-lg" for="gridCheck">
-                                        Visible To All
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-
+                    <div class="form-group row">
+                        <div class="col-12 col-lg-5" id="services_div">
+                            <select class="custom-select" id="weblinks">
+                                <option selected>Select link</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="twitter">Twitter</option>
+                                <option value="github">Github</option>
+                            </select>
                         </div>
                     </div>
-                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
+                    <div id="div-links" style="min-height: 50vh;"></div>
                     {{csrf_field() }}
+                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
                 </form>
             </div>
         </div>
     </div>
 <script type="text/javascript" language="javascript">
-    let links
+    let linkArray =[];
+    let count =0;
     $(document).on('submit', '#social_form', function(event){
             event.preventDefault();
-            window.location.href = "/design";
+            $.ajax({
+                url:"/savelinks",
+                method:'POST',
+                async: false,
+                data:new FormData(this),
+                contentType:false,
+                processData:false,
+                success:function(data)
+                {
+                    var obj = data.success;
+                    window.location.href = "/design";
+
+                }
+            });
+
     });
 
     $(document).ready(function(){
@@ -147,33 +60,58 @@
                     let links = obj['social_media'].split(",");
                     for (let index = 0; index < links.length; index++) {
                         let link = links[index].split('->');
-                        if(link[0] === 'github'){
-                            $('#github').attr('value',link[1]);
-                            $('#github').attr('class',"form-control bg-success");
-                        }else if(link[0] === 'facebook'){
-                            $('#facebook').attr('value',link[1]);
-                            $('#facebook').attr('class',"form-control bg-success");
-                        }else if(link[0] === 'twitter'){
-                            $('#twitter').attr('value',link[1]);
-                            $('#twitter').attr('class',"form-control bg-success");
-                        }else if(link[0] === 'youtube'){
-                            $('#youtube').attr('value',link[1]);
-                            $('#youtube').attr('class',"form-control bg-success");
-                        }else if(link[0] === 'linkedin'){
-                            $('#linkedin').attr('value',link[1]);
-                            $('#linkedin').attr('class',"form-control bg-success");
-                        }else if(link[0] === 'instagram'){
-                            $('#instagram').attr('value',link[1]);
-                            $('#instagram').attr('class',"form-control bg-success");
-                        }else if(link[0] === 'skype'){
-                            $('#skype').attr('value',link[1]);
-                            $('#skype').attr('class',"form-control bg-success");
+                        if(!link[0].match(/(^|\W)check($|\W)/)){
+                            $('#div-links').append('<div class="row mt-2 link-'+link[0]+'"><div class="form-group my-0 col-lg-5"><div class="input-group input-group">'+
+                                '<div class="input-group-prepend"><span class="input-group-text icon-'+link[0]+'"></span></div>'+
+                                '<input type="text" class="form-control" id="'+link[0]+'"  name="'+link[0]+'"  placeholder="https://'+link[0]+'.com/profile" value="'+link[1]+'" required>'+
+                                '<div class="input-group-append"><button type="button" class="btn btn-danger contact-remove" id="'+link[0]+'"><span class="icon-minus"></span></button></div></div>'+
+                                '<small id="'+link[0]+'" class="form-text text-muted">login to '+link[0]+', click on your profile and copy the url</small></div>'+
+                                '<div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2"><input type="checkbox" class="custom-control-input" id="'+link[0]+'-check" name="'+link[0]+'-check">'+
+                                '<label class="custom-control-label" for="'+link[0]+'-check">'+link[0]+' link will visible to all</label></div></div>'
+                            );
+                            linkArray[count] = link[0];
+                            count++;
+
+
+                        }else{
+                            $('#'+link[0]).prop('checked',true);
                         }
+                        console.log(linkArray);
+
+
                     }
                 }
             }
         });
     });
+
+    $(document).on('change', '#weblinks', function(event){
+        event.preventDefault();
+        let selectedlink = $(this).children("option:selected").val();
+        for (let i = 0; i < links.length; i++) {
+            if(links[i] == selectedlink){
+                    return null;
+            }
+        }
+        linkArray[count] = selectedlink;
+        count++;
+
+        $('#div-links').append('<div class="row mt-2 link-'+selectedlink+'"><div class="form-group my-0 col-lg-5"><div class="input-group input-group">'+
+            '<div class="input-group-prepend"><span class="input-group-text icon-'+selectedlink+'"></span></div>'+
+            '<input type="text" class="form-control" id="'+selectedlink+'"  name="'+selectedlink+'"  placeholder="https://'+selectedlink+'.com/profile" required>'+
+            '<div class="input-group-append"><button type="button" class="btn btn-danger contact-remove" id="'+selectedlink+'"><span class="icon-minus"></span></button></div></div>'+
+            '<small id="'+selectedlink+'" class="form-text text-muted">login to '+selectedlink+', click on your profile and copy the url</small></div>'+
+            '<div class="custom-control custom-checkbox ml-3  col-lg-5 my-lg-2"><input type="checkbox" class="custom-control-input" id="'+selectedlink+'-check" name="'+selectedlink+'-check" checked>'+
+            '<label class="custom-control-label" for="'+selectedlink+'-check">'+selectedlink+' link will visible to all</label></div></div>'
+        );
+    });
+
+    $('#div-links').on("click",".contact-remove", function(e){
+        e.preventDefault();
+        linkArray = linkArray.filter((value)=>value != this.id);
+        $(".link-"+this.id).remove();
+    });
+
 
 </script>
 

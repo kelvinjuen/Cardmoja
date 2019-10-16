@@ -23,6 +23,7 @@ Route::get('/coperateactivate','PageController@coperateActivate');
 Route::get('/contacts','PageController@contacts');
 
 Route::get('/links','CardController@socialMedia');
+Route::post('/savelinks','CardController@saveLinks');
 Route::get('/design','CardController@design');
 Route::post('savedesign','CardController@saveDesign');
 

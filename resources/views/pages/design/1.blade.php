@@ -1,32 +1,32 @@
 <div class="row">'+
-    '<div class="col-md-4">'+
-        '<img class="img-fluid float-left d-block img-thumbnail"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">'+
+    '<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-center">'+
+        '<img class="img-fluid img-thumbnail" id="profile-photo"  src="" alt="photo">'+
     '</div>'+
-    '<div class="col-md-8 pl-auto">'+
-        '<div class="float-right">'+
-            '<h3 class="card-title text-right"><span class="company">Company</span></h3>'+
-            '<ul class="list-unstyled ">'+
-                    '<li ><small><span class ="icon-phone"> </span>071234322</small></li>'+
-                    '<li ><small><span class ="icon-mail_outline"> </span>test@gmail.com</small></li>'+
-                    '<li ><small><span class ="icon-location_city"> </span>physical location</small></li>'+
-                '</ul>'+
+    '<div class="col-sm-8 col-md-8 col-lg-8 col-xl-9 d-none d-sm-block pl-auto">'+
+        '<div class="d-none d-lg-block">'+
+            '<h2 class="card-title text-right m-0"><span class="company">Company</span></h2>'+
         '</div>'+
+        '<ul class="list-unstyled info float-right"></ul>'+
+    '</div>'+
+'</div>'+
+'<div class="row ">'+
+    '<div class="col-lg-12 d-none d-lg-block ">'+
+        '<h2 class="card-title m-1"><span class="name">full_name</span></h2>'+
+        '<h3 class="card-subtitle mb-2 mt-1 "><span class="position">position</span></h3>'+
+    '</div>'+
+    '<div class="col-12 text-center d-lg-none mt-2">'+
+        '<h2 class="card-title"><span class="name">full_name</span></h2>'+
+        '<h3 class="card-subtitle  colour_2"><span class="position">position</span>,<span class="company">Company</span></h3>'+
+    '</div>'+
+'</div>'+
+'<div class="row d-sm-none">'+
+    '<ul class="col-12 list-unstyled info float-left mt-3"></ul>'+
+'</div>'+
 
-    '</div>'+
-'</div>'+
-'<div class="row">'+
-    '<div class="col-md-5">'+
-        '<h3 class="card-title">Full name</h3>'+
-        '<h6 class="card-subtitle colour_2" >title</h6>'+
-    '</div>'+
-'</div>'+
-'<div class="row border-top my-1 ">'+
-    '<h6 class="col-md-3 p-1">Services:</h6>'+
-    '<div class="col-md-9">'+
-        '<ul class="float-right colour_2">'+
-            '<li class="mr-1" style="display: inline-block;"><span class="border-left pl-xl-4"></span><small>service 1</small></li>'+
-            '<li class="mr-1" style="display: inline-block;"><small>service 2</small></li>'+
-            '<li class="mr-1" style="display: inline-block;"><small>service 3</small></li>'+
-        '</ul>'+
-    '</div>'+
+'<div class="mt-1 border-top ">'+
+        '<h6 class="d-none d-lg-block ">Services:</h6>'+
+    '<ul class="list-unstyled services-sm colour_2"></ul>'+
 '</div>'
+
+
+

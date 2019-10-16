@@ -1,27 +1,28 @@
-<div class="row mb-2">'+
-    '<div class="col-md-6">'+
-        '<h3 class="card-title ">Company name</h3>'+
+<div class="row">'+
+    '<div class="col-12 col-sm-8 col-md-8 col-lg-9 col-xl-9 ">'+
+        '<h2 class="card-title col-12" id="company-2"><span class="company">Company</span></h2>'+
+        '<ul class="float-left d-none d-sm-block d-lg-none list-unstyled info colour_2"></ul>'+
     '</div>'+
-    '<div class="col-md-6 text-right">'+
-        '<img class="img-fluid  ml-auto d-block img-thumbnail"  width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo"/>'+
-        '<h5 class="card-title">Full name</h5>'+
-        '<h6 class="card-subtitle colour_2">title</h6>'+
-    '</div>'+
-'</div>'+
-'<div class="row ">'+
-    '<h6 class="col-md-4 py-1 text-left">Services:</h6>'+
-    '<div class="col-md-8">'+
-        '<ul class="float-right ">'+
-            '<li class="mx-1" style="display: inline-block;"><small>service 1</small></li>'+
-            '<li class="mx-1" style="display: inline-block;"><span class="border-left"></span><small>service 2</small></li>'+
-            '<li class="mx-1" style="display: inline-block;"><span class="border-left"></span><small>service 3</small></li>'+
-        '</ul>'+
+    '<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center">'+
+        '<img class="img-fluid  img-thumbnail" id="profile-photo"  alt="photo"><br>'+
     '</div>'+
 '</div>'+
-'<div class="row border-top my-1 py-auto">'+
-    '<ul class="float-right colour_2">'+
-        '<li class="mx-1" style="display: inline-block;"></span><small>&#9742; 0725123654</small></li>'+
-        '<li class="mx-1" style="display: inline-block;"></span><small>test@gmail.com</small></li>'+
-        '<li class="mx-1" style="display: inline-block;"></span><small>room 101, rehema house</small></li>'+
-    '</ul>'+
+'<div class="row text-center" >'+
+    '<div class="col-12 offset-sm-5 col-sm-7 offset-lg-5 col-lg-7 offset-xl-5 col-xl-7" id="name-2">'+
+        '<h2 class="card-title m-1"><span class="name">full_name</span></h2>'+
+        '<h3 class="card-subtitle colour_2 mt-1"><span class="position">position</span></h3>'+
+    '</div>'+
+'</div>'+
+'<div class="row  mt-1 text-center">'+
+    '<h6 class="col-md-4 col-lg-4 col-xl-2 d-none d-md-block  text-left">Services:</h6>'+
+    '<div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-10 ">'+
+        '<ul class=" d-none d-md-block services list-unstyled "></ul>'+
+        '<ul class=" d-md-none services list-unstyled "></ul>'+
+    '</div>'+
+'</div>'+
+'<div class="row border-top text-center d-sm-none d-lg-block ">'+
+    '<div class="col-12 ">'+
+        '<ul class=" mx-auto d-none d-lg-block info-inline colour_2"></ul>'+
+        '<ul class="d-md-none list-unstyled info colour_2"></ul>'+
+    '</div>'+
 '</div>'

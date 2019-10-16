@@ -12,12 +12,12 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="form-group row">
-                                <div class="col-md-12">
+                                <div class="col-12 col-md-12">
                                     <div class="input-group rounded">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">Desigination:</span>
+                                            <span class="input-group-text">Title:</span>
                                         </div>
-                                        <select class="select-group" id="designation" name="designation">
+                                        <select class="select-group col-auto" id="designation" name="designation">
                                             <option value="Mr">Mr</option>
                                             <option value="Mrs">Mrs</option>
                                             <option value="Miss">Miss</option>
@@ -27,19 +27,23 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-md-12">
+                                <div class=" col-12 col-md-5">
                                     <div class="input-group rounded">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Names:</span>
                                         </div>
                                         <input type="text" class="form-control" name="firstName" id="firstName" placeholder="FirstName" required>
-                                        <input type="text" class="form-control" name="secondName" id="secondName" placeholder="SecondName" required>
-                                        <input type="text" class="form-control" name ="thirdName" id="thirdName" placeholder="ThirdName" required>
                                     </div>
+                                </div>
+                                <div class=" col-12 col-md-4">
+                                    <input type="text" class="form-control" name="secondName" id="secondName" placeholder="SecondName" required>
+                                </div>
+                                <div class=" col-12 col-md-3">
+                                    <input type="text" class="form-control" name ="thirdName" id="thirdName" placeholder="Other name">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-6">
+                                <div class="col-12 col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Position:</span>
@@ -52,7 +56,7 @@
 
                         <div class="col-md-4 text-center">
                             <label class="label" data-toggle="tooltip" title="Choose your profile photo">
-                                    <img class="rounded"  src="" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
+                                    <img class="rounded"  src="/images/uploads/big/stock_people_big-128x128.png" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
                                     <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
                             </label>
                         </div>
@@ -63,19 +67,19 @@
                     <h6 class="text-secondary mb-4 border-bottom mb-4">Company/Business Profile</h6>
 
                     <div class="form-group row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Company Name:</span>
+                                    <span class="input-group-text">Company:</span>
                                 </div>
                                 <input type="text" class="form-control" id="company" name="company" placeholder="company/business name" required>
                             </div>
 
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Company Website</span>
+                                    <span class="input-group-text">Website</span>
                                 </div>
                                 <input type="text" class="form-control" id="website" name="website" placeholder="website">
                             </div>
@@ -84,14 +88,11 @@
 
                     <!--Telephone Contacts -->
                     <div class="form-group row">
-                        <label for="imputcontact" class="col-sm-2 col-form-label">Business Contacts :</label>
-                        <div class="col-md-6" id="text_div_contact">
+                        <label for="imputcontact" class="col-12 col-md-4 col-lg-3 col-form-label">Business Contacts :</label>
+                        <div class="col-12 col-md-4" id="text_div_contact">
                             <div class="input-group input_text_contact" >
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Primary contact</span>
-                                </div>
-                                <input type="text" class="form-control service" placeholder="contact" id="contact_1" name="contact_1" aria-label="contact" aria-describedby="button-addon4" required>
-                                <input type="button" class="btn btn-success add-contact" value="add contact" >
+                                <input type="text" class="form-control service" placeholder="primary contact" id="contact_1" name="contact_1" aria-label="contact" aria-describedby="button-addon4" required>
+                                <div class="input-group-append"><button type="button" class="btn btn-success add-contact" ><span class="icon-plus"></span></button></div>
                             </div>
                         </div>
                     </div>
@@ -99,14 +100,11 @@
                     <!--Email contacts -->
 
                     <div class="form-group row">
-                        <label for="imputcontact" class="col-md-2 col-form-label">Business Emails :</label>
-                        <div class="col-md-6" id="text_div_email">
+                        <label for="imputcontact" class="col-12 col-md-4 col-lg-3 col-form-label">Business Emails :</label>
+                        <div class="col-md-4" id="text_div_email">
                             <div class="input-group input_text_email" >
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">Primary Email</span>
-                                </div>
                                 <input type="text" class="form-control service" placeholder="email" id="email_1" name="email_1" aria-label="contact" aria-describedby="button-addon4" required>
-                                <input type="button" class="btn btn-success add-email" value="add Email" >
+                                <div class="input-group-append"><button type="button" class="btn btn-success add-email"><span class="icon-plus"></span></button></div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +112,7 @@
                     <h6 class="text-secondary mb-4 border-bottom my-4">Company Address</h6>
 
                     <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-12 col-md-6">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Physical Address</span>
@@ -126,22 +124,26 @@
                     </div>
 
                     <div class="form-group row">
-                        <div class="col">
+                        <div class="col-12 col-md-5">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Postal Address</span>
                                 </div>
                                 <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="postal code">
-                                <input type="text"  class="form-control" id="postal_address" name="postal_address" placeholder="postal address">
-                                <input type="text"  class="form-control" id="city" name="city" placeholder="City/Town">
                             </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <input type="text"  class="form-control" id="postal_address" name="postal_address" placeholder="postal address">
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <input type="text"  class="form-control" id="city" name="city" placeholder="City/Town">
                         </div>
                     </div>
 
                     <h6 class="text-secondary mb-4 border-bottom my-4">Company Services/Products<h6>
 
                     <div class="form-group row">
-                        <label for="imputcontact" class="col-sm-2 col-form-label">Business Nature :</label>
+                        <label for="imputcontact" class="col-md-4 col-lg-3 col-form-label">Business Nature :</label>
                         <div class="col-md-6" id="services_div">
                             <select class="form-control" id="biz_type" name="biz_type">
                                     <option value="services">Services</option>
@@ -151,11 +153,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="imputcontact" class="col-sm-2 col-form-label">Business Services/Products :</label>
+                        <label for="imputcontact" class="col-md-4 col-lg-3 col-form-label">Business Services/Products :</label>
                         <div class="col-md-6" id="text_div_service">
                             <div class="input-group input_text1" >
                                 <input type="text" class="form-control service" placeholder="service/product" id="service_1" name="service_1" aria-label="service" aria-describedby="button-addon4">
-                                <input type="button" class="btn btn-success add-service" value="add service" >
+                                <div class="input-group-append"><button type="button" class="btn btn-success add-service"><span class="icon-plus"></span></button></div>
                             </div>
                         </div>
                     </div>
@@ -220,16 +222,6 @@
             });
     });
 
-    $(document).on('change', '#weblinks', function(event){
-            event.preventDefault();
-            let selectedlink = $(this).children("option:selected").val();
-
-            $('#text_div_links').append('<div class="input-group input_text_links col-6  mt-1" ><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">'+selectedlink+'</span>'+
-                '</div><input type="text" class="form-control contact" placeholder="'+selectedlink+'" id="'+selectedlink+'" name="'+selectedlink+'" aria-label="contact" aria-describedby="button-addon4" required>'+
-                '<input type="button" class="btn btn-danger contact-remove" value="remove" ></div>'
-            );
-    });
-
     $(document).ready(function(){
 
         var x = 1;
@@ -257,34 +249,34 @@
                     $('#profile_photo').attr('src','/storage/card_images/'+obj.photo);
                     $('#imagetodelete').attr("value" , obj.photo);
 
-                    var phone = obj['phone_no'].split(",");
+                    var phone = obj['phone_no'].split("/");
                     for (let index = 0; index < phone.length; index++) {
                         if(index == 0){
                             $('#contact_1').attr('value',phone[index]);
                         }else{
                             x++;
-                            $('#text_div_contact').append('<div class="input-group input_text_contact'+x+'  mt-1" ><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">alternative contact</span>'+
-                            '</div><input type="text" class="form-control contact" placeholder="contact" id="contact_'+x+'" name="contact_'+x+'" value="'+phone[index]+'" aria-label="contact" aria-describedby="button-addon4" required>'+
-                            '<input type="button" class="btn btn-danger contact-remove" value="remove" ></div>'
+                            $('#text_div_contact').append('<div class="input-group input_text_contact'+x+'  mt-1" >'+
+                            '<input type="text" class="form-control contact" placeholder="alternative contact" id="contact_'+x+'" name="contact_'+x+'" value="'+phone[index]+'" aria-label="contact" aria-describedby="button-addon4" required>'+
+                            '<div class="input-group-append"><button type="button" class="btn btn-danger contact-remove" ><span class="icon-minus"></span></button></div></div>'
                             );
                         }
                     }
 
-                    var email = obj['email'].split(",");
+                    var email = obj['email'].split("/");
                     for (let index = 0; index < email.length; index++) {
                         if(index == 0){
                             $('#email_1').attr('value',email[index]);
                         }else{
                             y++;
-                            $('#text_div_email').append('<div class="input-group input_text_email'+y+'  mt-1" ><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">alternative Email</span>'+
-                            '</div><input type="text" class="form-control email" placeholder="email" id="email_'+y+'" name="email_'+y+'" value="'+email[index]+'" aria-label="email" aria-describedby="button-addon4" required>'+
-                            '<input type="button" class="btn btn-danger email-remove" value="remove" ></div>'
+                            $('#text_div_email').append('<div class="input-group input_text_email'+y+'  mt-1" >'+
+                            '<input type="text" class="form-control email" placeholder="email" id="email_'+y+'" name="email_'+y+'" value="'+email[index]+'" aria-label="email" aria-describedby="button-addon4" required>'+
+                            '<div class="input-group-append"><button type="button" class="btn btn-danger email-remove"><span class="icon-minus"></span></div></div></div>'
                             );
                         }
                     }
 
                     $('#physical_address').attr('value',obj.physical_address);
-                    var postal = obj['post_address'].split(",");
+                    var postal = obj['post_address'].split(/-| /);
                     $('#postal_code').attr('value',postal[0]);
                     $('#postal_address').attr('value',postal[1]);
                     $('#city').attr('value',postal[2]);
@@ -299,7 +291,7 @@
                             z++;
                             $('#text_div_service').append('<div class="input-group input_text_service'+z+'  mt-1" >'+
                             '<input type="text" class="form-control service" placeholder="service/product" id="service_'+z+'" name="service_'+z+'" value="'+services[index]+'" aria-label="service" aria-describedby="button-addon4" required>'+
-                            '<input type="button" class="btn btn-danger service-remove" value="remove" ></div>'
+                            '<div class="input-group-append"><div type="button" class="btn btn-danger service-remove"><span class="icon-minus"></span></div></div></div>'
                             );
                         }
                     }
@@ -310,11 +302,11 @@
         //contact
         $('.add-contact').click(function(e){
             e.preventDefault();
-            if(x < 3){
+            if(x < 2){
                 x++;
-                $('#text_div_contact').append('<div class="input-group input_text_contact'+x+'  mt-1" ><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">alternative contact</span>'+
-                '</div><input type="text" class="form-control contact" placeholder="contact" id="contact_'+x+'" name="contact_'+x+'" aria-label="contact" aria-describedby="button-addon4" required>'+
-                '<input type="button" class="btn btn-danger contact-remove" value="remove" ></div>'
+                $('#text_div_contact').append('<div class="input-group input_text_contact'+x+'  mt-1" >'+
+                '<input type="text" class="form-control contact" placeholder="contact" id="contact_'+x+'" name="contact_'+x+'" aria-label="contact" aria-describedby="button-addon4" required>'+
+                '<div class="input-group-append"><button type="button" class="btn btn-danger contact-remove"><span class="icon-minus"></span></div></div></div>'
                 );
             }
         });
@@ -330,11 +322,11 @@
 
         $('.add-email').click(function(e){
             e.preventDefault();
-            if(y < 3){
+            if(y < 2){
                 y++;
-                $('#text_div_email').append('<div class="input-group input_text_email'+y+'  mt-1" ><div class="input-group-prepend"><span class="input-group-text" id="basic-addon1">alternative Email</span>'+
-                '</div><input type="text" class="form-control email" placeholder="email" id="email_'+y+'" name="email_'+y+'" aria-label="email" aria-describedby="button-addon4" required>'+
-                '<input type="button" class="btn btn-danger email-remove" value="remove" ></div>'
+                $('#text_div_email').append('<div class="input-group input_text_email'+y+'  mt-1" >'+
+                '<input type="text" class="form-control email" placeholder="email" id="email_'+y+'" name="email_'+y+'" aria-label="email" aria-describedby="button-addon4" required>'+
+                '<div class="input-group-append"><button type="button" class="btn btn-danger email-remove"><span class="icon-minus"></span></div></div></div>'
                 );
             }
         });
@@ -350,11 +342,11 @@
 
         $('.add-service').click(function(e){
             e.preventDefault();
-            if(z < 6){
+            if(z < 4){
                 z++;
                 $('#text_div_service').append('<div class="input-group input_text_service'+z+'  mt-1" >'+
                 '<input type="text" class="form-control service" placeholder="service/product" id="service_'+z+'" name="service_'+z+'" aria-label="service" aria-describedby="button-addon4" required>'+
-                '<input type="button" class="btn btn-danger service-remove" value="remove" ></div>'
+                '<div class="input-group-append"><div type="button" class="btn btn-danger service-remove"><span class="icon-minus"></span></div></div></div>'
                 );
             }
         });

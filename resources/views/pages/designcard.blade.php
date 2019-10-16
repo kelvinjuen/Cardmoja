@@ -3,15 +3,15 @@
 @section('content')
 
 <div class="site-section">
-    <div class="container">
+    <div class="container-fluid">
     <H3 class="text-center">Bussiness Card Design </H3>
-        <div class="row my-4 p-3  border">
-            <div class="col-md-7 p-1">
+        <div class="row m-xl-2 py-2  border">
+            <div class="col-lg-5 p-1">
                 <form id="design_form" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Types</label>
-                        <div class="col-sm-7">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Types</label>
+                        <div class="col-sm-8">
                             <select class="custom-select type-select" id="type-select" name="type-select">
                                 <option value="1">type 1</option>
                                 <option value="2">type 2</option>
@@ -20,8 +20,8 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Card Background</label>
-                        <div class="col-sm-7">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Card Background</label>
+                        <div class="col-sm-8">
                             <select class="custom-select background-select" name="background-select" id="background-select">
                                 <option value="blue.jpg" selected>Blue</option>
                                 <option value="red.jpg">Red</option>
@@ -31,14 +31,14 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Primary Colour</label>
-                        <div class="col-sm-7">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Primary Colour</label>
+                        <div class="col-sm-8">
                             <input type="color" name="colour_1" class="form-control" value="#ffffff"  id="colour_1"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Secondary Colour </label>
-                        <div class="col-sm-7">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Secondary Colour </label>
+                        <div class="col-sm-8">
                             <input type="color" name="colour_2" class="form-control" value="#ff0000"  id="colour_2"/>
                         </div>
                     </div>
@@ -67,9 +67,9 @@
                       </div>
                     <div class="form-group row">
 
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <input type="hidden" name="imagetodelete" id="imagetodelete" value=""/>
-                            <button type="submit"  class="btn btn-primary col-12">Save Card</button>
+                            <button type="submit"  class="btn btn-primary btn-block">Save Card</button>
                         </div>
                         {{csrf_field()}}
                     </div>
@@ -77,9 +77,9 @@
 
             </div>
 
-            <div class="col-md-5 py-3" id="card-wrapper">
-                <div class="card" id="card-design" style="height: 14rem;">
-                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 16rem;" alt="Card image">
+            <div class="col-lg-7" id="card-wrapper">
+                <div class="card" id="card-design" style="height: 22rem;">
+                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 22rem;" alt="Card image">
                     <div class="card-img-overlay" id="cardwrapper">
                         <div class="row">
                             <div class="col-md-4">
@@ -146,6 +146,7 @@
 <script>
     var formData;
     let file;
+    let obj;
     $(document).ready(function(){
         document.getElementById("background-select").selectedIndex = -1;
         $.ajax({
@@ -156,7 +157,7 @@
             processData:false,
             success:function(data)
             {
-                var obj = data.card;
+                obj = data.card;
                 if(obj.bg_image !== null){
                     var bg = obj['bg_image'].split("_");
 
@@ -182,11 +183,129 @@
                         $('#imagetodelete').attr("value" , obj.bg_image);
                     }
                 }
+                if(obj != null){
+                    $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
+                    $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
+                    $('.company').html(obj.company);
+                    $('.name').html(obj.designation+' '+obj.full_name);
+                    $('.position').html(obj.position);
+
+                    if(obj.phone_no != null){
+                        $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
+                    }
+                    if(obj.email != null){
+                        $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+                    }
+                    if(obj.physical_address != null){
+                        $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
+                    }
+                    if(obj.post_address != null){
+                        $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
+                    }
+                    if(obj['social_media'] != null){
+                        let social = obj['social_media'].split(",");
+                        for (let index = 0; index < social.length; index++) {
+
+                            let social_link = social[index].split("->")
+                            if(social_link[0] === 'facebook'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                            }
+                            if(social_link[0] === 'twitter'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
+                            }
+                            if(social_link[0] === 'github'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
+                            }
+                        }
+                    }
+
+
+                    var services = obj['services'].split(",");
+
+                    for (let index = 0; index < services.length; index++) {
+                        if(index == 0){
+                            $('.services-sm').append('<small>'+services[index]+'</small>');
+                            $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
+                        }else{
+                            $('.services-sm').append(', <small>'+services[index]+'</small>');
+                            $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                        }
+
+                    }
+                }
 
             }
         });
-
     });
+
+    function getdata(){
+        if(obj.bg_image !== null){
+            $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
+            document.getElementById("card-design").style.color =obj.colour_1;
+            let elements = document.getElementsByClassName("colour_2");
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].style.color = obj.colour_2;
+            }
+        }
+        if(obj != null){
+            $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
+            $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
+            $('.company').html(obj.company);
+            $('.name').html(obj.designation+' '+obj.full_name);
+            $('.position').html(obj.position);
+
+            if(obj.phone_no != null){
+                $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
+                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
+            }
+            if(obj.email != null){
+                $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
+                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+            }
+            if(obj.physical_address != null){
+                $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
+                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
+            }
+            if(obj.post_address != null){
+                $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
+                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
+            }
+            if(obj['social_media'] != null){
+                let social = obj['social_media'].split(",");
+                for (let index = 0; index < social.length; index++) {
+
+                    let social_link = social[index].split("->")
+                    if(social_link[0] === 'facebook'){
+                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                    }
+                    if(social_link[0] === 'twitter'){
+                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
+                    }
+                    if(social_link[0] === 'github'){
+                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
+                    }
+                }
+            }
+
+
+            var services = obj['services'].split(",");
+
+            for (let index = 0; index < services.length; index++) {
+                if(index == 0){
+                    $('.services-sm').append('<small>'+services[index]+'</small>');
+                    $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
+                }else{
+                    $('.services-sm').append(', <small>'+services[index]+'</small>');
+                    $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                }
+
+            }
+        }
+    }
 
     $(document).on('submit', '#design_form', function(event){
             event.preventDefault();
@@ -230,15 +349,7 @@
         }else{
             $('#cardwrapper').html('@include("pages.design.3"));
         }
-
-        document.getElementById("card-design").style.color = $('#colour_1').val();
-        let elements = document.getElementsByClassName("colour_2");
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].style.color = $('#colour_2').val();
-        }
-
-
-
+        getdata();
     });
 
     $(document).on('change','#background-select', function(){
@@ -335,9 +446,5 @@
             }
         });
     });
-
-    function changecolour(){
-
-    }
 </script>
 @endsection

@@ -60,7 +60,7 @@ class CardController extends Controller
         ]);
         //check services
         $services = "";
-        for ($i=1; $i <=6; $i++) {
+        for ($i=1; $i <=4; $i++) {
             if($i == 1){
                 if($request->has('service_'.$i)){
                     $services.=$request->input('service_'.$i);
@@ -74,27 +74,27 @@ class CardController extends Controller
         }
 
         $contacts = "";
-        for ($i=1; $i <=3; $i++) {
+        for ($i=1; $i <=2; $i++) {
             if($i == 1){
                 if($request->has('contact_'.$i)){
                     $contacts.=$request->input('contact_'.$i);
                 }
             }else{
                 if($request->has('contact_'.$i)){
-                    $contacts.=','.$request->input('contact_'.$i);
+                    $contacts.='/'.$request->input('contact_'.$i);
                 }
             }
         }
 
         $emails = "";
-        for ($i=1; $i <=3; $i++) {
+        for ($i=1; $i <=2; $i++) {
             if($i == 1){
                 if($request->has('email_'.$i)){
                     $emails.=$request->input('email_'.$i);
                 }
             }else{
                 if($request->has('email_'.$i)){
-                    $emails.=','.$request->input('email_'.$i);
+                    $emails.='/'.$request->input('email_'.$i);
                 }
             }
         }
@@ -120,7 +120,7 @@ class CardController extends Controller
         $lastid=null;
 
         DB::transaction(function () use(&$lastid,&$fileNameToStore,&$contacts,&$emails,&$services) {
-            $post_address = request()->get('postal_code').",".request()->get('postal_address').",".request()->get('city');
+            $post_address = request()->get('postal_code')."-".request()->get('postal_address')." ".request()->get('city');
             $full_name = request()->get('firstName')." ".request()->get('secondName')." ".request()->get('thirdName');
             $id = auth()->user()->user_id;
 
@@ -182,7 +182,7 @@ class CardController extends Controller
         ]);
         //check services
         $services = "";
-        for ($i=1; $i <=6; $i++) {
+        for ($i=1; $i <=4; $i++) {
             if($i == 1){
                 if($request->has('service_'.$i)){
                     $services.=$request->input('service_'.$i);
@@ -196,27 +196,27 @@ class CardController extends Controller
         }
 
         $contacts = "";
-        for ($i=1; $i <=3; $i++) {
+        for ($i=1; $i <=2; $i++) {
             if($i == 1){
                 if($request->has('contact_'.$i)){
                     $contacts.=$request->input('contact_'.$i);
                 }
             }else{
                 if($request->has('contact_'.$i)){
-                    $contacts.=','.$request->input('contact_'.$i);
+                    $contacts.='/'.$request->input('contact_'.$i);
                 }
             }
         }
 
         $emails = "";
-        for ($i=1; $i <=3; $i++) {
+        for ($i=1; $i <=2; $i++) {
             if($i == 1){
                 if($request->has('email_'.$i)){
                     $emails.=$request->input('email_'.$i);
                 }
             }else{
                 if($request->has('email_'.$i)){
-                    $emails.=','.$request->input('email_'.$i);
+                    $emails.='/'.$request->input('email_'.$i);
                 }
             }
         }
@@ -240,7 +240,7 @@ class CardController extends Controller
 
 
         DB::transaction(function () use(&$id,&$fileNameToStore,&$contacts,&$emails,&$services) {
-            $post_address = request()->get('postal_code').",".request()->get('postal_address').",".request()->get('city');
+            $post_address = request()->get('postal_code')."-".request()->get('postal_address')." ".request()->get('city');
             $full_name = request()->get('firstName')." ".request()->get('secondName')." ".request()->get('thirdName');
 
             DB::table('card_details')->where('user_id',$id)->update([
@@ -271,6 +271,27 @@ class CardController extends Controller
     }
     public function socialMedia(){
         return view('pages.socialmedia');
+    }
+    public function saveLinks(Request $request){
+        $links = request()->all();
+        $link_final = null;
+        $count = 0;
+
+        foreach ($links as $key => $value) {
+            if($key != null){
+                if($key !== '_token'){
+
+                    if($count == 0){
+                        $link_final .= $key.'->'.$value;
+                    }else{
+                        $link_final .= ','.$key.'->'.$value;
+                    }
+                }
+            }
+            $count++;
+        }
+        DB::table('card_details')->where('user_id',auth()->user()->user_id)->update([
+            'social_media' => $link_final,'updated_at' => \Carbon\Carbon::now()]);
     }
     public function design(){
         return view('pages.designcard');
@@ -360,6 +381,7 @@ class CardController extends Controller
         $count = 0;
 
         foreach ($link_list as $key => $value) {
+
             if($count == 0){
                 $link_final .= $key.'->'.$value;
             }else{
