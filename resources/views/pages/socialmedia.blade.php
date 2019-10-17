@@ -88,8 +88,8 @@
     $(document).on('change', '#weblinks', function(event){
         event.preventDefault();
         let selectedlink = $(this).children("option:selected").val();
-        for (let i = 0; i < links.length; i++) {
-            if(links[i] == selectedlink){
+        for (let i = 0; i < linkArray.length; i++) {
+            if(linkArray[i] == selectedlink){
                     return null;
             }
         }
