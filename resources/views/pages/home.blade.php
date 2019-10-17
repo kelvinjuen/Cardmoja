@@ -72,7 +72,6 @@
                             $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+email[index]+'</li>');
                             $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></li>');
                         }
-
                     }
                     if(obj.physical_address != null){
                         $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use DB;
 use Socialite;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class CardController extends Controller
 {
@@ -18,7 +19,7 @@ class CardController extends Controller
     protected $redirectTo = '/';
     public function __construct()
     {
-        $this->middleware(['auth','verified'],['index','show']);
+        $this->middleware(['auth','verified'],['except' => ['index','show']]);
     }
 
     /**
@@ -154,7 +155,12 @@ class CardController extends Controller
     {
         $card= DB::table('card_profile')->join('card_details', 'card_profile.details_id', '=', 'card_details.details_id')->select('*')->where('card_profile.user_id',$id)->first();
         $review= DB::table('review')->join('card_profile', 'review.reviewer', '=', 'card_profile.profile_id')->select('*')->where('user',$id)->get();
-        return response()->json(['card'=>$card, 'review'=>$review]);
+        $user_id = 0;
+
+        if(Auth::check()){
+            $user_id = Auth::user()->user_id;
+        }
+        return response()->json(['card'=>$card, 'review'=>$review,'user_id'=> $user_id]);
     }
 
     /**

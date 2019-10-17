@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-@include('inc.navbar')
+@guest
+@else
+ @include('inc.navbar')
+@endguest
+@include('inc.share',['url' => 'https://cardmoja.com/card?id='.$_GET['id']])
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-start">
@@ -13,6 +17,8 @@
                 </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-3 text-center">
+                <div id="recomend-div"></div>
+                <div id="wallet-link"></div>
                 <div id="review-div">
 
                 </div>
@@ -45,6 +51,7 @@
                 });
             }
     });
+
     $(document).on('click', '.rate', function(event){
         event.preventDefault();
         $('#review-div').html('@include("pages.template.ratingform"));
@@ -101,8 +108,11 @@
                         $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
                     }
                     if(obj.email != null){
-                        $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+                        let email = obj['email'].split("/");
+                        for (let index = 0; index < email.length; index++) {
+                            $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+email[index]+'</li>');
+                            $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></li>');
+                        }
                     }
                     if(obj.physical_address != null){
                         $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
@@ -143,12 +153,19 @@
 
                     }
 
-                    if( {{auth()->user()->user_id}} == obj.user_id ){
-                        $('#review-div').html('@include("pages.template.ratingdefault"));
-                        $('.rate').hide();
-                    }else{
-                        $('#review-div').html('@include("pages.template.ratingdefault"));
-                    }
+                        if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
+                            $('#review-div').html('@include("pages.template.ratingdefault"));
+                            $('#recomend-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">SHARE THIS CARD</button>');
+                        }else{
+                            $('#review-div').html('@include("pages.template.ratingdefault"));
+                            $('.rate').hide();
+                            if(data.user_id != 0){
+                                $('.wallet-link').html('<a href="#" class="btn btn-primary btn-block my-2 add-wallet">ADD TO CARD WALLET</a>');
+                            }
+                        }
+
+
+
                 }
 
                 if(objReview != null){
@@ -159,9 +176,11 @@
                         }
                         $('.reviews').append('<span>'+name+'</span><span class="my-rating-1 float-right" data-rating="'+objReview[i].rating+'"></span><br/><small class="text-blue bg-white">'+objReview[i].comment+'</small><hr class="m-1">')
 
-                        if(objReview[i].reviewer == {{auth()->user()->user_id}}){
-                            $('.btn-rate').html('you have already Rated');
-                        }
+
+                            if(objReview[i].reviewer == data.user_id){
+                                $('.btn-rate').html('you have already Rated');
+                            }
+
 
                     }
                     $(".my-rating-1").starRating({
