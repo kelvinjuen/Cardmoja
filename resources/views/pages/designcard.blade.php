@@ -6,7 +6,7 @@
     <div class="container-fluid">
     <H3 class="text-center">Bussiness Card Design </H3>
         <div class="row m-xl-2 py-2  border">
-            <div class="col-lg-5 p-1">
+            <div class="col-xl-5 p-1">
                 <form id="design_form" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row">
@@ -77,10 +77,10 @@
 
             </div>
 
-            <div class="col-lg-7" id="card-wrapper">
-                <div class="card" id="card-design" style="height: 22rem;">
-                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg" style="height: 22rem;" alt="Card image">
-                    <div class="card-img-overlay" id="cardwrapper">
+            <div class="col-xl-7" id="card-wrapper">
+                <div class="card" id="card-design" >
+                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg"  alt="Card image">
+                    <div class="card-img-overlay px-md-4" id="cardwrapper">
                         <div class="row">
                             <div class="col-md-4">
                                 <img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">

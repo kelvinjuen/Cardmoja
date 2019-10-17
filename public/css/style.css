@@ -551,17 +551,30 @@ h1, h2, h3, h4, h5,
 }
 @media (max-width: 360px) {
     #card{
-        height: 80vh;
+        height: 95vh;
         font-size:1rem;
     }
+    #card-design{
+        height: 90vh;
+        font-size:1rem;
+    }
+
     #card h2,h3{
+        font-size: 1.2rem;
+    }
+    #card-design h2,h3{
         font-size: 1.2rem;
     }
 
     #card-img{
-        height: 80vh;
+        height: 95vh;
         object-fit: cover;
     }
+    #card-bg{
+        height: 90vh;
+        object-fit: cover;
+    }
+
     #profile-photo{
         width: 20vh;
     }
@@ -578,17 +591,31 @@ h1, h2, h3, h4, h5,
 }
 @media (min-width: 360px) {
     #card{
-        height: 80vh;
-        font-size: 1.2rem;
+        height: 90vh;
+        font-size: 1.1rem;
     }
     #card h2,h3{
         font-size: 1.4rem;
     }
 
+    #card-design{
+        height: 80vh;
+        font-size: 1.2rem;
+    }
+    #card-design h2,h3{
+        font-size: 1.4rem;
+    }
+
     #card-img{
+        height: 90vh;
+        object-fit: cover;
+    }
+
+    #card-bg{
         height: 80vh;
         object-fit: cover;
     }
+
     #profile-photo{
         width: 22vh;
     }
@@ -602,28 +629,36 @@ h1, h2, h3, h4, h5,
     #row-25{
         min-height: 12vh;
     }
-
-
-
-
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) {
     #card{
-        height: 76vh;
-        font-size: 0.9rem;
+        height: 80vh;
+        font-size: 1rem;
     }
     #card h2,h3{
         font-size: 1.3rem;
     }
 
+    #card-design{
+        height: 76vh;
+        font-size: 1rem;
+    }
+    #card-design h2,h3{
+        font-size: 1.3rem;
+    }
+
     #card-img{
+        height: 80vh;
+        object-fit: cover;
+    }
+    #card-bg{
         height: 76vh;
         object-fit: cover;
     }
     #profile-photo{
-        width: 50vh;
+        width: 45vh;
         float: left;
     }
     .services-sm{
@@ -642,7 +677,7 @@ h1, h2, h3, h4, h5,
 @media (min-width: 768px) {
 
     #card{
-        font-size: 1 rem;
+        font-size: 1.2 rem;
     }
     #card h2{
         font-size: 1.5rem;
@@ -651,9 +686,19 @@ h1, h2, h3, h4, h5,
         font-size: 1.2rem;
     }
 
+    #card-design{
+        font-size: 1.2 rem;
+    }
+    #card-design h2{
+        font-size: 1.5rem;
+    }
+    #card-design h3{
+        font-size: 1.2rem;
+    }
+
 
     #profile-photo{
-        width: 35vh;
+        width: 45vh;
         float: left;
     }
 }
@@ -671,11 +716,24 @@ h1, h2, h3, h4, h5,
         #card h3{
             font-size: 1.5rem;
         }
-
-
         #card-img{
             max-height: 65vh;
         }
+
+        #card-design{
+            max-height: 65vh;
+            font-size: 1.5rem;
+        }
+        #card-design h2{
+            font-size: 2rem;
+        }
+        #card-design h3{
+            font-size: 1.5rem;
+        }
+        #card-bg{
+            max-height: 65vh;
+        }
+
         #profile-photo{
             width: 30vh;
             float: left;
@@ -690,20 +748,41 @@ h1, h2, h3, h4, h5,
 
     #card{
         max-height: 60vh;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
-    #card h1{
-        font-size: 2.5rem;
+    #card h2{
+        font-size: 2.3rem;
     }
     #card h3{
-        font-size: 1.5rem;
+        font-size: 1.7rem;
+    }
+    #card h4{
+        font-size: 1.2rem;
     }
 
     #card-img{
         object-fit:  fill;
     }
+
+    #card-design{
+        max-height: 50vh;
+        font-size: 1rem;
+    }
+    #card-design h2{
+        font-size: 2rem;
+    }
+    #card-design h3{
+        font-size: 1.5rem;
+    }
+
+    #card-bg{
+        max-height: 50vh;
+        object-fit:  fill;
+    }
+
     #profile-photo{
-        width: 35vh;
+        width: 30vh;
+        margin: auto;
         float: left;
     }
     #row-30{
@@ -717,10 +796,6 @@ h1, h2, h3, h4, h5,
 
 
 @media(height: 600px){
-    h1, h2, h3, h4, h5,
-    .h1, .h2, .h3, .h4, .h5 {
-        font-size: 2.5rem;
-    }
     #card{
         max-height: 70vh;
         font-size: 1.2rem;
@@ -729,18 +804,30 @@ h1, h2, h3, h4, h5,
         max-height: 70vh;
     }
 
+    #card-design{
+        max-height: 70vh;
+        font-size: 1.2rem;
+    }
+    #card-bg{
+        max-height: 70vh;
+    }
+
 }
 @media(width: 600px){
-    h1, h2, h3, h4, h5,
-    .h1, .h2, .h3, .h4, .h5 {
-        font-size: 2rem;
-    }
     #card{
         max-height: 30vh;
         font-size: 1.2rem;
     }
     #card-img{
         max-height: 30vh;
+    }
+
+    #card-design{
+        max-height: 10vh;
+        font-size: 1.2rem;
+    }
+    #card-bg{
+        max-height: 10vh;
     }
 
 }
@@ -751,6 +838,13 @@ h1, h2, h3, h4, h5,
     #card-img{
         max-height: 35vh;
     }
+    #card-design{
+        max-height: 35vh;
+    }
+    #card-bg{
+        max-height: 35vh;
+    }
+
 
 }
 @media( height: 1024px){
@@ -760,12 +854,24 @@ h1, h2, h3, h4, h5,
     #card-img{
         max-height: 45vh;
     }
+    #card-design{
+        max-height: 35vh;
+    }
+    #card-bg{
+        max-height: 35vh;
+    }
 }
 @media(width: 768px){
     #card{
         max-height: 30vh;
     }
     #card-img{
+        max-height: 30vh;
+    }
+    #card-design{
+        max-height: 30vh;
+    }
+    #card-bg{
         max-height: 30vh;
     }
     #profile-photo{

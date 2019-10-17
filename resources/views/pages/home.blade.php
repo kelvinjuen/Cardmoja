@@ -2,17 +2,21 @@
 
 @section('content')
 @include('inc.navbar')
+@include('inc.share',['url' => 'https://cardmoja.com/'])
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row align-items-center justify-content-start">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
                 <div class="card" id="card">
                     <img class="card-img img-responsive"  id="card-img"  alt="Card image">
                     <div class="card-img-overlay" id="cardwrapper">
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-3 text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-lg-5 px-xl-1 col-xl-4 text-center">
+                <button type="button" class="btn btn-primary btn-block my-2" data-toggle="modal" data-target="#exampleModalCenter">
+                    SHARE MY CARD
+                </button>
                 <div id="review-div">
 
                 </div>
@@ -20,6 +24,7 @@
         </div>
     </div>
 </div>
+
 <script src="{{ asset('js/jquery.star-rating-svg.js') }}" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
@@ -62,8 +67,12 @@
                         $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
                     }
                     if(obj.email != null){
-                        $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+                        let email = obj['email'].split("/");
+                        for (let index = 0; index < email.length; index++) {
+                            $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+email[index]+'</li>');
+                            $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></li>');
+                        }
+
                     }
                     if(obj.physical_address != null){
                         $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
@@ -136,6 +145,24 @@
             }
         });
     }
+    let popupsize = {
+        width: 780,
+        height: 550
+    };
+    $(document).on('click', '.modal-body > a', function(e){
+        let verticalPos = Math.floor(($(window).width() - popupsize.width)/2),
+            horizontalPos = Math.floor(($(window).height() - popupsize.height)/2);
+
+        let popup = window.open($(this).prop('href'), 'social',
+            'width='+popupsize.width+',height='+popupsize.height+
+            ',left='+verticalPos+',top'+horizontalPos+
+            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
+
+        if(popup) {
+            popup.focus();
+            e.preventDefault();
+        }
+    })
 </script>
 
 @endsection
