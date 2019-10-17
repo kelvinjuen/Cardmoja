@@ -18,7 +18,7 @@ class CardController extends Controller
     protected $redirectTo = '/';
     public function __construct()
     {
-        $this->middleware(['auth','verified']);
+        $this->middleware(['auth','verified'],['index','show']);
     }
 
     /**

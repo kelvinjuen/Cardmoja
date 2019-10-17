@@ -328,8 +328,7 @@
                     let type = '{{auth()->user()->type}}' ;
 
                     if(type == 'personal'){
-                        alert('success');
-                        window.location.href = "/card?id={{auth()->user()->user_id}}";
+                        window.location.href = "/home";
                     }else{
                         window.location.href = "/coperate";
                     }
