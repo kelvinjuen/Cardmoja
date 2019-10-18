@@ -19,13 +19,13 @@
             '<ul class="list-unstyled float-left  ml-2  d-none d-md-block mt-3 info"></ul>'+
             '<ul class="col-12 list-unstyled text-center text-sm-left d-md-none mt-1 info"></ul>'+
         '</div>'+
-        '<div class="row d-none d-sm-block text-left"><ul class="services colour_2"></ul></div>'+
     '</div>'+
     '<div class="col-sm-4 col-md-3 py-4 d-none d-sm-block">'+
         '<img class="img-fluid  ml-auto   d-block img-thumbnail"  id="profile-photo" alt="photo"/>'+
     '</div>'+
-    '<div class="d-sm-none text-center mt-1">'+
+    '<div class="col-12 d-sm-none text-center mt-1">'+
         '<img class="img-fluid  rounded-circle"  id="profile-photo-round" alt="photo"/>'+
         '<div class="row mt-2"><ul class="col-12 services colour_2"></ul></div>'+
     '</div>'+
-'</div>'
+'</div>'+
+'<div class="row d-none d-sm-block text-center border-top"><ul class="col-12 services colour_2"></ul></div>'
