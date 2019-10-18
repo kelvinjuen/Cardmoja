@@ -77,46 +77,14 @@
 
             </div>
 
-            <div class="col-xl-7" id="card-wrapper">
-                <div class="card" id="card-design" >
-                    <img class="card-img" src="storage/background_images/bg_1.jpg" id="card-bg"  alt="Card image">
-                    <div class="card-img-overlay px-md-4" id="cardwrapper">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img class="img-fluid float-left d-block img-thumbnail" height="400vh"   width="100vh"  src="/images/uploads/big/stock_people_big-128x128.png" alt="photo">
-                            </div>
-                            <div class="col-md-8 pl-auto">
-                                <ul class="list-unstyled float-right">
-                                    <li ><small><span class ="icon-phone"> </span> 071234322</small></li>
-                                    <li ><small><span class ="icon-mail_outline"> </span>test@gmail.com</small></li>
-                                    <li ><small><span class ="icon-location_city"> </span>physical location</small></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <h3 class="card-title">Full name</h3>
-                                <h6 class="card-subtitle colour_2">title</h6>
-                            </div>
+            <div class="col-xl-7">
+                <div class="card-section" >
+                    <div class="card-container"  style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
+                        <div class="container p-3" id="cardwrapper" >
 
-                            <div class="col-md-7 text-right">
-                                <h3 class="card-title ">Company name</h3>
-                                <h6 class="card-subtitle colour_2">slogan</h6>
-                            </div>
-                        </div>
-                        <div class="row border-top my-2">
-                            <h6 class="col-md-3 p-1">Services:</h6>
-                            <div class="col-md-9">
-                                <ul class="float-right ">
-                                    <li class="mx-1" style="display: inline-block;"><span class="border-left pl-xl-4"></span><small>service 1</small></li>
-                                    <li class="mx-1" style="display: inline-block;"><small>service 2</small></li>
-                                    <li class="mx-1" style="display: inline-block;"><small>service 3</small></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -169,7 +137,7 @@
                         $('#cardwrapper').html('@include("pages.design.3"));
                     }
                     $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
-                    document.getElementById("card-design").style.color =obj.colour_1;
+                    document.getElementById("cardwrapper").style.color =obj.colour_1;
                     $('#colour_1').attr('value', obj.colour_1 );
                     let elements = document.getElementsByClassName("colour_2");
                     for (let i = 0; i < elements.length; i++) {
@@ -195,8 +163,11 @@
                         $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
                     }
                     if(obj.email != null){
-                        $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+                        let email = obj['email'].split("/");
+                        for (let index = 0; index < email.length; index++) {
+                            $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+email[index]+'</li>');
+                            $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></li>');
+                        }
                     }
                     if(obj.physical_address != null){
                         $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
@@ -212,13 +183,13 @@
 
                             let social_link = social[index].split("->")
                             if(social_link[0] === 'facebook'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-1"><span class="icon-facebook-square"></span></a>');
                             }
                             if(social_link[0] === 'twitter'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
                             }
                             if(social_link[0] === 'github'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
                             }
                         }
                     }
@@ -245,7 +216,7 @@
     function getdata(){
         if(obj.bg_image !== null){
             $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
-            document.getElementById("card-design").style.color =obj.colour_1;
+            document.getElementById("cardwrapper").style.color =obj.colour_1;
             let elements = document.getElementsByClassName("colour_2");
             for (let i = 0; i < elements.length; i++) {
                 elements[i].style.color = obj.colour_2;
@@ -263,8 +234,11 @@
                 $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
             }
             if(obj.email != null){
-                $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+obj.email+'</li>');
-                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+obj.email+'</small></li>');
+                let email = obj['email'].split("/");
+                for (let index = 0; index < email.length; index++) {
+                    $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+email[index]+'</li>');
+                    $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></li>');
+                }
             }
             if(obj.physical_address != null){
                 $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');

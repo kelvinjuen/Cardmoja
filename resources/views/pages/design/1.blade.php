@@ -1,4 +1,4 @@
-<div class="row">'+
+<div class="row" id="d1-row-1">'+
     '<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-3 text-center">'+
         '<img class="img-fluid img-thumbnail" id="profile-photo"  src="" alt="photo">'+
     '</div>'+
@@ -23,9 +23,9 @@
     '<ul class="col-12 list-unstyled info float-left mt-3"></ul>'+
 '</div>'+
 
-'<div class="mt-1 border-top ">'+
-        '<h6 class="d-none d-lg-block ">Services:</h6>'+
-    '<ul class="list-unstyled services-sm"></ul>'+
+'<div class="row mt-1 border-top ">'+
+    '<h6 class="col-lg-2 d-none d-lg-block ">Services:</h6>'+
+    '<ul class="col-lg-10 list-unstyled services-sm"></ul>'+
 '</div>'
 
 

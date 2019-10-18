@@ -43,15 +43,15 @@ h1, h2, h3, h4, h5,
 }
 .icon-facebook-square{
     color: blue;
-    font-size: 20px;
+    font-size: 30px;
 }
 .icon-twitter-square{
     color: lightblue;
-    font-size: 20px;
+    font-size: 30px;
 }
 .icon-github-square{
     color: grey;
-    font-size: 20px;
+    font-size: 30px;
 }
 
 .animated {
@@ -549,29 +549,33 @@ h1, h2, h3, h4, h5,
 	z-index: 9999;
 	background: url("/images/preloader/spinner.gif") center no-repeat #fff;
 }
+
+.card-section{
+    height: auto;
+    width: 100%;
+}
+.card-section .card-container{
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position: center center;
+}
+
+
+
 @media (max-width: 360px) {
     #card{
         height: 95vh;
-        font-size:1rem;
-    }
-    #card-design{
-        height: 90vh;
         font-size:1rem;
     }
 
     #card h2,h3{
         font-size: 1.2rem;
     }
-    #card-design h2,h3{
-        font-size: 1.2rem;
-    }
 
     #card-img{
         height: 95vh;
-        object-fit: cover;
-    }
-    #card-bg{
-        height: 90vh;
         object-fit: cover;
     }
 

@@ -7,9 +7,11 @@
     <div class="container">
         <div class="row align-items-center justify-content-start">
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
-                <div class="card" id="card">
-                    <img class="card-img img-responsive"  id="card-img"  alt="Card image">
-                    <div class="card-img-overlay" id="cardwrapper">
+                <div class="card-section" >
+                    <div class="card-container"  style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
+                        <div class="container p-3" id="cardwrapper" >
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,7 +52,7 @@
                 }
 
                 if(obj != null){
-                    document.getElementById("card").style.color =obj.colour_1;
+                    document.getElementById("cardwrapper").style.color =obj.colour_1;
                     let elements = document.getElementsByClassName("colour_2");
                     for (let i = 0; i < elements.length; i++) {
                         elements[i].style.color = obj.colour_2;
@@ -87,13 +89,13 @@
 
                             let social_link = social[index].split("->")
                             if(social_link[0] === 'facebook'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-1"><span class="icon-facebook-square"></span></a>');
                             }
                             if(social_link[0] === 'twitter'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
                             }
                             if(social_link[0] === 'github'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
                             }
                         }
                     }

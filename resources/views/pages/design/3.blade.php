@@ -13,11 +13,11 @@
         '<h3 class="card-title text-right"><span class="company">Company</span></h3>'+
     '</div>'+
 '</div>'+
-'<div class="row border-top ">'+
+'<div class="row border-top mt-2">'+
     '<div class="col-12 col-sm-8 col-md-9">'+
         '<div class="row" id="row-40">'+
-            '<ul class="list-unstyled float-left ml-2  d-none d-md-block mt-3 info"></ul>'+
-            '<ul class="list-unstyled float-none float-sm-left d-md-none mt-1 info"></ul>'+
+            '<ul class="list-unstyled float-left  ml-2  d-none d-md-block mt-3 info"></ul>'+
+            '<ul class="col-12 list-unstyled text-center text-sm-left d-md-none mt-1 info"></ul>'+
         '</div>'+
         '<div class="row d-none d-sm-block text-left"><ul class="services colour_2"></ul></div>'+
     '</div>'+
