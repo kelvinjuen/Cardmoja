@@ -281,7 +281,7 @@
 
         $('.add-service').click(function(e){
             e.preventDefault();
-            if(z < 4){
+            if(z < 6){
                 z++;
                 $('#text_div_service').append('<div class="input-group input_text_service'+z+'  mt-1" >'+
                 '<input type="text" class="form-control service" placeholder="service/product" id="service_'+z+'" name="service_'+z+'" aria-label="service" aria-describedby="button-addon4" required>'+

@@ -4,20 +4,20 @@
 @include('inc.navbar')
 @include('inc.share',['url' => 'https://cardmoja.com/card?id='.auth()->user()->user_id])
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row align-items-center justify-content-start">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-8">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-xl-5 col-xl-7">
                 <div class="card-section" >
-                    <div class="card-container"  style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
+                    <div class="card-container" id="card-container"  style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
                         <div class="container p-3" id="cardwrapper" >
 
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-lg-5 px-xl-1 col-xl-4 text-center">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-lg-5 px-xl-5 col-xl-5 text-center">
                 <button type="button" class="btn btn-primary btn-block my-2" data-toggle="modal" data-target="#exampleModalCenter">
-                    SHARE MY CARD
+                    <i class="icon-share2"></i>SHARE MY CARD
                 </button>
                 <div id="review-div">
 
@@ -52,6 +52,7 @@
                 }
 
                 if(obj != null){
+                    document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+obj.bg_image+"')";
                     document.getElementById("cardwrapper").style.color =obj.colour_1;
                     let elements = document.getElementsByClassName("colour_2");
                     for (let i = 0; i < elements.length; i++) {
@@ -109,7 +110,7 @@
                             $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
                         }else{
                             $('.services-sm').append(', <small>'+services[index]+'</small>');
-                            $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                            $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
                         }
 
                     }

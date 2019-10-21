@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{urlencode($url)}}" target="_blank"><i class="icon-facebook-official"> facebook</i></a><br>
-                <a href="https://twitter.com/intent/tweet?url=my digtal bisiness card link {{urlencode($url)}}" target="_blank"><i class="icon-twitter-square"> twitter</i></a><br>
+                <a href="https://twitter.com/intent/tweet?url=my digtal bisiness card link {{urlencode($url)}}" target="_blank"><i class="icon-twitter"> twitter</i></a><br>
 
                 <a href="whatsapp://send?text=my digtal bisiness card link {{urlencode($url)}}" class="d-xl-none" data-action="share/whatsapp/share"><i class="icon-whatsapp">Whatsapp</i></a>
             </div>

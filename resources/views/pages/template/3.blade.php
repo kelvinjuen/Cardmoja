@@ -21,10 +21,10 @@
         '</div>'+
     '</div>'+
     '<div class="col-sm-4 col-md-3 py-4 d-none d-sm-block">'+
-        '<img class="img-fluid  ml-auto   d-block img-thumbnail"  id="profile-photo" alt="photo"/>'+
+        '<img class="img-fluid  ml-auto   d-block"  id="profile-photo" alt="photo"/>'+
     '</div>'+
     '<div class="col-12 d-sm-none text-center mt-1">'+
-        '<img class="img-fluid  rounded-circle"  id="profile-photo-round" alt="photo"/>'+
+        '<img class="img-fluid"  id="profile-photo-round" alt="photo"/>'+
         '<div class="row mt-2"><ul class="col-12 services colour_2"></ul></div>'+
     '</div>'+
 '</div>'+

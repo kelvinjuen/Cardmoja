@@ -4,7 +4,7 @@
         '<ul class="float-left d-none d-sm-block d-lg-none list-unstyled info colour_2"></ul>'+
     '</div>'+
     '<div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 text-center">'+
-        '<img class="img-fluid  img-thumbnail" id="profile-photo"  alt="photo"><br>'+
+        '<img class="img-fluid" id="profile-photo"  alt="photo"><br>'+
     '</div>'+
 '</div>'+
 '<div class="row text-center" >'+

@@ -28,6 +28,7 @@ Route::get('/design','CardController@design');
 Route::post('savedesign','CardController@saveDesign');
 
 Route::get('getConnectinfo','ConnectController@showConnect');
+Route::get('getcontacts','ConnectController@showContacts');
 
 Route::get('getdetailid','CoperateController@getDetailId');
 Route::post('savestaff','CoperateController@saveStaff');

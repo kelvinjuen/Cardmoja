@@ -115,7 +115,7 @@ class ConnectController extends Controller
         }
 
         //request
-        $request =  DB::table('connect')->select('full_name','connect_id','photo','position')->join('card_profile', 'connect.user_1', '=', 'card_profile.user_id')->where('user_2',$id)->where('status',0)->get();
+        $request =  DB::table('connect')->select('user_id','full_name','connect_id','photo','position')->join('card_profile', 'connect.user_1', '=', 'card_profile.user_id')->where('user_2',$id)->where('status',0)->get();
 
         //suggestion
         $suggestion = DB::select(DB::raw("SELECT u.full_name ,u.user_id,u.photo,u.position FROM card_profile AS u WHERE NOT EXISTS (SELECT * FROM connect AS c WHERE (c.user_1 = u.user_id AND c.user_2 = '$id' ) OR (c.user_1 = '$id' AND c.user_2 = u.user_id)) AND u.user_id <> '$id'"));

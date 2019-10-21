@@ -79,7 +79,7 @@
 
             <div class="col-xl-7">
                 <div class="card-section" >
-                    <div class="card-container"  style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
+                    <div class="card-container" id="card-container" style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
                         <div class="container p-3" id="cardwrapper" >
 
                         </div>
@@ -136,7 +136,7 @@
                     }else{
                         $('#cardwrapper').html('@include("pages.design.3"));
                     }
-                    $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
+                    document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+obj.bg_image+"')";
                     document.getElementById("cardwrapper").style.color =obj.colour_1;
                     $('#colour_1').attr('value', obj.colour_1 );
                     let elements = document.getElementsByClassName("colour_2");
@@ -215,7 +215,7 @@
 
     function getdata(){
         if(obj.bg_image !== null){
-            $('.card-img').attr("src", "/storage/background_images/"+obj.bg_image);
+            document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+obj.bg_image+"')";
             document.getElementById("cardwrapper").style.color =obj.colour_1;
             let elements = document.getElementsByClassName("colour_2");
             for (let i = 0; i < elements.length; i++) {
@@ -327,15 +327,15 @@
 
     $(document).on('change','#background-select', function(){
         var selectedBg = $(this).children("option:selected").val();
-        $('.card-img').attr("src", "/storage/background_images/"+selectedBg);
+        document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+selectedBg+"')";
         $("#upload").val('');
 
     });
     $(document).on('change','#colour_1', function(){
-        document.getElementsByClassName("card")[0].style.color =$(this).val();
+        document.getElementById("cardwrapper").style.color =$(this).val();
     });
     $(document).on('input','#colour_2', function(){
-        let elements = document.getElementsByClassName("card-subtitle");
+        let elements = document.getElementsByClassName("colour_2");
         for (let i = 0; i < elements.length; i++) {
             elements[i].style.color =$(this).val();
         }
@@ -343,7 +343,7 @@
     });
 
     window.addEventListener('DOMContentLoaded', function () {
-        var avatar = document.getElementById('card-bg');
+        var avatar = document.getElementById('card-container');
         var image = document.getElementById('image');
         var input = document.getElementById('input');
         var $modal = $('#modal');
@@ -405,11 +405,11 @@
 
             if (cropper) {
             canvas = cropper.getCroppedCanvas({
-                width: 844,
+                width: 800,
                 height: 400,
             });
-            initialAvatarURL = avatar.src;
-            avatar.src = canvas.toDataURL();
+            initialAvatarURL = avatar.style.backgroundImage;
+            avatar.style.backgroundImage = "url('"+canvas.toDataURL()+"')";;
             canvas.toBlob((blob) => {
                         file = new File([blob],'background.jpg', {
                             type: 'image/jpeg',

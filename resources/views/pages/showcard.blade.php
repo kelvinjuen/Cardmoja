@@ -5,23 +5,29 @@
 @else
  @include('inc.navbar')
 @endguest
-@include('inc.share',['url' => 'https://cardmoja.com/card?id='.$_GET['id']])
+@include('inc.recomend')
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row align-items-center justify-content-start">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
-                <div class="card" id="card">
-                    <img class="card-img img-responsive"  id="card-img"  alt="Card image">
-                    <div class="card-img-overlay" id="cardwrapper">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-xl-5 col-xl-7">
+                    <div class="card-section" >
+                        <div class="card-container" id="card-container" >
+                            <div class="container p-3" id="cardwrapper" >
+
+                            </div>
+                        </div>
                     </div>
-                </div>
             </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-3 text-center">
-                <div id="recomend-div"></div>
-                <div id="wallet-link"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-lg-5 px-xl-5 col-xl-5 text-center">
+                <div class="row">
+                    <div class="col-auto" id="recomend-div"></div>
+                    <div class="col-auto id="wallet-link"></div>
+                    <div class="col-auto" id="rate-btn"></div>
+                </div>
                 <div id="review-div">
 
                 </div>
+
             </div>
         </div>
     </div>
@@ -82,6 +88,8 @@
             {
                 let obj = data.card;
                 let objReview = data.review;
+                let contacts = data.contacts;
+
                 if(obj.type == 1){
                     $('#cardwrapper').html('@include("pages.template.1"));
                 }else if(obj.type == 2){
@@ -91,7 +99,8 @@
                 }
 
                 if(obj != null){
-                    document.getElementById("card").style.color =obj.colour_1;
+                    document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+obj.bg_image+"')";
+                    document.getElementById("cardwrapper").style.color =obj.colour_1;
                     let elements = document.getElementsByClassName("colour_2");
                     for (let i = 0; i < elements.length; i++) {
                         elements[i].style.color = obj.colour_2;
@@ -100,7 +109,8 @@
                     $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
                     $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
                     $('.company').html(obj.company);
-                    $('.name').html(obj.designation+' '+obj.full_name);
+                    $('.name').html(obj.full_name);
+                    $('.card-name').html(obj.full_name);
                     $('.position').html(obj.position);
 
                     if(obj.phone_no != null){
@@ -152,10 +162,11 @@
                         }
 
                     }
+                        $('#rate-btn').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm rate" ><span class="btn-rate">Rate</span></button>');
 
                         if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
                             $('#review-div').html('@include("pages.template.ratingdefault"));
-                            $('#recomend-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">SHARE THIS CARD</button>');
+                            $('#recomend-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Recomend This Card</button>');
                         }else{
                             $('#review-div').html('@include("pages.template.ratingdefault"));
                             $('.rate').hide();
@@ -163,6 +174,7 @@
                                 $('.wallet-link').html('<a href="#" class="btn btn-primary btn-block my-2 add-wallet">ADD TO CARD WALLET</a>');
                             }
                         }
+
 
 
 
@@ -178,7 +190,7 @@
 
 
                             if(objReview[i].reviewer == data.user_id){
-                                $('.btn-rate').html('you have already Rated');
+                                $('.btn-rate').html('Rate Again');
                             }
 
 
@@ -191,9 +203,23 @@
                     });
 
                 }
+
+                if(contacts.length){
+                    for (let index = 0; index < contacts.length; index++) {
+                        $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="#">'+
+                        '<div class="col-5 col-sm-4 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
+                        '<div class="col-7 col-sm-8 "><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div></div>');
+                    }
+                }else{
+                    $('#contacts').html('<h6>you have no card to recommed</h6>');
+                }
             }
         });
     }
+
+    $(document).on('click','.contact-click',function(event){
+        alert('recomended');
+    });
 
 </script>
 

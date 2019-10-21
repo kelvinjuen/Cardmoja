@@ -1,6 +1,6 @@
 <div class="row">'+
     '<div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4 text-center">'+
-        '<img class="img-fluid " id="profile-photo"  src="" alt="photo">'+
+        '<img class="img-fluid" id="profile-photo"  src="" alt="photo">'+
     '</div>'+
     '<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 d-none d-sm-block pl-auto">'+
         '<div class="d-none d-lg-block">'+

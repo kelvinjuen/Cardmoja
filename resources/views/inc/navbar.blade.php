@@ -20,9 +20,16 @@
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
                 <li class="active"><a href="/home"><i class="icon-home"></i><span>HOME</span></a></li>
                 <li class="normal"><a href="/wallet"><i class="icon-list-ul"></i><span>WALLET</span></a></li>
-                <li><a href="/card/{{auth()->user()->user_id}}/edit"><i class="icon-edit"></i><span>EDITCARD</span></a></li>
-                <li><a href="#"><span>FEATURES</span></a></li>
-                <li><a href="#"><span>PRICING</span></a></li>
+                <li class="has-children">
+                    <a href=""><i class="icon-edit"></i><span>EDIT</span></a>
+                    <ul class="dropdown">
+                      <li><a href="/card/{{auth()->user()->user_id}}/edit">Card Details</a></li>
+                      <li><a href="/links">Internet Links</a></li>
+                      <li><a href="/design">Card Design</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><span>SUBSCRIPTION</span></a></li>
+                <li><a href="#"><i class="icon-settings"></i><span>SETTING</span></a></li>
 
                  <!-- Authentication Links -->
                 @guest
@@ -34,7 +41,7 @@
                         <ul class="dropdown">
                             <li><a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
+                                                document.getElementById('logout-form').submit();"><i class="icon-sign-out"></i>
                                 {{ __('Logout') }}
                             </a></li>
 
