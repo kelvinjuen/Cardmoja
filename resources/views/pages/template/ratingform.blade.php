@@ -9,6 +9,8 @@
         '<label class="form-check-label" for="exampleCheck1">Anonymous</label>'+
     '</div>'+
     '<input type="hidden" name="card-id" id="card-id" value="{{$_GET['id']}}">'+
-    '<button class="btn btn-primary float-right btn-block btn-sm" type="submit">RATE</button>'+
+    '<button class="btn btn-primary float-right ml-2  mb-3 btn-sm cancel" type="button">Cancel</button>'+
+    '<button class="btn btn-primary float-right  mb-3 btn-sm" type="submit">Rate</button>'+
+
     '{{csrf_field() }}'+
 '</form>'

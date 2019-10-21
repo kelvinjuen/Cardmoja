@@ -6,7 +6,7 @@
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-start">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-xl-5 col-xl-7">
+            <div class="col-12 col-sm-12 col-md-12 px-lg-5 col-lg-12 px-xl-5 col-xl-7">
                 <div class="card-section" >
                     <div class="card-container" id="card-container"  style="background-image: url({{ asset('storage/background_images/blue.jpg') }});">
                         <div class="container p-3" id="cardwrapper" >
@@ -109,7 +109,7 @@
                             $('.services-sm').append('<small>'+services[index]+'</small>');
                             $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
                         }else{
-                            $('.services-sm').append(', <small>'+services[index]+'</small>');
+                            $('.services-sm').append('| <small>'+services[index]+'</small>');
                             $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
                         }
 

@@ -9,7 +9,7 @@
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container-fluid">
         <div class="row align-items-center justify-content-start">
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-xl-5 col-xl-7">
+            <div class="col-12 col-sm-12 col-md-12 px-lg-5 col-lg-12 px-xl-5 col-xl-7">
                     <div class="card-section" >
                         <div class="card-container" id="card-container" >
                             <div class="container p-3" id="cardwrapper" >
@@ -19,15 +19,11 @@
                     </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 px-lg-5 px-xl-5 col-xl-5 text-center">
-                <div class="row">
-                    <div class="col-auto" id="recomend-div"></div>
-                    <div class="col-auto id="wallet-link"></div>
-                    <div class="col-auto" id="rate-btn"></div>
-                </div>
+                <div id="recomend-div"></div>
+                <div id="wallet-link"></div>
                 <div id="review-div">
 
                 </div>
-
             </div>
         </div>
     </div>
@@ -157,16 +153,15 @@
                             $('.services-sm').append('<small>'+services[index]+'</small>');
                             $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
                         }else{
-                            $('.services-sm').append(', <small>'+services[index]+'</small>');
-                            $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                            $('.services-sm').append(' | <small>'+services[index]+'</small>');
+                            $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
                         }
 
                     }
-                        $('#rate-btn').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm rate" ><span class="btn-rate">Rate</span></button>');
+
 
                         if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
-                            $('#review-div').html('@include("pages.template.ratingdefault"));
-                            $('#recomend-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Recomend This Card</button>');
+                            $('#review-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Recomend This Card</button>@include("pages.template.ratingdefault"));
                         }else{
                             $('#review-div').html('@include("pages.template.ratingdefault"));
                             $('.rate').hide();
@@ -211,7 +206,7 @@
                         '<div class="col-7 col-sm-8 "><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div></div>');
                     }
                 }else{
-                    $('#contacts').html('<h6>you have no card to recommed</h6>');
+                    $('#contacts').html('<h6>you have no contact to recommed to</h6>');
                 }
             }
         });
@@ -219,6 +214,10 @@
 
     $(document).on('click','.contact-click',function(event){
         alert('recomended');
+    });
+    $(document).on('click','.cancel',function(event){
+
+        setCard();
     });
 
 </script>

@@ -202,8 +202,8 @@
                             $('.services-sm').append('<small>'+services[index]+'</small>');
                             $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
                         }else{
-                            $('.services-sm').append(', <small>'+services[index]+'</small>');
-                            $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                            $('.services-sm').append(' | <small>'+services[index]+'</small>');
+                            $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
                         }
 
                     }
@@ -273,8 +273,8 @@
                     $('.services-sm').append('<small>'+services[index]+'</small>');
                     $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
                 }else{
-                    $('.services-sm').append(', <small>'+services[index]+'</small>');
-                    $('.services').append('<li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                    $('.services-sm').append(' | <small>'+services[index]+'</small>');
+                    $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
                 }
 
             }
