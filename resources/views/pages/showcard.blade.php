@@ -191,9 +191,9 @@
                         $saved = false;
                         $pedding = false;
                         for (let i = 0; i < contacts.length; i++) {
-                            if(contacts[i].user_id === {{$_GET['id']}}){
+                            if(parseInt(contacts[i].user_id)  === {{$_GET['id']}}){
                                 $saved = true;
-                                if(contacts[i].status != 1){
+                                if(parseInt(contacts[i].status) != 1){
                                     $pedding = true;
                                 }
                             }
@@ -228,13 +228,13 @@
                 if(objReview != null){
                     for (let i = 0; i < objReview.length; i++) {
                         let name = 'anonymous';
-                        if(objReview[i].anonymous == 0){
+                        if(parseInt(objReview[i].anonymous) == 0){
                             name = objReview[i].full_name;
                         }
                         $('.reviews').append('<span>'+name+'</span><span class="my-rating-1 float-right" data-rating="'+objReview[i].rating+'"></span><br/><small class="text-blue bg-white">'+objReview[i].comment+'</small><hr class="m-1">')
 
 
-                            if(objReview[i].reviewer == data.user_id){
+                            if(parseInt(objReview[i].reviewer) == data.user_id){
                                 $('.btn-rate').html('Rate Again');
                             }
 
@@ -251,7 +251,7 @@
 
                 if(contacts.length){
                     for (let index = 0; index < contacts.length; index++) {
-                        if(contacts[index].user_id != {{$_GET['id']}}){
+                        if(parseInt(contacts[index].user_id) != {{$_GET['id']}}){
                             $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="#">'+
                             '<div class="col-5 col-sm-4 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
                             '<div class="col-7 col-sm-8 "><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div></div>');
