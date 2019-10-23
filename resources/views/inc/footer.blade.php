@@ -5,7 +5,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <h1 class="footer-heading mb-4"><a href="/home" >Card<span class="text-purple">Moja</span></a></h1>
-                            <p>Digitize The Card , Save The Paper</p>
+                            <p>Digitize Your Coperate And Personal Business Cards Here. it's Easy !</p>
                         </div>
                         <div class="col-md-4">
                             <h2 class="footer-heading mb-4">Quick Links</h2>

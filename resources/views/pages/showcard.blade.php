@@ -87,10 +87,7 @@
                 processData:false,
                 success:function(data)
                 {
-                    //getInfo();
-                    if(data.message === "Unauthenticated."){
-                        alert('hhhhh')
-                    }
+                    setCard();
                 },
                 error: function(XMLHttpRequest, textstatus, errorThrown){
                     if(errorThrown == 'Unauthorized'){

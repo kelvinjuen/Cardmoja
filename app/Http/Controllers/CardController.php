@@ -154,7 +154,7 @@ class CardController extends Controller
     public function show($id)
     {
         $card= DB::table('card_profile')->join('card_details', 'card_profile.details_id', '=', 'card_details.details_id')->select('*')->where('card_profile.user_id',$id)->first();
-        $review= DB::table('review')->join('card_profile', 'review.reviewer', '=', 'card_profile.profile_id')->select('*')->where('user',$id)->get();
+        $review= DB::table('review')->join('card_profile', 'review.reviewer', '=', 'card_profile.user_id')->select('*')->where('user',$id)->get();
         $user_id = 0;
         $contacts =[];
 

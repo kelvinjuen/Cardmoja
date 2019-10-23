@@ -100,15 +100,15 @@
                 if(contacts.length){
                     let pedding =0;
                     for (let index = 0; index < contacts.length; index++) {
-                        if(contacts[index].status == 1){
+                        if(parseInt(contacts[index].status) == 1){
                             $('#contacts').append('<div class="row mt-1 border-left-info align-items-center align-self-start bg-white contact-click" data-href="/card?id='+contacts[index].user_id+'">'+
                             '<div class="col-3 col-sm-2 col-md-2 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="65%" class="img-fluid rounded-circle float-left ml-2"></div>'+
                             '<div class="col-6 col-sm-7 col-md-5"><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div>'+
                             '<div class="col-3 col-sm-3 col-md-4"><span class="my-rating" data-rating="'+contacts[index].rating+'"></span><p class="text-muted"> '+contacts[index].total+' reviews</p></div></div>');
-                        }else if(contacts[index].status == 0){
+                        }else if(parseInt(contacts[index].status) == 0){
                             pedding++;
 
-                            if(contacts[index].action_user !=  {{auth()->user()->user_id}}){
+                            if(parseInt(contacts[index].action_user) !=  {{auth()->user()->user_id}}){
                                 $('.request').append('<div class="row mt-1 border-left-success align-items-center align-self-start bg-white"><div class="col-8 contact-click" data-href="/card?id='+contacts[index].user_id+'">'+
                                 '<div class="row"><div class="p-1 col-4 col-sm-3 col-md-3"><img src="/storage/card_images/'+contacts[index].photo+'" width="70%" class="img-fluid rounded-circle float-left"></div>'+
                                 '<div class="col-8 col-sm-9 col-md-9"><h6 class="text-blue">'+contacts[index].full_name+'</h6><h6>'+contacts[index].position+'</h6></div></div></div>'+
