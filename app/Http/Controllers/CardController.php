@@ -162,14 +162,14 @@ class CardController extends Controller
         if(Auth::check()){
             $user_id = Auth::user()->user_id;
             //contact
-            $contacts = DB::table('connect')->select('full_name','user_id','photo','position')->join('card_profile',function($join){
+            $contacts = DB::table('connect')->select('full_name','user_id','status','photo','position')->join('card_profile',function($join){
                 $join->on('connect.user_2','=','card_profile.user_id');
                 $join->where('connect.user_1','=',auth()->user()->user_id);
                 $join->orOn('connect.user_1','=','card_profile.user_id');
                 $join->where('connect.user_2','=',auth()->user()->user_id);
             })->where(function($query)  use(&$id){
                 $query->where('user_1',auth()->user()->user_id)->orwhere('user_2',auth()->user()->user_id);
-            })->where('status',1)->where('user_1','!=',$id)->where('user_2','!=',$id)->get();
+            })->get();
 
         }
         return response()->json(['card'=>$card, 'review'=>$review,'user_id'=> $user_id,'contacts' => $contacts]);

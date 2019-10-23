@@ -4,14 +4,13 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-4">
-                                <h2 class="footer-heading mb-4"><a href="/home" ><img src="{{ asset('images/uploads/medium/cardmoja_medium-100x100.png')}}" width="30px">CardMoja </a></h2>
-                            <p>hustlers and Proffesionals use cardmoja to grow their audience and get more clients.</p>
+                            <h1 class="footer-heading mb-4"><a href="/home" >Card<span class="text-purple">Moja</span></a></h1>
+                            <p>Digitize The Card , Save The Paper</p>
                         </div>
                         <div class="col-md-4">
                             <h2 class="footer-heading mb-4">Quick Links</h2>
-                                <a href="#">About Us</a>
-                                <<a href="#">Services</a>
-                                <<a href="#">Testimonials</a>
+                                <a href="#">Why us</a>
+                                <a href="#">Testimonials</a>
                                 <a href="#">Contact Us</a>
                         </div>
 

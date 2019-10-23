@@ -127,7 +127,7 @@ h1, h2, h3, h4, h5,
   .site-footer .border-top {
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important; }
   .site-footer p {
-    color: #333333; }
+    color: #fff; }
   .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5 {
     color: #fff; }
   .site-footer a {
@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5,
   .site-footer ul li {
     margin-bottom: 10px; }
   .site-footer .footer-heading {
-    font-size: 16px;
+    font-size: 25px;
     color: #fff; }
 
 .bg-text-line {

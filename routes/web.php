@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
 Route::get('/wallet','PageController@contacts');
+Route::get('/setting','PageController@setting');
 
 Route::get('/links','CardController@socialMedia');
 Route::post('/savelinks','CardController@saveLinks');

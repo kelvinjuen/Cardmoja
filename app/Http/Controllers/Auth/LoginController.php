@@ -56,6 +56,8 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        session(['url.intended' => url()->previous()]);
+        $this->redirectTo =session()->get('url.intended');
         $this->middleware('guest')->except('logout');
     }
 }

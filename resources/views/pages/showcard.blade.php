@@ -73,6 +73,33 @@
         });
     });
 
+    $(document).on('submit', '#add-contact', function(event){
+            event.preventDefault();
+            var success = false;
+            $('.suggestion').empty();
+            $('.request').empty();
+            $('#contacts').empty();
+            $.ajax({
+                url:"{{route('connect.store')}}",
+                method:'POST',
+                data:new FormData(this),
+                contentType:false,
+                processData:false,
+                success:function(data)
+                {
+                    //getInfo();
+                    if(data.message === "Unauthenticated."){
+                        alert('hhhhh')
+                    }
+                },
+                error: function(XMLHttpRequest, textstatus, errorThrown){
+                    if(errorThrown == 'Unauthorized'){
+                        window.location.href = "/login";
+                    }
+                }
+            });
+    });
+
     function setCard(){
         $('[data-toggle="tooltip"]').tooltip();
         $.ajax({
@@ -160,15 +187,38 @@
                     }
 
 
-                        if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
-                            $('#review-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Recomend This Card</button>@include("pages.template.ratingdefault"));
-                        }else{
-                            $('#review-div').html('@include("pages.template.ratingdefault"));
-                            $('.rate').hide();
-                            if(data.user_id != 0){
-                                $('.wallet-link').html('<a href="#" class="btn btn-primary btn-block my-2 add-wallet">ADD TO CARD WALLET</a>');
+                    if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
+                        $saved = false;
+                        $pedding = false;
+                        for (let i = 0; i < contacts.length; i++) {
+                            if(contacts[i].user_id === {{$_GET['id']}}){
+                                $saved = true;
+                                if(contacts[i].status != 1){
+                                    $pedding = true;
+                                }
                             }
                         }
+                        if($saved){
+                            if($pedding){
+                                $('#review-div').html('@include("pages.template.ratingdefault"));
+                                $('.rate').hide();
+                            }else{
+                                $('#review-div').html('<button type="button" class="btn btn-primary btn-block my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Recomend This Card</button>@include("pages.template.ratingdefault"));
+                            }
+                        }else{
+                            $('#review-div').html('<form id="add-contact"><input type="hidden" name="user_1" value="'+data.user_id+'"> '+
+                                                    '<input type="hidden" name="user_2" value="{{$_GET['id']}}">{{csrf_field() }}'+
+                                                    '<button type="submit" class="btn btn-primary btn-block btn-sm">Save This Card</button></form>');
+                        }
+                    }else{
+                        $('#review-div').html('@include("pages.template.ratingdefault"));
+                        $('.rate').hide();
+                        if(data.user_id != 0){
+                            $('#wallet-link').html('<a href="#" class="btn btn-primary btn-block my-2 add-wallet">ADD TO CARD WALLET</a>');
+                        }else{
+                            $('#wallet-link').html('<a href="/login" class="btn btn-primary btn-block my-2 add-wallet">ADD TO WALLET</a>');
+                        }
+                    }
 
 
 
@@ -201,9 +251,12 @@
 
                 if(contacts.length){
                     for (let index = 0; index < contacts.length; index++) {
-                        $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="#">'+
-                        '<div class="col-5 col-sm-4 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
-                        '<div class="col-7 col-sm-8 "><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div></div>');
+                        if(contacts[index].user_id != {{$_GET['id']}}){
+                            $('#contacts').append('<div class="row mt-1 border align-items-center align-self-start bg-white contact-click" data-href="#">'+
+                            '<div class="col-5 col-sm-4 p-1 "><img src="/storage/card_images/'+contacts[index].photo+'" width="40%" class="img-fluid rounded-circle float-left ml-2"></div>'+
+                            '<div class="col-7 col-sm-8 "><h5 class="text-blue">'+contacts[index].full_name+'</h5><h6>'+contacts[index].position+'</h6></div></div>');
+                        }
+
                     }
                 }else{
                     $('#contacts').html('<h6>you have no contact to recommed to</h6>');

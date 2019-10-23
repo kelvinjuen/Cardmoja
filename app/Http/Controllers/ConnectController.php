@@ -46,6 +46,7 @@ class ConnectController extends Controller
      */
     public function store(Request $request)
     {
+        if(4)
         DB::table('connect')->insert(['user_1'=>request()->get('user_1'),'user_2'=>request()->get('user_2')
         ,'action_user'=>request()->get('user_1'),'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now()]);
     }
@@ -81,7 +82,7 @@ class ConnectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('connect')->where('connect_id',request()->get('connect_id'))->update(['status'=> 1]);
+        DB::table('connect')->where('connect_id',request()->get('connect_id'))->update(['status'=> request()->get('status')]);
     }
 
     /**
@@ -99,14 +100,14 @@ class ConnectController extends Controller
         $id = auth()->user()->user_id;
 
         //contact
-        $contacts = DB::table('connect')->select('full_name','user_id','photo','position','status as rating','status as total')->join('card_profile',function($join){
+        $contacts = DB::table('connect')->select('full_name','user_id','photo','position','status','action_user','connect_id','status as rating','status as total')->join('card_profile',function($join){
             $join->on('connect.user_2','=','card_profile.user_id');
             $join->where('connect.user_1','=',auth()->user()->user_id);
             $join->orOn('connect.user_1','=','card_profile.user_id');
             $join->where('connect.user_2','=',auth()->user()->user_id);
         })->where(function($query){
             $query->where('user_1',auth()->user()->user_id)->orwhere('user_2',auth()->user()->user_id);
-        })->where('status',1)->get();
+        })->get();
 
         foreach ($contacts as &$value) {
             $rating = DB::table('review')->select(DB::raw('avg(rating) as rating , count(rating) as total'))->where('user',$value->user_id)->first();
@@ -114,14 +115,11 @@ class ConnectController extends Controller
             $value->total = $rating->total;
         }
 
-        //request
-        $request =  DB::table('connect')->select('user_id','full_name','connect_id','photo','position')->join('card_profile', 'connect.user_1', '=', 'card_profile.user_id')->where('user_2',$id)->where('status',0)->get();
-
         //suggestion
         $suggestion = DB::select(DB::raw("SELECT u.full_name ,u.user_id,u.photo,u.position FROM card_profile AS u WHERE NOT EXISTS (SELECT * FROM connect AS c WHERE (c.user_1 = u.user_id AND c.user_2 = '$id' ) OR (c.user_1 = '$id' AND c.user_2 = u.user_id)) AND u.user_id <> '$id'"));
 
 
 
-        return response()->json(['contacts'=> $contacts,'suggestion'=>$suggestion,'request'=>$request]);
+        return response()->json(['contacts'=> $contacts]);
     }
 }

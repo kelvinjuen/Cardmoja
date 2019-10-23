@@ -8,7 +8,7 @@
 </div>
 <header class="site-navbar py-2 bg-white" role="banner">
 
-    <div class="container">
+    <div class="container-fluid">
       <div class="row align-items-center">
 
         <div class="col-11 col-xl-2">
@@ -21,7 +21,7 @@
                 <li class="active"><a href="/home"><i class="icon-home"></i><span>HOME</span></a></li>
                 <li class="normal"><a href="/wallet"><i class="icon-list-ul"></i><span>WALLET</span></a></li>
                 <li class="has-children">
-                    <a href=""><i class="icon-edit"></i><span>EDIT</span></a>
+                    <a href="#"><i class="icon-edit"></i><span>EDIT</span></a>
                     <ul class="dropdown">
                       <li><a href="/card/{{auth()->user()->user_id}}/edit">Card Details</a></li>
                       <li><a href="/links">Internet Links</a></li>
@@ -29,7 +29,7 @@
                     </ul>
                 </li>
                 <li><a href="#"><span>SUBSCRIPTION</span></a></li>
-                <li><a href="#"><i class="icon-settings"></i><span>SETTING</span></a></li>
+                <li><a href="/setting"><i class="icon-settings"></i><span>SETTING</span></a></li>
 
                  <!-- Authentication Links -->
                 @guest

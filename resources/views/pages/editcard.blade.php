@@ -164,7 +164,7 @@
 
                     <input type="hidden" name="imagetodelete" id="imagetodelete">
                     <input type="hidden" name="_method" id="_method" value="PUT">
-                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Next</button>
+                    <button type="submit" id="submit_card" class="btn btn-primary btn-sm col-12">Save</button>
                     {{csrf_field() }}
                 </form>
             </div>
@@ -215,7 +215,7 @@
                     if(obj != null){
 
                     }else{
-                        window.location.href = "/links";
+                        window.location.href = "/home";
 
                     }
                 }
@@ -376,7 +376,7 @@
         var input = document.getElementById('input');
         var $modal = $('#modal');
         var minAspectRatio = 0.5;
-        var maxAspectRatio = 1.5;
+        var maxAspectRatio = 2;
         var cropper;
 
         $('[data-toggle="tooltip"]').tooltip();

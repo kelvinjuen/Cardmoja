@@ -10,17 +10,17 @@
                 <form id="design_form" method="POST" enctype="multipart/form-data">
 
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Types</label>
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Card Layout</label>
                         <div class="col-sm-8">
                             <select class="custom-select type-select" id="type-select" name="type-select">
-                                <option value="1">type 1</option>
-                                <option value="2">type 2</option>
-                                <option value="3">type 3</option>
+                                <option value="1">Layout 1</option>
+                                <option value="2">Layout 2</option>
+                                <option value="3">Layout 3</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Card Background</label>
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Theme</label>
                         <div class="col-sm-8">
                             <select class="custom-select background-select" name="background-select" id="background-select">
                                 <option value="blue.jpg" selected>Blue</option>
@@ -48,7 +48,7 @@
                     <div class="form-group row">
                         <div class="col-md-4 offset-md-4 text-center">
                             <label class="label btn btn-primary" data-toggle="tooltip" title="Choose your profile photo">
-                                    <h6>Upload Custom BackGround</h6>
+                                    <h6>Upload Custom BackGround theme</h6>
                                     <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
                             </label>
                         </div>
@@ -69,7 +69,7 @@
 
                         <div class="col-sm-12">
                             <input type="hidden" name="imagetodelete" id="imagetodelete" value=""/>
-                            <button type="submit"  class="btn btn-primary btn-block">Save Card</button>
+                            <button type="submit"  class="btn btn-primary btn-block">Save</button>
                         </div>
                         {{csrf_field()}}
                     </div>
