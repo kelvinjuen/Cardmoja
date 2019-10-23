@@ -208,7 +208,8 @@
                         }else{
                             $('#review-div').html('<form id="add-contact"><input type="hidden" name="user_1" value="'+data.user_id+'"> '+
                                                     '<input type="hidden" name="user_2" value="{{$_GET['id']}}">{{csrf_field() }}'+
-                                                    '<button type="submit" class="btn btn-primary btn-block btn-sm">Save This Card</button></form>');
+                                                    '<button type="submit" class="btn btn-primary btn-block btn-sm">Add To Wallet</button></form>@include("pages.template.ratingdefault"));
+                                                    $('.rate').hide();
                         }
                     }else{
                         $('#review-div').html('@include("pages.template.ratingdefault"));
