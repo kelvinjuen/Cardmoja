@@ -36,7 +36,7 @@
                     <li><a class="cta" href="{{ route('login') }}"><span class="border-left pl-xl-4"></span><span class="bg-primary text-white rounded">{{ __('Sign in') }}</span></a></li>
                 @else
                     <li class="has-children">
-                        <a href="#"><span class="border-left pl-xl-4"></span><img src="{{ asset('images/uploads/medium/user.png')}}" width="40px"> <span class="caret"></span></a>
+                        <a href="#"><span class="border-left pl-xl-4"></span><img src="{{ asset('images/medium/user.png')}}" width="40px"> <span class="caret"></span></a>
 
                         <ul class="dropdown">
                             <li><a class="dropdown-item" href="{{ route('logout') }}"

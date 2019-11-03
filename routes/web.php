@@ -22,6 +22,7 @@ Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
 Route::get('/wallet','PageController@contacts');
 Route::get('/setting','PageController@setting');
+Route::get('/contactus','PageController@contactus');
 
 Route::get('/links','CardController@socialMedia');
 Route::post('/savelinks','CardController@saveLinks');
@@ -41,6 +42,7 @@ Route::resource('card','CardController');
 Route::resource('connect','ConnectController');
 Route::resource('coperate','CoperateController');
 Route::resource('review', 'ReviewController');
+Route::resource('admin', 'AdminController');
 
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/user', 'GraphController@retrieveUserProfile');

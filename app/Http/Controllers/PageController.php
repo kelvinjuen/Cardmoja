@@ -23,4 +23,8 @@ class PageController extends Controller
         return view ('pages.setting');
     }
 
+    public function contactus(){
+        return view ('pages.contactus');
+    }
+
 }

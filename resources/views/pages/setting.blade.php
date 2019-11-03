@@ -2,7 +2,6 @@
 
 @section('content')
 @include('inc.navbar')
-@include('inc.share',['url' => 'https://cardmoja.com/card?id='.auth()->user()->user_id])
 <div class="site-blocks-cover"  data-aos="fade" data-stellar-background-ratio="0.5">
     <div class="container-fluid">
         <div class="row  justify-content-start">

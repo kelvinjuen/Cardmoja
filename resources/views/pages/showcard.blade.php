@@ -209,12 +209,10 @@
                                                     $('.rate').hide();
                         }
                     }else{
-                        $('#review-div').html('@include("pages.template.ratingdefault"));
-                        $('.rate').hide();
-                        if(data.user_id != 0){
-                            $('#wallet-link').html('<a href="#" class="btn btn-primary btn-block my-2 add-wallet">ADD TO CARD WALLET</a>');
-                        }else{
+                        if(!data.user_id != 0){
                             $('#wallet-link').html('<a href="/login" class="btn btn-primary btn-block my-2 add-wallet">ADD TO WALLET</a>');
+                        }else{
+                            window.location.href = "/home";
                         }
                     }
 
