@@ -7,7 +7,7 @@
             <div class="col-12 col-md-6 col-xl-8">
                 <div class="row justify-content-center mb-4">
                     <div class="col-12  text-center">
-                        <h1 data-aos="fade-up" class="footer-heading mb-4"><img src="{{ asset('images/medium/CardMoja-icon.png') }}" width="70px"><span class="text-blue">ard</span><span class="text-purple">Moja</span></h1>
+                        <h1 data-aos="fade-up" class="footer-heading mb-4"><img src="{{ asset('images/medium/cardmoja-icon.png') }}" width="70px"><span class="text-blue">ard</span><span class="text-purple">Moja</span></h1>
                         <h5 class="text-white" data-aos="fade-up" data-aos-delay="100">Simple <i class="icon-hand-o-right"></i> Smart <i class="icon-hand-o-right"></i> Savvy</h5>
                         <a href="/register" class="btn btn-outline-primary text-white btn-md font-weight-bold">Sign Up</a>
 
