@@ -134,14 +134,14 @@
                     $('.position').html(obj.position);
 
                     if(obj.phone_no != null){
-                        $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></li>');
+                        $('.info').append(' <li ><a href="tel:'+obj.phone_no+'"><span class ="icon-phone"> </span>'+obj.phone_no+'</a></li>');
+                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><a href="tel:'+obj.phone_no+'"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></a></li>');
                     }
                     if(obj.email != null){
                         let email = obj['email'].split("/");
                         for (let index = 0; index < email.length; index++) {
-                            $('.info').append(' <li ><span class ="icon-mail_outline"> </span>'+email[index]+'</li>');
-                            $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></li>');
+                            $('.info').append(' <li ><a href="mailto:'+email[index]+'"><span class ="icon-mail_outline"> </span>'+email[index]+'</a></li>');
+                            $('.info-inline').append('<li class="mr-1" style="display: inline-block;"><a href="mailto:'+email[index]+'"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></a></li>');
                         }
                     }
                     if(obj.physical_address != null){
