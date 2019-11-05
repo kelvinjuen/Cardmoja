@@ -155,7 +155,6 @@
                     if(obj['social_media'] != null){
                         let social = obj['social_media'].split(",");
                         for (let index = 0; index < social.length; index++) {
-                            alert(social_link[0]);
                             let social_link = social[index].split("->")
                             if(social_link[0] === 'facebook'){
                                 $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
