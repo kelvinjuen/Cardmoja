@@ -179,8 +179,8 @@ class CardController extends Controller
         }
         //dd($user);
 
-        $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notification from CardMoja',
-        'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/') ];
+        $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
+        'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
         Notification::send($user, new CardView($details));
         return response()->json(['card'=>$card, 'review'=>$review,'user_id'=> $user_id,'contacts' => $contacts]);
     }

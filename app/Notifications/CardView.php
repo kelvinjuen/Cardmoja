@@ -31,7 +31,7 @@ class CardView extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail','database'];
     }
 
     /**
@@ -59,6 +59,12 @@ class CardView extends Notification
     {
         return [
             //
+        ];
+    }
+    public function toDatabase($notifiable)
+    {
+        return [
+            'notifiable_type' =>$this->details['notifiable_type']
         ];
     }
 }
