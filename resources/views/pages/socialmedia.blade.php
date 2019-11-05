@@ -13,6 +13,8 @@
                                 <option value="facebook">Facebook</option>
                                 <option value="twitter">Twitter</option>
                                 <option value="github">Github</option>
+                                <option value="linkedin">Linkedin</option>
+                                <option value="youtube">youtube</option>
                             </select>
                         </div>
                     </div>

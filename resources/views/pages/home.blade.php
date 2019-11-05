@@ -98,6 +98,9 @@
                             if(social_link[0] === 'github'){
                                 $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
                             }
+                            if(social_link[0] === 'youtube'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-2"><span class="icon-youtube-square"></span></a>');
+                            }
                         }
                     }
 
