@@ -156,7 +156,7 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        $user =User::first();
+        $user =User::find($id);
         $card= DB::table('card_profile')->join('card_details', 'card_profile.details_id', '=', 'card_details.details_id')->select('*')->where('card_profile.user_id',$id)->first();
         $review= DB::table('review')->join('card_profile', 'review.reviewer', '=', 'card_profile.user_id')->select('*')->where('user',$id)->get();
         $user_id = 0;
@@ -177,7 +177,7 @@ class CardController extends Controller
             })->get();
 
         }
-        //dd($user);
+        dd($user);
 
         $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
         'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
