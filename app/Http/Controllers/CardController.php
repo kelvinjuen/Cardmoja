@@ -177,7 +177,7 @@ class CardController extends Controller
             })->get();
 
         }
-        dd($user);
+        //dd($user);
 
         $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
         'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
