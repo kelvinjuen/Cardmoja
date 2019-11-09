@@ -153,7 +153,7 @@
     let popupsize = {
         width: 780,
         height: 550
-    };
+    }
     $(document).on('click', '.modal-body > a', function(e){
         let verticalPos = Math.floor(($(window).width() - popupsize.width)/2),
             horizontalPos = Math.floor(($(window).height() - popupsize.height)/2);
@@ -167,7 +167,7 @@
             popup.focus();
             e.preventDefault();
         }
-    })
+    });
 </script>
 
 @endsection

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class CardView extends Notification
+class requestNotification extends Notification
 {
     use Queueable;
 
@@ -43,10 +43,10 @@ class CardView extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting($this->details['greeting'])
-                    ->line($this->details['body'])
-                    ->action($this->details['actionText'], $this->details['actionURL'])
-                    ->line($this->details['thanks']);
+            ->greeting($this->details['greeting'])
+            ->line($this->details['body'])
+            ->action($this->details['actionText'], $this->details['actionURL'])
+            ->line($this->details['thanks']);
     }
 
     /**

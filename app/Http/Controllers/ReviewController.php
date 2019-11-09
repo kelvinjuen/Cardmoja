@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\reviewNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
+use Illuminate\Support\Facades\Notification;
 
 class ReviewController extends Controller
 {
@@ -45,6 +48,10 @@ class ReviewController extends Controller
             'reviewer'=>auth()->user()->user_id,'user' => request()->get('card-id')],['anonymous' => $anonymous ,'rating'=> request()->get('rating'),
             'comment' => request()->get('comments'),'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now(),
         ]);
+        $user =User::find(request()->get('card-id'));
+        $details =['greeting' => 'Hi', 'body' => 'your Digital card has been reviewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
+        'actionText' => 'Check out who has reviewed your card', 'actionURL' => url('/'), 'notifiable_type' => '102' ];
+        Notification::send($user, new reviewNotification($details));
     }
 
     /**

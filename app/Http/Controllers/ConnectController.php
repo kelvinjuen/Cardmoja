@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\reviewNotification;
 use Illuminate\Http\Request;
 use DB;
+use App\User;
+use Illuminate\Support\Facades\Notification;
 
 class ConnectController extends Controller
 {
@@ -49,6 +52,11 @@ class ConnectController extends Controller
         if(4)
         DB::table('connect')->insert(['user_1'=>request()->get('user_1'),'user_2'=>request()->get('user_2')
         ,'action_user'=>request()->get('user_1'),'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now()]);
+
+        $user =User::find(request()->get('user_2'));
+        $details =['greeting' => 'Hi', 'body' => 'you have a card request' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
+        'actionText' => 'view the request', 'actionURL' => url('/'), 'notifiable_type' => '103' ];
+        Notification::send($user, new reviewNotification($details));
     }
 
     /**

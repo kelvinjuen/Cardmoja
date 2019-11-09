@@ -4,6 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1 , shrink-to-fit=no">
 
+    <meta name="description" content="Digitize Your Corporate And Personal Business Cards">
+    <meta property="og:title" content="CardMoja" />
+    <meta property="og:url" content="https://www.cardmoja.com/" />
+    <meta property="og:description" content="Digitize Your Corporate And Personal Business Cards">
+    <meta property="og:image" content="{{ asset('images/medium/CardMoja_medium.png') }}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
