@@ -190,7 +190,7 @@
                         }
                     }
                     if(obj.email != null){
-                        if(setting.email === 0){
+                        if(setting.email == 0){
                             let email = obj['email'].split("/");
                             for (let index = 0; index < email.length; index++) {
                                 $('.info').append(' <li ><a class="text-decoration-none text-reset" href="mailto:'+email[index]+'"><span class ="icon-mail_outline"> </span>'+email[index]+'</a></li>');
@@ -218,7 +218,7 @@
                         }
                     }
                     if(obj.post_address != null){
-                        if(setting.post === 0){
+                        if(setting.post == 0){
                             $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
                             $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
                         }else{
@@ -231,7 +231,7 @@
                     }
                     if(obj['social_media'] != null){
                         let social = obj['social_media'].split(",");
-                        if(setting.social_links === 0){
+                        if(setting.social_links == 0){
                             for (let index = 0; index < social.length; index++) {
 
                                 let social_link = social[index].split("->")
