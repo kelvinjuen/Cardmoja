@@ -173,7 +173,7 @@
                     }
 
                     if(obj.phone_no != null){
-                        if(setting.phone === 0){
+                        if(setting.phone == 0){
                             let phone = obj['phone_no'].split("/");
                             for (let index = 0; index < phone.length; index++) {
                                 $('.info').append(' <li ><a class="text-decoration-none text-reset" href="tel:'+phone[index]+'"><span class ="icon-phone"> </span>'+phone[index]+'</a></li>');
@@ -207,7 +207,7 @@
                         }
                     }
                     if(obj.physical_address != null){
-                        if(setting.physical === 0){
+                        if(setting.physical == 0){
                             $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
                             $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
                         }else{
