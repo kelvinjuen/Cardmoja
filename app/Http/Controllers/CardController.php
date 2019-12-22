@@ -11,6 +11,7 @@ use Auth;
 use App\User;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\CardView;
+use Jenssegers\Agent\Agent;
 
 class CardController extends Controller
 {
@@ -180,16 +181,28 @@ class CardController extends Controller
 
         }
         //dd($user);
+        $agent = new Agent();
+        $platform = $agent->platform();
 
         if($user_id == 0){
-            $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
-            'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
+            //$details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your CardMoja card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
+            //'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
             //Notification::send($user, new CardView($details));
+
+            DB::table('cardview')->insert([
+                'card_id' => $id,'viewer_id' => $user_id,'device' => $platform,'updated_at' => \Carbon\Carbon::now()
+                ,'created_at' => \Carbon\Carbon::now(),
+            ]);
+
+
         }else if($user_id !== Auth::user()->user_id){
-            $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
-            'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
-           //Notification::send($user, new CardView($details));
+            DB::table('cardview')->insert([
+                'card_id' => $id,'viewer_id' => $user_id,'device' => $platform,'updated_at' => \Carbon\Carbon::now()
+                ,'created_at' => \Carbon\Carbon::now(),
+            ]);
         }
+
+
 
         return response()->json(['card'=>$card, 'review'=>$review,'user_id'=> $user_id,'contacts' => $contacts,'setting'=>$setting]);
 

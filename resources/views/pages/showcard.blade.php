@@ -168,7 +168,7 @@
                         if(!data.user_id != 0){
                             $('#wallet-link').html('<a href="/login" class="btn btn-primary btn-block my-2 add-wallet">ADD TO WALLET</a>');
                         }else{
-                            window.location.href = "/home";
+                            window.location.href = "/";
                         }
                     }
 

@@ -12,15 +12,17 @@ class CardView extends Notification
     use Queueable;
 
     private $details;
+    private $views;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($details,$views)
     {
         $this->details = $details;
+        $this->views = $views;
     }
 
     /**
@@ -31,7 +33,10 @@ class CardView extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail','database'];
+        if ($this->views > 0){
+            return ['mail','database'];
+        }
+        return [];
     }
 
     /**
