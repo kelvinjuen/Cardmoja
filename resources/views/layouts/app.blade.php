@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/star-rating-svg.css') }}"  type="text/css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-colorpicker.min.css') }}">
+    <link href="{{ asset('fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/jQuery-3.4.1.min.js') }}"></script>
@@ -55,7 +56,7 @@
 
 
 </head>
-<body>
+<body id="page-top">
     <script>
         $(window).load(function() {
             // Animate loader off screen

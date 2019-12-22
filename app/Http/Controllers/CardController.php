@@ -159,6 +159,7 @@ class CardController extends Controller
         $user =User::find($id);
         $card= DB::table('card_profile')->join('card_details', 'card_profile.details_id', '=', 'card_details.details_id')->select('*')->where('card_profile.user_id',$id)->first();
         $review= DB::table('review')->join('card_profile', 'review.reviewer', '=', 'card_profile.user_id')->select('*')->where('user',$id)->get();
+        $setting = DB::table('user_setting')->select('*')->where('user_id',$id)->first();
         $user_id = 0;
         $contacts =[];
 
@@ -183,14 +184,14 @@ class CardController extends Controller
         if($user_id == 0){
             $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
             'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
-            Notification::send($user, new CardView($details));
+            //Notification::send($user, new CardView($details));
         }else if($user_id !== Auth::user()->user_id){
             $details =['greeting' => 'Hi '.$card->full_name, 'body' => 'your Digital card has been viewed' , 'thanks' => 'Please feel free to customize your notifications from CardMoja',
             'actionText' => 'Check out who has viewed your card', 'actionURL' => url('/'), 'notifiable_type' => '101' ];
-            Notification::send($user, new CardView($details));
+           //Notification::send($user, new CardView($details));
         }
 
-        return response()->json(['card'=>$card, 'review'=>$review,'user_id'=> $user_id,'contacts' => $contacts]);
+        return response()->json(['card'=>$card, 'review'=>$review,'user_id'=> $user_id,'contacts' => $contacts,'setting'=>$setting]);
 
 
 

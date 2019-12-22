@@ -20,8 +20,16 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Theme</label>
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">BackGround Theme</label>
                         <div class="col-sm-8">
+                            <select class="custom-select option-select" name="option-select" id="option-select">
+                                <option value="default" selected>Default Themes</option>
+                                <option value="custom">Custom Themes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 offset-md-4" id="default-wrap">
                             <select class="custom-select background-select" name="background-select" id="background-select">
                                 <option value="blue.jpg" selected>Blue</option>
                                 <option value="red.jpg">Red</option>
@@ -29,47 +37,32 @@
                                 <option value="purple.jpg">Purple</option>
                             </select>
                         </div>
+                        <div class="col-sm-8 offset-md-4" id="custom-wrap">
+                            <label class="label btn btn-outline-info btn-sm col-12" data-toggle="tooltip" title="Upload customized Theme">
+                                <h6>Upload Custom BackGround theme</h6>
+                                <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
+                            </label>
+                        </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Primary Colour</label>
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Text Colour 1</label>
                         <div class="col-sm-8">
                             <input type="color" name="colour_1" class="form-control" value="#ffffff"  id="colour_1"/>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-4 col-form-label">Secondary Colour </label>
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Text colour 2</label>
                         <div class="col-sm-8">
                             <input type="color" name="colour_2" class="form-control" value="#ff0000"  id="colour_2"/>
                         </div>
                     </div>
+
+
                     <div class="form-group row">
 
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-4 offset-md-4 text-center">
-                            <label class="label btn btn-primary" data-toggle="tooltip" title="Choose your profile photo">
-                                    <h6>Upload Custom BackGround theme</h6>
-                                    <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked>
-                        <label class="form-check-label" for="defaultCheck1">
-                          Profile photo
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                        <label class="form-check-label" for="defaultCheck2">
-                          company logo
-                    </label>
-                      </div>
-                    <div class="form-group row">
-
-                        <div class="col-sm-12">
+                        <div class="col-sm-8 offset-md-4">
                             <input type="hidden" name="imagetodelete" id="imagetodelete" value=""/>
-                            <button type="submit"  class="btn btn-primary btn-block">Save</button>
+                            <button type="submit"  class="btn btn-outline-success btn-block">Save</button>
                         </div>
                         {{csrf_field()}}
                     </div>
@@ -115,6 +108,7 @@
     var formData;
     let file;
     let obj;
+    let colour2;
     $(document).ready(function(){
         document.getElementById("background-select").selectedIndex = -1;
         $.ajax({
@@ -147,8 +141,11 @@
                     $('#type-select').val(obj.type);
                     if(bg[0] != 'custom'){
                         $('#background-select').val(obj.bg_image);
+                        $('#custom-wrap').hide();
                     }else{
                         $('#imagetodelete').attr("value" , obj.bg_image);
+                        $('#default-wrap').hide();
+                        $('#option-select').val('custom');
                     }
                 }
                 if(obj != null){
@@ -192,7 +189,39 @@
                                 $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
                             }
                         }
+                    } if(obj['social_media'] != null){
+                        let social = obj['social_media'].split(",");
+                        for (let index = 0; index < social.length; index++) {
+
+                            let social_link = social[index].split("->")
+                            if(social_link[0] === 'facebook'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-1"><span class="icon-facebook-square"></span></a>');
+                                $('.info-temp').append('<a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                            }
+                            if(social_link[0] === 'twitter'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                            }
+                            if(social_link[0] === 'github'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+
+                            }
+                            if(social_link[0] === 'youtube'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                            }
+                            if(social_link[0] === 'instagram'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                            }
+                            if(social_link[0] === 'linkedin'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                            }
+                        }
                     }
+
 
 
                     var services = obj['services'].split(",");
@@ -214,14 +243,12 @@
     });
 
     function getdata(){
-        if(obj.bg_image !== null){
-            document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+obj.bg_image+"')";
-            document.getElementById("cardwrapper").style.color =obj.colour_1;
-            let elements = document.getElementsByClassName("colour_2");
-            for (let i = 0; i < elements.length; i++) {
-                elements[i].style.color = obj.colour_2;
-            }
+
+        let elements = document.getElementsByClassName("colour_2");
+        for (let i = 0; i < elements.length; i++) {
+            elements[i].style.color = colour2;
         }
+
         if(obj != null){
             $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
             $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
@@ -249,21 +276,38 @@
                 $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
             }
             if(obj['social_media'] != null){
-                let social = obj['social_media'].split(",");
-                for (let index = 0; index < social.length; index++) {
+                        let social = obj['social_media'].split(",");
+                        for (let index = 0; index < social.length; index++) {
 
-                    let social_link = social[index].split("->")
-                    if(social_link[0] === 'facebook'){
-                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                            let social_link = social[index].split("->")
+                            if(social_link[0] === 'facebook'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-1"><span class="icon-facebook-square"></span></a>');
+                                $('.info-temp').append('<a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                            }
+                            if(social_link[0] === 'twitter'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                            }
+                            if(social_link[0] === 'github'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+
+                            }
+                            if(social_link[0] === 'youtube'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                            }
+                            if(social_link[0] === 'instagram'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                            }
+                            if(social_link[0] === 'linkedin'){
+                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                                $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                            }
+                        }
                     }
-                    if(social_link[0] === 'twitter'){
-                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
-                    }
-                    if(social_link[0] === 'github'){
-                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
-                    }
-                }
-            }
+
 
 
             var services = obj['services'].split(",");
@@ -302,7 +346,7 @@
                     let type = '{{auth()->user()->type}}' ;
 
                     if(type == 'personal'){
-                        window.location.href = "/home";
+                        window.location.href = "/";
                     }else{
                         window.location.href = "/coperate";
                     }
@@ -325,6 +369,17 @@
         getdata();
     });
 
+    $(document).on('change','#option-select', function(){
+        var selectedBg = $(this).children("option:selected").val();
+        $('#custom-wrap').hide();
+        $('#default-wrap').hide();
+        if(selectedBg == 'default'){
+            $('# default-wrap').show();
+        }else{
+            $('#custom-wrap').show();
+        }
+    });
+
     $(document).on('change','#background-select', function(){
         var selectedBg = $(this).children("option:selected").val();
         document.getElementById("card-container").style.backgroundImage ="url('/storage/background_images/"+selectedBg+"')";
@@ -336,6 +391,7 @@
     });
     $(document).on('input','#colour_2', function(){
         let elements = document.getElementsByClassName("colour_2");
+        colour2 = $(this).val();
         for (let i = 0; i < elements.length; i++) {
             elements[i].style.color =$(this).val();
         }

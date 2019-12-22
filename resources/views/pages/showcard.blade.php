@@ -109,6 +109,10 @@
                 let obj = data.card;
                 let objReview = data.review;
                 let contacts = data.contacts;
+                let setting = data.setting;
+                let saved = false;
+                let pedding = false;
+                let connect = false;
 
                 if(obj.type == 1){
                     $('#cardwrapper').html('@include("pages.template.1"));
@@ -133,73 +137,22 @@
                     $('.card-name').html(obj.full_name);
                     $('.position').html(obj.position);
 
-                    if(obj.phone_no != null){
-                        $('.info').append(' <li ><a href="tel:'+obj.phone_no+'"><span class ="icon-phone"> </span>'+obj.phone_no+'</a></li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><a href="tel:'+obj.phone_no+'"><small><span class ="icon-phone"> </span>'+obj.phone_no+'</small></a></li>');
-                    }
-                    if(obj.email != null){
-                        let email = obj['email'].split("/");
-                        for (let index = 0; index < email.length; index++) {
-                            $('.info').append(' <li ><a href="mailto:'+email[index]+'"><span class ="icon-mail_outline"> </span>'+email[index]+'</a></li>');
-                            $('.info-inline').append('<li class="mr-1" style="display: inline-block;"><a href="mailto:'+email[index]+'"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></a></li>');
-                        }
-                    }
-                    if(obj.physical_address != null){
-                        $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
-                    }
-                    if(obj.post_address != null){
-                        $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
-                        $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
-                    }
-                    if(obj['social_media'] != null){
-                        let social = obj['social_media'].split(",");
-                        for (let index = 0; index < social.length; index++) {
-                            let social_link = social[index].split("->")
-                            if(social_link[0] === 'facebook'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
-                            }
-                            if(social_link[0] === 'twitter'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-2"><span class="icon-twitter-square"></span></a>');
-                            }
-                            if(social_link[0] === 'github'){
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-2"><span class="icon-github-square"></span></a>');
-                            }
-                            if(social_link[0] === 'youtube'){
-
-                                $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-2"><span class="icon-youtube"></span></a>');
-                            }
-                        }
-                    }
-
-
-                    var services = obj['services'].split(",");
-
-                    for (let index = 0; index < services.length; index++) {
-                        if(index == 0){
-                            $('.services-sm').append('<small>'+services[index]+'</small>');
-                            $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
-                        }else{
-                            $('.services-sm').append(' | <small>'+services[index]+'</small>');
-                            $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
-                        }
-
-                    }
-
-
                     if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
-                        $saved = false;
-                        $pedding = false;
+
                         for (let i = 0; i < contacts.length; i++) {
                             if(parseInt(contacts[i].user_id)  === {{$_GET['id']}}){
-                                $saved = true;
+                                saved = true;
                                 if(parseInt(contacts[i].status) != 1){
-                                    $pedding = true;
+                                    pedding = true;
+                                }
+
+                                if(parseInt(contacts[i].status) === 1){
+                                    connect = true;
                                 }
                             }
                         }
-                        if($saved){
-                            if($pedding){
+                        if(saved){
+                            if(pedding){
                                 $('#review-div').html('@include("pages.template.ratingdefault"));
                                 $('.rate').hide();
                             }else{
@@ -219,8 +172,143 @@
                         }
                     }
 
+                    if(obj.phone_no != null){
+                        if(setting.phone === 0){
+                            let phone = obj['phone_no'].split("/");
+                            for (let index = 0; index < phone.length; index++) {
+                                $('.info').append(' <li ><a class="text-decoration-none text-reset" href="tel:'+phone[index]+'"><span class ="icon-phone"> </span>'+phone[index]+'</a></li>');
+                                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><a class="text-decoration-none text-reset" href="tel:'+phone[index]+'"><small><span class ="icon-phone"> </span>'+phone[index]+'</small></a></li>');
+                            }
+                        }else{
+                            if(connect){
+                                let phone = obj['phone_no'].split("/");
+                                for (let index = 0; index < phone.length; index++) {
+                                    $('.info').append(' <li ><a class="text-decoration-none text-reset" href="tel:'+phone[index]+'"><span class ="icon-phone"> </span>'+phone[index]+'</a></li>');
+                                    $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><a class="text-decoration-none text-reset" href="tel:'+phone[index]+'"><small><span class ="icon-phone"> </span>'+phone[index]+'</small></a></li>');
+                                }
+                            }
+                        }
+                    }
+                    if(obj.email != null){
+                        if(setting.email === 0){
+                            let email = obj['email'].split("/");
+                            for (let index = 0; index < email.length; index++) {
+                                $('.info').append(' <li ><a class="text-decoration-none text-reset" href="mailto:'+email[index]+'"><span class ="icon-mail_outline"> </span>'+email[index]+'</a></li>');
+                                $('.info-inline').append('<li class="mr-1" style="display: inline-block;"><a class="text-decoration-none text-reset" href="mailto:'+email[index]+'"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></a></li>');
+                            }
+                        }else{
+                            if(connect){
+                                let email = obj['email'].split("/");
+                                for (let index = 0; index < email.length; index++) {
+                                    $('.info').append(' <li ><a class="text-decoration-none text-reset" href="mailto:'+email[index]+'"><span class ="icon-mail_outline"> </span>'+email[index]+'</a></li>');
+                                    $('.info-inline').append('<li class="mr-1" style="display: inline-block;"><a class="text-decoration-none text-reset" href="mailto:'+email[index]+'"><small><span class ="icon-mail_outline"> </span>'+email[index]+'</small></a></li>');
+                                }
+                            }
+                        }
+                    }
+                    if(obj.physical_address != null){
+                        if(setting.physical === 0){
+                            $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
+                            $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
+                        }else{
+                            if(connect){
+                                $('.info').append(' <li ><span class ="icon-location_city"> </span>'+obj.physical_address+'</li>');
+                                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-location_city"> </span>'+obj.physical_address+'</small></li>');
+                            }
+                        }
+                    }
+                    if(obj.post_address != null){
+                        if(setting.post === 0){
+                            $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
+                            $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
+                        }else{
+                            if(connect){
+                                $('.info').append(' <li ><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</li>');
+                                $('.info-inline').append(' <li class="mr-1" style="display: inline-block;"><small><span class ="icon-markunread_mailbox"> </span>'+obj.post_address+'</small></li>');
+                            }
+                        }
+
+                    }
+                    if(obj['social_media'] != null){
+                        let social = obj['social_media'].split(",");
+                        if(setting.social_links === 0){
+                            for (let index = 0; index < social.length; index++) {
+
+                                let social_link = social[index].split("->")
+                                if(social_link[0] === 'facebook'){
+                                    $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-1"><span class="icon-facebook-square"></span></a>');
+                                    $('.info-temp').append('<a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                                }
+                                if(social_link[0] === 'twitter'){
+                                    $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                                    $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                                }
+                                if(social_link[0] === 'github'){
+                                    $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+                                    $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+
+                                }
+                                if(social_link[0] === 'youtube'){
+                                    $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                                    $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                                }
+                                if(social_link[0] === 'instagram'){
+                                    $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                    $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                }
+                                if(social_link[0] === 'linkedin'){
+                                    $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                                    $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                                }
+                            }
+                        }else{
+                            if(connect){
+                                for (let index = 0; index < social.length; index++) {
+                                    let social_link = social[index].split("->")
+                                    if(social_link[0] === 'facebook'){
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-1"><span class="icon-facebook-square"></span></a>');
+                                        $('.info-temp').append('<a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="facebook" class="mx-2"><span class="icon-facebook-square"></span></a>');
+                                    }
+                                    if(social_link[0] === 'twitter'){
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="twitter" class="mx-1"><span class="icon-twitter-square"></span></a>');
+                                    }
+                                    if(social_link[0] === 'github'){
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="github" class="mx-1"><span class="icon-github-square"></span></a>');
+
+                                    }
+                                    if(social_link[0] === 'youtube'){
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
+                                    }
+                                    if(social_link[0] === 'instagram'){
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                    }
+                                    if(social_link[0] === 'linkedin'){
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');
+                                    }
+                                }
+                            }
+                        }
+
+                    }
 
 
+                    var services = obj['services'].split(",");
+
+                    for (let index = 0; index < services.length; index++) {
+                        if(index == 0){
+                            $('.services-sm').append('<small>'+services[index]+'</small>');
+                            $('.services').append('<li class="" style="display: inline-block;">'+services[index]+' </li>');
+                        }else{
+                            $('.services-sm').append(' | <small>'+services[index]+'</small>');
+                            $('.services').append(' | <li class="ml-1" style="display: inline-block;">'+services[index]+'</li>');
+                        }
+
+                    }
 
                 }
 

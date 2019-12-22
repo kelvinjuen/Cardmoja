@@ -53,6 +53,18 @@ h1, h2, h3, h4, h5,
     color: grey;
     font-size: 30px;
 }
+.icon-youtube-square{
+    color: red;
+    font-size: 30px;
+}
+.icon-instagram{
+    color: fuchsia;
+    font-size: 30px;
+}
+.icon-linkedin-square{
+    color: blue;
+    font-size: 30px;
+}
 .icon-request{
     font-size: 10px;
 }

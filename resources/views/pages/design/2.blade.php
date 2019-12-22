@@ -11,6 +11,7 @@
     '<div class="col-12 offset-sm-5 col-sm-7 offset-lg-5 col-lg-7 offset-xl-5 col-xl-7" id="name-2">'+
         '<h2 class="card-title m-1"><span class="name">full_name</span></h2>'+
         '<h3 class="card-subtitle colour_2 mt-1"><span class="position">position</span></h3>'+
+        '<ul class="d-none d-lg-block info-temp"></ul>'+
     '</div>'+
 '</div>'+
 '<div class="row  mt-1 text-center">'+

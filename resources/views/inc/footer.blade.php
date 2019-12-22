@@ -4,8 +4,8 @@
             <div class="col-md-12">
                 <div class="row text-center">
                     <div class="col-md-4">
-                        <h1 class="footer-heading mb-4"><a href="/home" >Card<span class="text-blue">Moja</span></a></h1>
-                        <p>Digitize Your Corporate And Personal Business Cards Here. it's Easy !</p>
+                        <h1 class="footer-heading mb-4"><a href="/" >Card<span class="text-blue">Moja</span></a></h1>
+                        <p>Digitize Your Business Cards Here. it's Easy !</p>
                     </div>
                     <div class="col-md-4">
                         <h2 class="footer-heading mb-4">Quick Links</h2>

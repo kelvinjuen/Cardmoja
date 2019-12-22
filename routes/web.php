@@ -17,8 +17,8 @@ Route::get('auth/{provider}', 'CardController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'CardController@handleProviderCallback');
 Route::get('twitter/callback', 'CardController@TwitterCallback');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/','PageController@index')->middleware('guest');
+Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/','PageController@index')->middleware('guest');
 Route::get('/coperateactivate','PageController@coperateActivate');
 Route::get('/wallet','PageController@contacts');
 Route::get('/setting','PageController@setting');
@@ -37,6 +37,10 @@ Route::post('savestaff','CoperateController@saveStaff');
 Route::get('coperateuser/create','CoperateController@createCoperateUser');
 Route::post('updatecoperateuser','CoperateController@updateCoperateUser');
 
+Route::post('savesetting','SettingController@SaveSetting');
+Route::get('getsetting/{id}','SettingController@getSetting');
+
+Route::get('getusersInfo', 'AdminController@showInfo');
 
 Route::resource('card','CardController');
 Route::resource('connect','ConnectController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class Admincontroller extends Controller
 {
@@ -45,7 +46,7 @@ class Admincontroller extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +57,7 @@ class Admincontroller extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -80,5 +81,12 @@ class Admincontroller extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showInfo(){
+        $allusers = DB::table('users')->select(DB::raw('count(*) as all_users'))->first();
+        $activeusers = DB::table('users')->select(DB::raw('count(*) as active_users'))->where('active', 1)->first();
+
+        return response()->json(['all'=>$allusers,'active'=>$activeusers]);
     }
 }

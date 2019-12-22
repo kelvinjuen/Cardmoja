@@ -18,10 +18,12 @@
                                         <span class="input-group-text">Title:</span>
                                     </div>
                                     <select class="select-group col-auto" id="designation" name="designation">
+                                        <option value=""></option>
                                         <option value="Mr">Mr</option>
                                         <option value="Mrs">Mrs</option>
                                         <option value="Miss">Miss</option>
                                         <option value="Dr">Dr</option>
+                                        <option value="Proff">Proff</option>
                                     </select>
                                 </div>
                             </div>
