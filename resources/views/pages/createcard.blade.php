@@ -14,17 +14,10 @@
                         <div class="form-group row">
                             <div class="col-12 col-md-12">
                                 <div class="input-group rounded">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Title:</span>
-                                    </div>
-                                    <select class="select-group col-auto" id="designation" name="designation">
-                                        <option value=""></option>
-                                        <option value="Mr">Mr</option>
-                                        <option value="Mrs">Mrs</option>
-                                        <option value="Miss">Miss</option>
-                                        <option value="Dr">Dr</option>
-                                        <option value="Proff">Proff</option>
-                                    </select>
+                                        <div class="input-group-prepend">
+                                                <span class="input-group-text">Title:</span>
+                                            </div>
+                                            <input type="text" class="form-control service col-md-4" placeholder="MR,MRS,HON,DR,PROFF" id="designation" name="designation" aria-label="designation" aria-describedby="add-title">
                                 </div>
                             </div>
                         </div>
@@ -72,7 +65,7 @@
                     <div class="col-12 col-md-6">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">Company:</span>
+                                <span class="input-group-text">Company/Brand:</span>
                             </div>
                             <input type="text" class="form-control" id="company" name="company" placeholder="company/business name" required>
                         </div>
@@ -309,8 +302,8 @@
         var avatar = document.getElementById('profile_photo');
         var image = document.getElementById('image');
         var input = document.getElementById('input');
-        var minAspectRatio = 0.5;
-        var maxAspectRatio = 2;
+        var minAspectRatio = 1;
+        var maxAspectRatio = 1;
         var $modal = $('#modal');
         var cropper;
 

@@ -133,10 +133,13 @@
                     $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
                     $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
                     $('.company').html(obj.company);
-                    $('.name').html(obj.full_name);
                     $('.card-name').html(obj.full_name);
                     $('.position').html(obj.position);
-
+                    if(obj.designation != null){
+                        $('.name').html(obj.designation+' '+obj.full_name);
+                    }else{
+                        $('.name').html(obj.full_name);
+                    }
                     if(data.user_id != {{$_GET['id']}} && data.user_id != 0){
 
                         for (let i = 0; i < contacts.length; i++) {
@@ -283,8 +286,8 @@
                                         $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="youtube" class="mx-1"><span class="icon-youtube-square"></span></a>');
                                     }
                                     if(social_link[0] === 'instagram'){
-                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
-                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram"></span></a>');
+                                        $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram icn-instagram"></span></a>');
+                                        $('.info-temp').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="instagram" class="mx-1"><span class="icon-instagram icn-instagram"></span></a>');
                                     }
                                     if(social_link[0] === 'linkedin'){
                                         $('.info').append(' <a href="'+social_link[1]+'" target="_blank" data-toggle="tooltip" data-placement="top" title="linkedin" class="mx-1"><span class="icon-linkedin-square"></span></a>');

@@ -17,14 +17,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Title:</span>
                                         </div>
-                                        <select class="select-group col-auto" id="designation" name="designation">
-                                            <option value=""></option>
-                                            <option value="Mr">Mr</option>
-                                            <option value="Mrs">Mrs</option>
-                                            <option value="Miss">Miss</option>
-                                            <option value="Dr">Dr</option>
-                                            <option value="Proff">Proff</option>
-                                        </select>
+                                        <input type="text" class="form-control service col-md-4" placeholder="MR,MRS,HON,DR,PROFF" id="designation" name="designation" aria-label="designation" aria-describedby="add-title">
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +65,7 @@
                         <div class="col-12 col-md-6">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text">Company:</span>
+                                    <span class="input-group-text">Company/Brand:</span>
                                 </div>
                                 <input type="text" class="form-control" id="company" name="company" placeholder="company/business name" required>
                             </div>
@@ -119,7 +112,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Physical Address</span>
                                 </div>
-                                <input type="text" class="form-control form-control-sm" id="physical_address" name="physical_address" placeholder="1234 Main St">
+                                <input type="text" class="form-control" id="physical_address" name="physical_address" placeholder="1234 Main St">
                             </div>
 
                         </div>
@@ -242,6 +235,7 @@
 
                 if(obj != null){
                     var name = obj['full_name'].split(" ");
+                    $('#designation').attr('value',obj.designation);
                     $('#firstName').attr('value',name[0]);
                     $('#secondName').attr('value',name[1]);
                     $('#thirdName').attr('value',name[2]);
@@ -377,8 +371,8 @@
         var image = document.getElementById('image');
         var input = document.getElementById('input');
         var $modal = $('#modal');
-        var minAspectRatio = 0.5;
-        var maxAspectRatio = 2;
+        var minAspectRatio = 1;
+        var maxAspectRatio = 1;
         var cropper;
 
         $('[data-toggle="tooltip"]').tooltip();

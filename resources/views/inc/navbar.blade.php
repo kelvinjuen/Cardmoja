@@ -18,7 +18,7 @@
           <nav class="site-navigation position-relative text-right" role="navigation">
 
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="/home"><i class="icon-home"></i><span>HOME</span></a></li>
+                <li class="active"><a href="/"><i class="icon-home"></i><span>HOME</span></a></li>
                 <li class="normal"><a href="/wallet"><i class="icon-list-ul"></i><span>WALLET</span></a></li>
                 <li class="has-children">
                     <a href="#"><i class="icon-edit"></i><span>EDIT</span></a>

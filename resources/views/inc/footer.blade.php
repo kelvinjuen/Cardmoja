@@ -26,7 +26,7 @@
             <div class="col-md-12">
             <div class="border-top pt-5">
             <p>
-                &copy;<script>document.write(new Date().getFullYear());</script> CardMoja.com All rights reserved.
+                &copy;<script>document.write(new Date().getFullYear());</script> cardmoja.com All rights reserved.
             </p>
             </div>
             </div>
