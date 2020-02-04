@@ -190,14 +190,14 @@ class CardController extends Controller
             //Notification::send($user, new CardView($details));
 
             DB::table('cardview')->insert([
-                'card_id' => $id,'viewer_id' => $user_id,'device' => $platform,'updated_at' => \Carbon\Carbon::now()
+                'user_id' => $id,'viewer_id' => $user_id,'device' => $platform,'updated_at' => \Carbon\Carbon::now()
                 ,'created_at' => \Carbon\Carbon::now(),
             ]);
 
 
         }else if($user_id !== Auth::user()->user_id){
             DB::table('cardview')->insert([
-                'card_id' => $id,'viewer_id' => $user_id,'device' => $platform,'updated_at' => \Carbon\Carbon::now()
+                'user_id' => $id,'viewer_id' => $user_id,'device' => $platform,'updated_at' => \Carbon\Carbon::now()
                 ,'created_at' => \Carbon\Carbon::now(),
             ]);
         }
