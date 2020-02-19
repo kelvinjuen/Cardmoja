@@ -11,13 +11,8 @@
                         <div class="form-group">
                             <h5>Get Started</h5>
                         </div>
-                        <div class="form-group">
-                            <select id="type" name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" required autofocus>
-                                <option value="personal" selected>{{ __('Account Type') }}</option>
-                                <option value="personal">Personal</option>
-                                <option value="coperate">Coperate</option>
-                            </select>
-                        </div>
+
+                        <input type="hidden" name="type" value="personal"/>
 
                         <div class="form-group ">
                             <input id="email" type="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}" required>
