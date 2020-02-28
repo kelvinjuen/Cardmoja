@@ -51,7 +51,7 @@
 
                         <div class="col-md-4 text-center">
                             <label class="label" data-toggle="tooltip" title="Choose your profile photo">
-                                    <img class="rounded"  src="/images/uploads/big/stock_people_big-128x128.png" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
+                                    <img class="rounded"  src="/images/big/stock_people_big-100x100.png" id="profile_photo" alt="Choose Profile Photo" style="height: 14rem;">
                                     <input type="file" class="sr-only" id="input" id="card_phot" name="card_phot" accept="image/*">
                             </label>
                         </div>
@@ -192,6 +192,10 @@
 
     $(document).on('submit', '#editcard_form', function(event){
             event.preventDefault();
+
+            $('#submit_card').prop("disabled", true);
+            $('#submit_card').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...');
+
             formData = new FormData(this);
             if(file != null){
                 formData.append('card_photo', file, 'avatar.jpg');
