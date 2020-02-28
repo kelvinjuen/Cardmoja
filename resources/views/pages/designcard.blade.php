@@ -62,7 +62,7 @@
 
                         <div class="col-sm-8 offset-md-4">
                             <input type="hidden" name="imagetodelete" id="imagetodelete" value=""/>
-                            <button type="submit"  class="btn btn-outline-success btn-block">Save</button>
+                            <button type="submit" id="submit_design"  class="btn btn-primary btn-block">Save</button>
                         </div>
                         {{csrf_field()}}
                     </div>
@@ -110,7 +110,7 @@
     let obj;
     let colour2;
     $(document).ready(function(){
-        document.getElementById("background-select").selectedIndex = -1;
+        $('#custom-wrap').hide();
         $.ajax({
             url:"{{route('card.show',auth()->user()->user_id)}}",
             method:'GET',
@@ -143,17 +143,25 @@
                         $('#background-select').val(obj.bg_image);
                         $('#custom-wrap').hide();
                     }else{
+                        $('#custom-wrap').show();
                         $('#imagetodelete').attr("value" , obj.bg_image);
                         $('#default-wrap').hide();
                         $('#option-select').val('custom');
                     }
+                }else{
+                    $('#cardwrapper').html('@include("pages.design.1"));
                 }
+
                 if(obj != null){
                     $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
                     $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
                     $('.company').html(obj.company);
-                    $('.name').html(obj.designation+' '+obj.full_name);
                     $('.position').html(obj.position);
+                    if(obj.designation != null){
+                        $('.name').html(obj.designation+' '+obj.full_name);
+                    }else{
+                        $('.name').html(obj.full_name);
+                    }
 
                     if(obj.phone_no != null){
                         $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
@@ -231,15 +239,19 @@
 
         let elements = document.getElementsByClassName("colour_2");
         for (let i = 0; i < elements.length; i++) {
-            elements[i].style.color = colour2;
+            elements[i].style.color = obj.colour_2;
         }
 
         if(obj != null){
             $('#profile-photo').attr('src','/storage/card_images/'+obj.photo);
             $('#profile-photo-round').attr('src','/storage/card_images/'+obj.photo);
             $('.company').html(obj.company);
-            $('.name').html(obj.designation+' '+obj.full_name);
             $('.position').html(obj.position);
+            if(obj.designation != null){
+                $('.name').html(obj.designation+' '+obj.full_name);
+            }else{
+                $('.name').html(obj.full_name);
+            }
 
             if(obj.phone_no != null){
                 $('.info').append(' <li ><span class ="icon-phone"> </span>'+obj.phone_no+'</li>');
@@ -312,6 +324,9 @@
 
     $(document).on('submit', '#design_form', function(event){
             event.preventDefault();
+
+            $('#submit_design').prop("disabled", true);
+            $('#submit_design').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...');
 
             formData = new FormData(this);
             if(file != null){

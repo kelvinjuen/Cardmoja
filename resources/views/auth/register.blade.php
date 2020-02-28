@@ -35,6 +35,9 @@
                         <div class="form-group">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
                         </div>
+                        <div class="form-group">
+                            Already have an account ?<a href="/login" >Sign In</a>
+                        </div>
 
                         <div class="form-group mb-0">
                             <button type="submit" class="btn btn-primary col-12">{{ __('Register') }}<i class="flaticon-clipboard"></i></button>

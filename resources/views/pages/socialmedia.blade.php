@@ -31,6 +31,10 @@
     let count =0;
     $(document).on('submit', '#social_form', function(event){
             event.preventDefault();
+
+            $('#submit_card').prop("disabled", true);
+            $('#submit_card').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...');
+
             $.ajax({
                 url:"/savelinks",
                 method:'POST',
@@ -101,7 +105,7 @@
             '<div class="input-group-prepend"><span class="input-group-text icon-'+selectedlink+'"></span></div>'+
             '<input type="text" class="form-control" id="'+selectedlink+'"  name="'+selectedlink+'"  placeholder="https://'+selectedlink+'.com/profile" required>'+
             '<div class="input-group-append"><button type="button" class="btn btn-outline-danger contact-remove" id="'+selectedlink+'"><span class="icon-remove"></span></button></div></div>'+
-            '<small id="'+selectedlink+'" class="form-text text-muted mx-1">login to '+selectedlink+', click on your profile and copy the url</small></div></div>'
+            '<small id="'+selectedlink+'" class="form-text text-muted mx-1">login to '+selectedlink+', click on your profile, copy the url and paste it.</small></div></div>'
         );
     });
 

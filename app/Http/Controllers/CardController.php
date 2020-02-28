@@ -119,7 +119,7 @@ class CardController extends Controller
             //upload image
             $path = $request->file('card_photo')->storeAs('public/card_images', $fileNameToStore);
         }else{
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'no-image.png';
         }
 
         $lastid=null;
@@ -142,6 +142,7 @@ class CardController extends Controller
             ]);
             DB::table('users')->where('user_id',$id)->update([
                 'active'=> 1,'updated_at' => \Carbon\Carbon::now()]);
+            DB::table('user_setting')->insert(['user_id'=>$lastid,'updated_at' => \Carbon\Carbon::now(),'created_at' => \Carbon\Carbon::now()]);
 
 
         });
@@ -288,7 +289,10 @@ class CardController extends Controller
             $fileNameToStore =  request()->get('firstName').'_'.time().'.'.$extension;
             //upload image
             $path = $request->file('card_photo')->storeAs('public/card_images', $fileNameToStore);
-            Storage::delete(['public/card_images/'.request()->get('imagetodelete')]);
+            if(request()->get('imagetodelete') != 'no-image.png'){
+                Storage::delete(['public/card_images/'.request()->get('imagetodelete')]);
+            }
+
         }
 
 

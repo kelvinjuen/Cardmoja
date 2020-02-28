@@ -30,7 +30,7 @@ class LoginController extends Controller
             if(auth()->user()->active == 0){
                 return '/card/create';
             }else{
-                return '/home';
+                return '/';
             }
 
         }else if(auth()->user()->type =='coperate'){
@@ -44,7 +44,7 @@ class LoginController extends Controller
             if(auth()->user()->active == 0){
                 return '/coperateuser/create';
             }else{
-                return '/home';
+                return '/';
             }
         }
     }

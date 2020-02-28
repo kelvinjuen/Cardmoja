@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-3 offset-9">
-                        <button type="submit" class="btn btn-outline-primary">SAVE</button>
+                        <button type="submit" class="btn btn-primary block">SAVE</button>
                         {{csrf_field()}}
                       </div>
                     </div>
